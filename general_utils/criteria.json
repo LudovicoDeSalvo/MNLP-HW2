@@ -1,0 +1,11 @@
+{
+  "criteria": "Accuracy and readability of OCR-cleaned text compared to the original reference.",
+  "score_rubric": {
+    "0": "Completely incorrect or nonsensical output. Unreadable.",
+    "1": "Severely flawed. Many major errors, barely understandable.",
+    "2": "Compromised readability or meaning.",
+    "3": "Understandable, but several minor issues or few major flaws.",
+    "4": "Great, with just small defects (e.g., punctuation or casing or rare misspellings).",
+    "5": "Perfect. Fully correct and matches the reference text exactly."
+  }
+}
