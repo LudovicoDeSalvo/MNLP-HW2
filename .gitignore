@@ -1,3 +1,9 @@
 general_utils/APIkey.txt
 dataset/eng/the_vampyre_clean.json
 dataset/eng/the_vampyre_ocr.json
+ocr_model_minerva350m/checkpoint-110/config.json
+/ocr_model_minerva350m
+/ocr_model_mt5_small
+/ocr_model_tinyllama
+general_utils/google_api.txt
+general_utils/hf_token.txt
