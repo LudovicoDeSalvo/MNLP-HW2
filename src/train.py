@@ -4,7 +4,8 @@ from transformers import (
     DataCollatorForSeq2Seq,
     TrainingArguments,
     Trainer,
-    EarlyStoppingCallback
+    EarlyStoppingCallback,
+    BitsAndBytesConfig
 )
 from peft import get_peft_model, LoraConfig, TaskType
 
@@ -17,7 +18,10 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model = AutoModelForCausalLM.from_pretrained(model_name)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        quantization_config=BitsAndBytesConfig(load_in_8bit=True)
+    )
 
     task_type = TaskType.SEQ_2_SEQ_LM if "minerva" in model_name.lower() else TaskType.CAUSAL_LM
 
@@ -60,8 +64,8 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
     training_args = TrainingArguments(
         output_dir=output_dir,
         num_train_epochs= 25 ,
-        per_device_train_batch_size=4,
-        per_device_eval_batch_size=4,
+        per_device_train_batch_size=2,
+        per_device_eval_batch_size=2,
         eval_strategy="epoch",
         save_strategy="epoch",
         logging_dir=f"{output_dir}/logs",
@@ -81,7 +85,7 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
         eval_dataset=tokenized_eval,
         tokenizer=tokenizer,
         data_collator=data_collator,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=4)]
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)]
     )
 
     trainer.train()

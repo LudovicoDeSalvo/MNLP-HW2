@@ -65,15 +65,24 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
         if tokenizer.pad_token is None:
             tokenizer.pad_token = tokenizer.eos_token
 
+        # Base decoding config
         generation_args = {
             "max_new_tokens": MAX_TOKENS,
-            "do_sample": False,
             "num_beams": 4,
-            "pad_token_id": tokenizer.eos_token_id
+            "temperature": 0.7,
+            "pad_token_id": tokenizer.eos_token_id,
         }
 
+        # Model-specific decoding behavior
+        if "TinyLlama" in model_name:
+            generation_args["eos_token_id"] = tokenizer.convert_tokens_to_ids("</s>")
+        else:
+            generation_args["no_repeat_ngram_size"] = 4
+            generation_args["repetition_penalty"] = 1.15
+
+
         for row in tqdm(eval_dataset, desc=f"Evaluating {model_name.split('/')[-1]}"):
-            prompt = row["prompt"]
+            prompt = build_prompt(ITA, row["noisy"], model_name)
             gold = row["target"]
             noisy = row["noisy"]
 
@@ -88,6 +97,7 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
 
             new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
             prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+            prediction = clean_prediction(prediction)
 
             lev_ratio = SequenceMatcher(None, prediction, gold).ratio()
             gem_score = gemini_judge_score(ITA, noisy, prediction, gold, gemini_model)
@@ -105,7 +115,8 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
 
     return pd.DataFrame(results)
 
-
+def clean_prediction(text):
+    return re.sub(r"(\b\w+\b)( \1\b)+", r"\1", text)
 
 # --- 5. PAIRWISE COMPARISON ---
 

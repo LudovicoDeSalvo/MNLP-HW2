@@ -20,7 +20,7 @@ def inject_ocr_noise(OCR_NOISE_PATTERNS, text, num_errors=2):
         noisy = re.sub(pattern, replacement, noisy, count=1)
     return noisy
 
-def prepare_dataset(SENTENCE_SPLITTING, ITA, original_path, cleaned_path, test_size=0.2, random_state=42):
+def prepare_dataset(SENTENCE_SPLITTING, ITA, original_path, cleaned_path, model_name, test_size=0.2, random_state=42):
     """Loads, augments, and splits the dataset for training and evaluation."""
     with open(original_path, "r", encoding="utf-8") as f:
         original = json.load(f)
@@ -51,7 +51,7 @@ def prepare_dataset(SENTENCE_SPLITTING, ITA, original_path, cleaned_path, test_s
             examples.append({
             "id": k,
             "noisy": noisy_para,
-            "prompt": build_prompt(ITA, noisy_para),
+            "prompt": build_prompt(ITA, noisy_para, model_name),
             "target": clean_para,
             })
             

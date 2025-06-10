@@ -29,7 +29,6 @@ from peft import get_peft_model, LoraConfig, TaskType
 
 from src.utils import set_all_seeds, login_to_huggingface, configure_gemini
 from src.data_prep import prepare_dataset
-from src.sat import load_sat_splitter
 from src.train import train_model
 from src.eval import evaluate_models, run_pairwise_comparison
 
@@ -37,10 +36,10 @@ from src.eval import evaluate_models, run_pairwise_comparison
 # --- 1. SETUP AND CONFIGURATION ---
 
 #FLAGS
-MAX_TOKENS = 512
+MAX_TOKENS = 256
 SENTENCE_SPLITTING = False
 ITA = False
-INFERENCE_ONLY = True
+INFERENCE_ONLY = False
 MINERVA_FIRST = False
 
 # Define model checkpoints to be trained and evaluated. Models for inference takes the models
@@ -163,7 +162,7 @@ def analyze_human_correlation(results_df, annotations_path="general_utils/human_
 # --- 7. MAIN EXECUTION ---
 
 def main(inference_only=True):
-    
+
     set_all_seeds(42)
     login_to_huggingface()
     gemini_model = configure_gemini()
@@ -175,21 +174,28 @@ def main(inference_only=True):
         original_path="dataset/eng/the_vampyre_ocr.json"
         cleaned_path="dataset/eng/the_vampyre_clean.json"
 
-    train_ds, eval_ds = prepare_dataset(
-        SENTENCE_SPLITTING,
-        ITA,
-        original_path,
-        cleaned_path
-    )
+    all_results = []
+    model_dict = MODELS_TO_TRAIN if not inference_only else MODELS_FOR_INFERENCE
 
-    if not inference_only:
-        for model_name, output_dir in MODELS_TO_TRAIN.items():
-            train_model(ITA, model_name, output_dir, train_ds, eval_ds)
-        model_dict = MODELS_TO_TRAIN
-    else:
-        model_dict = MODELS_FOR_INFERENCE  # use HF hub models
+    for model_name, model_path in model_dict.items():
 
-    results_df = evaluate_models(ITA, MAX_TOKENS, model_dict, eval_ds, gemini_model)
+        train_ds, eval_ds = prepare_dataset(
+            SENTENCE_SPLITTING,
+            ITA,
+            original_path,
+            cleaned_path,
+            model_name
+        )
+
+        if not INFERENCE_ONLY:
+            train_model(ITA, model_name, model_path, train_ds, eval_ds)
+
+        # keep the eval datasets so we can merge them later if you want
+        result_df = evaluate_models(ITA, MAX_TOKENS, {model_name: model_path}, eval_ds, gemini_model)
+        all_results.append(result_df)
+
+    
+    results_df = pd.concat(all_results, ignore_index=True)
     results_df.to_csv("ocr_eval_results_causal.csv", index=False)
     print("\n✅ Evaluation results saved to ocr_eval_results_causal.csv")
 
@@ -199,8 +205,6 @@ def main(inference_only=True):
         print("✅ Pairwise comparison saved to ocr_pairwise_comparison.csv")
 
     summarize_results(results_df, pairwise_df)
-    # analyze_human_correlation(results_df)
-
     print("\n🎉 Pipeline finished successfully!")
 
 

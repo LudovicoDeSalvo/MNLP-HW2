@@ -10,11 +10,29 @@ import json
 import pandas as pd
 
 
-def build_prompt(ITA,noisy_text):
+def build_prompt(ITA, noisy_text, model_name=None):
+    
     if ITA:
-        return f"Questo è testo OCR: {noisy_text}\nDevi pulirlo e correggerlo:"
+        mario = 0 # PLACEHOLDER
     else:
-        return f"Task: Fix OCR errors in the paragraph below:\n{noisy_text}\nYour corrected paragraph (write nothing else):"
+        if "TinyLlama" in model_name:
+            return f"""<|system|>
+                    You are an OCR fixer. Only return the corrected text and nothing else.</s>
+                    <|user|>
+                    {noisy_text}</s>
+                    <|assistant|>"""
+            
+        else:  # Minerva or other base models
+            return f"""### SYSTEM
+                    You are a careful OCR fixer. Given a noisy paragraph, return only the corrected version.
+
+                    ### USER
+                    <<<
+                    {noisy_text}
+                    >>>
+
+                    ### RESPONSE
+                    """
 
 def set_all_seeds(seed=42):
     """Sets seeds for all relevant libraries to ensure reproducibility."""
