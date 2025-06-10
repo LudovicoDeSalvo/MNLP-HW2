@@ -41,12 +41,29 @@ MAX_TOKENS = 512
 SENTENCE_SPLITTING = False
 ITA = False
 INFERENCE_ONLY = True
+MINERVA_FIRST = False
 
-# Define model checkpoints to be trained and evaluated
-MODELS_TO_TRAIN = {
-    "sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
-    "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "./ocr_model_tinyllama",
-}
+# Define model checkpoints to be trained and evaluated. Models for inference takes the models
+#   directly from Hugging Faces
+if MINERVA_FIRST:
+    MODELS_TO_TRAIN = {
+        "sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "./ocr_model_tinyllama",
+    }
+    MODELS_FOR_INFERENCE = {
+        "sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    }
+else:
+    MODELS_TO_TRAIN = {
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "./ocr_model_tinyllama",
+        "sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
+    }
+    MODELS_FOR_INFERENCE = {
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",        
+    }
+
 
 # Define patterns for synthetic OCR noise generation
 OCR_NOISE_PATTERNS = [
@@ -54,10 +71,6 @@ OCR_NOISE_PATTERNS = [
     (r'\bè\b', 'e'), (r'\bì\b', 'i'), (r'\bù\b', 'u'), (r'rn', 'm'), (r'\b1\b', 'i')
 ]
 
-MODELS_FOR_INFERENCE = {
-    "sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",
-    "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-}
 
 # Set a CUDA environment variable for easier debugging if needed
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
@@ -150,16 +163,23 @@ def analyze_human_correlation(results_df, annotations_path="general_utils/human_
 # --- 7. MAIN EXECUTION ---
 
 def main(inference_only=True):
+    
     set_all_seeds(42)
     login_to_huggingface()
     gemini_model = configure_gemini()
 
-    sat = load_sat_splitter("sat-3l")
+    if ITA:
+        original_path="dataset/ita/original_ocr.json"
+        cleaned_path="dataset/ita/cleaned.json"
+    else:
+        original_path="dataset/eng/the_vampyre_ocr.json"
+        cleaned_path="dataset/eng/the_vampyre_clean.json"
+
     train_ds, eval_ds = prepare_dataset(
         SENTENCE_SPLITTING,
         ITA,
-        original_path="dataset/eng/the_vampyre_ocr.json",
-        cleaned_path="dataset/eng/the_vampyre_clean.json",
+        original_path,
+        cleaned_path
     )
 
     if not inference_only:

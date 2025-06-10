@@ -1,15 +1,6 @@
 import torch
 from wtpsplit import SaT as SaTSplitter
-from sentence_transformers import SentenceTransformer, util
-
-
-def load_sat_splitter(model_name="sat-3l"):
-    print(f"🔍 Loading SaT model ({model_name})...")
-    
-    sat = SaTSplitter(model_name)          # still the wrapper
-    if torch.cuda.is_available():
-        sat.model.half().cuda()            # move ONLY the inner HF model
-    return sat                             # wrapper is intact
+from sentence_transformers import SentenceTransformer, util                       
 
 def split_with_sat(text, tokenizer, model):
     tokens = tokenizer(text, return_offsets_mapping=True, return_tensors="pt", truncation=True)

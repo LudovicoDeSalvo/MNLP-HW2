@@ -6,22 +6,15 @@ import torch
 import google.generativeai as genai  
 from huggingface_hub import login    
 from transformers import set_seed    
+import json
+import pandas as pd
 
 
 def build_prompt(ITA,noisy_text):
     if ITA:
         return f"Questo è testo OCR: {noisy_text}\nDevi pulirlo e correggerlo:"
     else:
-        return f"This is an OCR text: {noisy_text}\nYou need to clean and correct it:"
-
-# Helper to build regex pattern
-
-def get_prompt_pattern(ITA):
-    if ITA:
-        return r"Questo è testo OCR:\s*(.*?)\s*Devi pulirlo e correggerlo:\s*(.*)"
-    else:
-        return r"This is an OCR text:\s*(.*?)\s*You need to clean and correct it:\s*(.*)"
-
+        return f"Task: Fix OCR errors in the paragraph below:\n{noisy_text}\nYour corrected paragraph (write nothing else):"
 
 def set_all_seeds(seed=42):
     """Sets seeds for all relevant libraries to ensure reproducibility."""

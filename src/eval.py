@@ -7,7 +7,7 @@ import pandas as pd
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from collections import defaultdict
 
-from src.utils import get_prompt_pattern, build_prompt
+from src.utils import build_prompt
 
 def gemini_judge_score(ITA, noisy, predicted, gold, gemini_model):
 
@@ -72,20 +72,10 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
             "pad_token_id": tokenizer.eos_token_id
         }
 
-        prompt_pattern = get_prompt_pattern(ITA)
-
         for row in tqdm(eval_dataset, desc=f"Evaluating {model_name.split('/')[-1]}"):
-            full_text = row["text"]
-
-            match = re.search(prompt_pattern, full_text, re.DOTALL | re.IGNORECASE)
-            if not match:
-                print("⚠️ Format error in text:", full_text[:100])
-                continue
-
-            noisy = match.group(1).strip()
-            gold = match.group(2).strip()
-
-            prompt = build_prompt(ITA , noisy)
+            prompt = row["prompt"]
+            gold = row["target"]
+            noisy = row["noisy"]
 
             inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
 
@@ -97,10 +87,7 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
                 )
 
             new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
-            prediction = tokenizer.decode(
-                new_tokens,
-                skip_special_tokens=True
-            ).strip()
+            prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
 
             lev_ratio = SequenceMatcher(None, prediction, gold).ratio()
             gem_score = gemini_judge_score(ITA, noisy, prediction, gold, gemini_model)
@@ -112,7 +99,6 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
                 "target_text": gold,
                 "levenshtein": lev_ratio,
                 "gemini_score": gem_score,
-                "source": row.get("source", "unknown")
             })
 
         torch.cuda.empty_cache()

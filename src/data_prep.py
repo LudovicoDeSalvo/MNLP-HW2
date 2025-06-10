@@ -41,14 +41,19 @@ def prepare_dataset(SENTENCE_SPLITTING, ITA, original_path, cleaned_path, test_s
             aligned = align_sentences_by_semantics(noisy_sents, clean_sents, sentence_model)
 
             for noisy, clean in aligned:
-                prompt = build_prompt(ITA , noisy)
-                full_text = f"{prompt} {clean}"
-                examples.append({"text": full_text, "source": "sat-segmented"})
+                for noisy, clean in aligned:
+                    examples.append({
+                        "prompt": build_prompt(ITA, noisy),
+                        "target": clean,
+                        "id": k
+                    })
         else:
-            prompt = build_prompt(ITA , noisy_para)
-            full_text = f"{prompt} {clean_para}"
-
-            examples.append({"text": full_text, "source": "no-split"})
+            examples.append({
+            "id": k,
+            "noisy": noisy_para,
+            "prompt": build_prompt(ITA, noisy_para),
+            "target": clean_para,
+            })
             
     random.shuffle(examples)
     train_data, eval_data = train_test_split(examples, test_size=test_size, random_state=random_state)

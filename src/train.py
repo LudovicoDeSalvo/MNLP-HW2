@@ -34,27 +34,15 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
 
     # --- TOKENISATION & FILTER  -----------------
     def tokenize_supervised(example):
-        if ITA:
-            split_key = "Devi pulirlo e correggerlo:"
-        else:
-            split_key = "You need to clean and correct it:"
-
-        parts = example["text"].split(split_key)
-        if len(parts) != 2:
-            return {}  # drop malformed sample
-
-        prompt, target = [p.strip() for p in parts]
-        prompt += f" {split_key}"
-
-        prompt_ids = tokenizer(prompt, add_special_tokens=False)["input_ids"]
-        target_ids = tokenizer(target, add_special_tokens=False)["input_ids"]
+        prompt_ids = tokenizer(example["prompt"], add_special_tokens=False)["input_ids"]
+        target_ids = tokenizer(example["target"], add_special_tokens=False)["input_ids"]
+        target_ids += [tokenizer.eos_token_id]
 
         return {
             "input_ids": prompt_ids + target_ids,
             "attention_mask": [1] * (len(prompt_ids) + len(target_ids)),
             "labels": [-100] * len(prompt_ids) + target_ids
         }
-
 
     tokenized_train = (
         train_dataset
