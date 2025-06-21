@@ -2,6 +2,7 @@ import json
 import pandas as pd
 from datasets import Dataset
 import nltk
+import os
 from src.utils import build_prompt
 
 # Download the sentence tokenizer model from NLTK (only needs to be done once)
@@ -11,20 +12,17 @@ except nltk.downloader.DownloadError:
     print("Downloading NLTK sentence tokenizer model 'punkt'...")
     nltk.download('punkt', quiet=True)
 
-def prepare_dataset(config, dataset_key):
-    """
-    Loads and prepares all necessary dataset splits in a single pass.
-    Returns three objects:
-    1. A Dataset of sentence-based training examples.
-    2. A Dataset of sentence-based evaluation examples.
-    3. A DataFrame of full documents for final evaluation.
-    """
+def prepare_dataset(config, dataset_key, paths):
     dataset_config = config["datasets"][dataset_key]
+    dataset_dir = paths['dataset_dir']
+
+    original_path = os.path.join(dataset_dir, dataset_key, dataset_config['original_filename'])
+    cleaned_path = os.path.join(dataset_dir, dataset_key, dataset_config['cleaned_filename'])
     
     try:
-        with open(dataset_config["original_path"], "r", encoding="utf-8") as f:
+        with open(original_path, "r", encoding="utf-8") as f:
             original_docs = json.load(f)
-        with open(dataset_config["cleaned_path"], "r", encoding="utf-8") as f:
+        with open(cleaned_path, "r", encoding="utf-8") as f:
             cleaned_docs = json.load(f)
     except FileNotFoundError as e:
         print(f"❌ Dataset file not found: {e}. Please check paths in your config.")

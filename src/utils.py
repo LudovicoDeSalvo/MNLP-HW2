@@ -73,8 +73,9 @@ def set_all_seeds(seed=42):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
-def login_to_huggingface(token_path="general_utils/hf_token.txt"):
-    """Logs into HuggingFace Hub using a token from a file."""
+def login_to_huggingface(paths):
+    token_path = os.path.join(paths['general_utils_dir'], 'hf_token.txt')
+
     try:
         with open(token_path) as f:
             token = f.read().strip()
@@ -83,8 +84,9 @@ def login_to_huggingface(token_path="general_utils/hf_token.txt"):
     except Exception as e:
         print(f"⚠️ HuggingFace login failed: {e}.")
 
-def configure_gemini(api_key_path="general_utils/google_api.txt"):
-    """Configures the Gemini API and returns the generative model."""
+def configure_gemini(paths):
+    api_key_path = os.path.join(paths['general_utils_dir'], 'google_api.txt')
+    
     try:
         with open(api_key_path) as f:
             api_key = f.read().strip()

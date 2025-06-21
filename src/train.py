@@ -8,9 +8,12 @@ from transformers import (
     BitsAndBytesConfig
 )
 from peft import get_peft_model, LoraConfig, TaskType
+import os
 
-def train_model(model_name, output_dir, train_dataset, eval_dataset):
-    """Fine-tunes a single decoder-only language model."""
+def train_model(config, paths, train_dataset, eval_dataset):
+    model_name = config["model_name"]
+    output_dir = os.path.join(paths['trained_models_dir'], config['output_dir_name'])
+
     print(f"\n====== Training {model_name} ======")
 
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)

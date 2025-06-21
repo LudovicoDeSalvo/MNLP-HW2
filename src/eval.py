@@ -105,8 +105,10 @@ def correct_document(doc_text, model, tokenizer, config, dataset_config):
     # Join the corrected sentences with a newline to preserve paragraph structure
     return "\n".join(corrected_sentences)
 
-def evaluate_model(config, dataset_key, eval_docs_df, gemini_model, use_gemini_scoring):
-    """Evaluates a model by processing full documents chunk by chunk."""
+def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_gemini_scoring):
+    model_name = config["model_name"]
+    model_path = os.path.join(paths['trained_models_dir'], config['output_dir_name'])
+    
     results = []
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
@@ -151,8 +153,10 @@ def evaluate_model(config, dataset_key, eval_docs_df, gemini_model, use_gemini_s
     
     results_df = pd.DataFrame(results)
     
-    os.makedirs(EVAL_RESULTS_DIR, exist_ok=True)
-    output_filename = os.path.join(EVAL_RESULTS_DIR, f"eval_{model_name.replace('/', '_')}_{dataset_key}.csv")
+    eval_dir = paths['evaluation_results_dir']
+    os.makedirs(eval_dir, exist_ok=True)
+    output_filename = os.path.join(eval_dir, f"eval_{model_name.replace('/', '_')}_{dataset_key}.csv")
+    
     results_df.to_csv(output_filename, index=False)
     print(f"✅ Evaluation results saved to {output_filename}")
     
