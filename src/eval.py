@@ -49,8 +49,8 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     FINE TESTO
 
     Ora fornisci la tua valutazione:
-        - 5 (Perfetto): Il testo è eccellente, con solo errori trascurabili che non influiscono sul significato o sulla leggibilità.
-        - 4 (Ottimo): Il testo è leggibile e per lo più corretto, ma presenta diversi errori minori.
+        - 5 (Eccellente): Il testo è eccellente, con solo errori trascurabili che non influiscono sul significato o sulla leggibilità.
+        - 4 (Ottimo): Il testo è leggibile e corretto, ma presenta diversi errori minori.
         - 3 (Buono): Il testo presenta alcuni errori che influiscono sulla leggibilità o sul significato, ma funziona nel complesso ed è comprensibile.
         - 2 (Scarso): Il testo contiene numerosi errori che rendono difficile la comprensione in alcune parti.
         - 1 (Fallito): La correzione è complessivamente sbagliata o priva di senso.
