@@ -45,7 +45,7 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     Controlla la logica semantica, la coerenza contestuale e possibili allucinazioni.
     Devi dare i seguenti punteggi ad ogni categoria:
     Punteggio da 0 a 10 per Leggibilità generale: quanto è facile e scorrevole leggere il testo.
-    Punteggio da 0 a 6ì7 per Correttezza: errori ortografici, punteggiatura, typos.
+    Punteggio da 0 a 7 per Correttezza: errori ortografici, punteggiatura, typos.
     Punteggio da 0 a 2 per Formattazione: corretta spaziatura e interruzioni di riga.
     Punteggio da 0 a 10 per Coerenza semantica: le frasi hanno senso.
 
