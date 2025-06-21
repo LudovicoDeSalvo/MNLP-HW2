@@ -116,6 +116,7 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     
     model_name = config["model_name"]
     dataset_config = config["datasets"][dataset_key]
+    is_ita = dataset_config.get("ita_language", False)
 
     model_path = os.path.join(paths['trained_models_dir'], config['output_dir_name'])
     
@@ -139,7 +140,7 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
         
         gem_score = -1
         if use_gemini_scoring and gemini_model:
-            gem_score = gemini_judge_score(noisy_doc, predicted_doc, target_doc, gemini_model)
+            gem_score = gemini_judge_score(noisy_doc, predicted_doc, target_doc, gemini_model, ita=is_ita)
 
         results.append({
             "model": model_name,
