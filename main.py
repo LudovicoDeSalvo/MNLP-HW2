@@ -1,212 +1,168 @@
 import os
-import random
-import re
-import json
-import numpy as np
+import sys
+import subprocess
 import pandas as pd
-import torch
-import google.generativeai as genai
-from difflib import SequenceMatcher
-from sklearn.model_selection import train_test_split
-from datasets import Dataset
-from tqdm import tqdm
-from transformers import (
-    AutoTokenizer,
-    AutoModelForCausalLM,
-    TrainingArguments,
-    Trainer,
-    DataCollatorForSeq2Seq,
-    set_seed,
-    EarlyStoppingCallback
-)
-from huggingface_hub import login
-from collections import defaultdict
-from sklearn.metrics import cohen_kappa_score
-from sklearn.preprocessing import MinMaxScaler
-from wtpsplit import SaT as SaTSplitter
-from sentence_transformers import SentenceTransformer, util
-from peft import get_peft_model, LoraConfig, TaskType
-
-from src.utils import set_all_seeds, login_to_huggingface, configure_gemini
+from src.utils import set_all_seeds, login_to_huggingface, configure_gemini, load_config
 from src.data_prep import prepare_dataset
 from src.train import train_model
-from src.eval import evaluate_models, run_pairwise_comparison
+from src.eval import evaluate_model, run_human_vs_gemini_correlation, EVAL_RESULTS_DIR
 
+# --- GLOBAL VARIABLES ---
+CONFIGS = {
+    "1": {"name": "TinyLlama", "path": "config_tinyllama.json"},
+    "2": {"name": "Minerva", "path": "config_minerva.json"}
+}
+GEMINI_MODEL = None
 
-# --- 1. SETUP AND CONFIGURATION ---
+# --- HELPER FUNCTIONS FOR MENU ---
+def ask_yes_no(question):
+    """Simple helper to ask a yes/no question."""
+    while True:
+        response = input(f"{question} (y/n): ").lower().strip()
+        if response in ['y', 'yes']: return True
+        if response in ['n', 'no']: return False
+        print("Invalid input. Please enter 'y' or 'n'.")
 
-#FLAGS
-MAX_TOKENS = 1024
-SENTENCE_SPLITTING = False
-ITA = False
-INFERENCE_ONLY = False
-MINERVA_FIRST = False
+def select_dataset():
+    """Lets the user select a dataset to work with."""
+    print("\nWhich dataset do you want to use?")
+    print("1. English")
+    print("2. Italian")
+    while True:
+        choice = input("Enter your choice (1-2): ")
+        if choice == "1": return "eng"
+        if choice == "2": return "ita"
+        print("Invalid choice. Please enter 1 or 2.")
 
-# Define model checkpoints to be trained and evaluated. Models for inference takes the models
-#   directly from Hugging Faces
-if MINERVA_FIRST:
-    MODELS_TO_TRAIN = {
-        # "sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
-        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "./ocr_model_tinyllama",
-    }
-    MODELS_FOR_INFERENCE = {
-        # "sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",
-        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    }
-else:
-    MODELS_TO_TRAIN = {
-        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "./ocr_model_tinyllama",
-        #"sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
-    }
-    MODELS_FOR_INFERENCE = {
-        "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-        #"sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",        
-    }
-
-
-# Define patterns for synthetic OCR noise generation
-OCR_NOISE_PATTERNS = [
-    (r'm', 'rn'), (r'\bi\b', '1'), (r'\bo\b', '0'), (r'\bé\b', 'e'),
-    (r'\bè\b', 'e'), (r'\bì\b', 'i'), (r'\bù\b', 'u'), (r'rn', 'm'), (r'\b1\b', 'i')
-]
-
-
-# Set a CUDA environment variable for easier debugging if needed
-os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
-
-# --- 6. ANALYSIS AND SUMMARY ---
-
-def summarize_results(results_df, pairwise_df):
-    """Analyzes and prints a summary of the best performing model."""
-    print("\n🏆 Selecting best model based on metrics")
-
-    # 1. Levenshtein + Gemini mean scores
-    mean_scores = results_df.groupby("model")[["levenshtein", "gemini_score"]].mean()
-    print("\n📈 Average Scores Per Model:")
-    print(mean_scores)
+def select_model_configs():
+    """Lets the user select one or more model configurations."""
+    print("\nSelect model(s):")
+    print("1. TinyLlama")
+    print("2. Minerva")
+    print("3. Both")
     
-    model_A_name, model_B_name = list(MODELS_TO_TRAIN.keys())
+    while True:
+        choice = input("Enter your choice (1-3): ")
+        if choice == "1": return [load_config(CONFIGS["1"]["path"])]
+        if choice == "2": return [load_config(CONFIGS["2"]["path"])]
+        if choice == "3": return [load_config(CONFIGS["1"]["path"]), load_config(CONFIGS["2"]["path"])]
+        print("Invalid choice. Please enter a number between 1 and 3.")
 
-    if not pairwise_df.empty:
-        # 2. Count pairwise wins
-        win_counts = pairwise_df["gemini_judgment"].value_counts().to_dict()
-        minerva_wins = win_counts.get("A", 0)
-        tinyllama_wins = win_counts.get("B", 0)
-        
-        print("\n🤖 Pairwise Gemini Win Counts:")
-        print(f" - Minerva Wins: {minerva_wins}")
-        print(f" - TinyLLaMA Wins: {tinyllama_wins}")
-        print(f" - Ties: {win_counts.get('TIE', 0)}")
+def select_evaluation_file():
+    """Lets the user select a single evaluation file to analyze."""
+    if not os.path.exists(EVAL_RESULTS_DIR):
+        print(f"❌ The '{EVAL_RESULTS_DIR}' directory does not exist. Run an evaluation first.")
+        return None, None
+    
+    eval_files = [f for f in os.listdir(EVAL_RESULTS_DIR) if f.endswith('.csv')]
+    if not eval_files:
+        print(f"❌ No evaluation files found in the '{EVAL_RESULTS_DIR}' directory.")
+        return None, None
+    
+    print("\nPlease select an evaluation file to analyze:")
+    for i, f in enumerate(eval_files):
+        print(f"  {i+1}: {f}")
+    
+    while True:
+        try:
+            choice = int(input(f"Enter number (1-{len(eval_files)}): ")) - 1
+            if 0 <= choice < len(eval_files):
+                filename = eval_files[choice]
+                # Determine dataset from filename, e.g., 'eval_TinyLlama..._eng.csv'
+                dataset_key = 'ita' if '_ita.csv' in filename else 'eng'
+                return os.path.join(EVAL_RESULTS_DIR, filename), dataset_key
+            print("Invalid number.")
+        except (ValueError, IndexError):
+            print("Please enter a valid number.")
 
-        # 3. Normalized decision rule
-        scaler = MinMaxScaler()
-        gemini_raw = np.array([
-            mean_scores.loc[model_A_name, "gemini_score"],
-            mean_scores.loc[model_B_name, "gemini_score"]
-        ]).reshape(-1, 1)
-        
-        wins_raw = np.array([minerva_wins, tinyllama_wins]).reshape(-1, 1)
+# --- MENU HANDLERS ---
+def handle_train_model():
+    """Handler for training models."""
+    dataset_key = select_dataset()
+    selected_configs = select_model_configs()
+    for config in selected_configs:
+        if not config: continue
+        print(f"\n--- Preparing data for {config['model_name']} on '{dataset_key}' dataset ---")
+        train_ds, eval_ds = prepare_dataset(config, dataset_key)
+        if train_ds:
+            train_model(
+                model_name=config['model_name'],
+                output_dir=config['output_dir'],
+                train_dataset=train_ds,
+                eval_dataset=eval_ds
+            )
 
-        gemini_scaled = scaler.fit_transform(gemini_raw).flatten()
-        wins_scaled = scaler.fit_transform(wins_raw).flatten()
+def handle_evaluate_model():
+    """Handler for evaluating models."""
+    global GEMINI_MODEL
+    dataset_key = select_dataset()
+    selected_configs = select_model_configs()
+    use_gemini = ask_yes_no("⭐ Use Gemini for scoring? (Requires API key)")
+    
+    if use_gemini and not GEMINI_MODEL:
+        GEMINI_MODEL = configure_gemini()
+        if not GEMINI_MODEL:
+            print("⚠️ Cannot proceed with Gemini scoring. Continuing without it.")
+            use_gemini = False
 
-        score = {
-            "minerva": 0.7 * gemini_scaled[0] + 0.3 * wins_scaled[0],
-            "tinyllama": 0.7 * gemini_scaled[1] + 0.3 * wins_scaled[1]
-        }
-        best_model_name = max(score, key=score.get)
-        print(f"\n✅ Best model overall: {best_model_name.upper()} based on a weighted score of Gemini ratings and pairwise wins.")
-    else:
-        best_model_name = mean_scores['gemini_score'].idxmax()
-        print(f"\n✅ Best model based on mean Gemini score: {best_model_name}")
+    for config in selected_configs:
+        if not config: continue
+        print(f"\n--- Preparing data for {config['model_name']} on '{dataset_key}' dataset ---")
+        _, eval_ds = prepare_dataset(config, dataset_key)
+        if eval_ds:
+            evaluate_model(config, dataset_key, eval_ds, GEMINI_MODEL, use_gemini)
 
-def analyze_human_correlation(results_df, annotations_path="general_utils/human_annotations.json"):
-    print("\n📊 Loading human annotations for correlation check")
+def handle_correlation_analysis():
+    """Handler for human vs. Gemini correlation."""
+    print("\n--- Human vs. Gemini Correlation Analysis ---")
+    eval_file_path, dataset_key = select_evaluation_file()
+    if not eval_file_path:
+        return
+
+    # Load a config to find the human annotations file path
+    config = load_config(CONFIGS["1"]["path"]) 
+    if not config: return
+    
+    human_annotations_path = config["datasets"][dataset_key]["human_annotations_path"]
+    run_human_vs_gemini_correlation(eval_file_path, human_annotations_path)
+
+def handle_install_requirements():
+    """Installs packages from requirements.txt."""
+    print("🔧 Installing/updating required packages...")
     try:
-        with open(annotations_path, "r", encoding="utf-8") as f:
-            human_data = json.load(f)
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        print("✅ Requirements installed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ An error occurred during installation: {e}")
     except FileNotFoundError:
-        print("⚠️ Human annotations file not found. Skipping correlation analysis.")
-        return
+        print("❌ 'requirements.txt' not found. Please create it first.")
 
-    # Auto-detect key names
-    sample_keys = set(human_data[0].keys())
-    if "input_text" in sample_keys and "target_text" in sample_keys:
-        key_fn = lambda x: (x["input_text"].strip(), x["target_text"].strip())
-    elif "ocr" in sample_keys and "cleaned" in sample_keys:
-        key_fn = lambda x: (x["ocr"].strip(), x["cleaned"].strip())
-    else:
-        print("❌ Unrecognized key structure in human annotations.")
-        return
-
-    human_lookup = {
-        key_fn(item): item["human_score"]
-        for item in human_data
-        if item.get("human_score") is not None
-    }
-
-    human_scores, gemini_scores = [], []
-    for _, row in results_df.iterrows():
-        key = (row["input_text"].strip(), row["target_text"].strip())
-        if key in human_lookup:
-            human_scores.append(human_lookup[key])
-            gemini_scores.append(row["gemini_score"])
-
-    if human_scores and len(human_scores) > 1:
-        kappa = cohen_kappa_score(human_scores, gemini_scores)
-        print(f"✅ Cohen's Kappa between human and Gemini scores: {kappa:.3f} (based on {len(human_scores)} overlapping samples)")
-    else:
-        print("⚠️ No overlapping samples found between Gemini and human annotations to calculate Kappa.")
-
-
-# --- 7. MAIN EXECUTION ---
-
-def main(inference_only=True):
-
+def main_menu():
+    """Displays the main menu and handles user input."""
     set_all_seeds(42)
     login_to_huggingface()
-    gemini_model = configure_gemini()
-
-    if ITA:
-        original_path="dataset/ita/original_ocr.json"
-        cleaned_path="dataset/ita/cleaned.json"
-    else:
-        original_path="dataset/eng/the_vampyre_ocr.json"
-        cleaned_path="dataset/eng/the_vampyre_clean.json"
-
-    all_results = []
-    model_dict = MODELS_TO_TRAIN if not inference_only else MODELS_FOR_INFERENCE
-
-    for model_name, model_path in model_dict.items():
-
-        train_ds, eval_ds = prepare_dataset(
-            SENTENCE_SPLITTING,
-            ITA,
-            original_path,
-            cleaned_path,
-            model_name
-        )
-
-        if not INFERENCE_ONLY:
-            train_model(ITA, model_name, model_path, train_ds, eval_ds)
-
-        # keep the eval datasets so we can merge them later if you want
-        result_df = evaluate_models(ITA, MAX_TOKENS, {model_name: model_path}, eval_ds, gemini_model)
-        all_results.append(result_df)
-
     
-    results_df = pd.concat(all_results, ignore_index=True)
-    results_df.to_csv("ocr_eval_results_causal.csv", index=False)
-    print("\n✅ Evaluation results saved to ocr_eval_results_causal.csv")
+    while True:
+        print("\n==============================")
+        print("   OCR Post-Correction Menu")
+        print("==============================")
+        print("1. Train Model(s)")
+        print("2. Evaluate Model(s)")
+        print("3. Human vs. Gemini Correlation")
+        print("4. Install/Update Requirements")
+        print("5. Exit")
+        
+        choice = input("\nEnter your choice (1-5): ")
 
-    pairwise_df = None # run_pairwise_comparison(ITA, results_df, gemini_model, model_dict)
-    if not pairwise_df.empty:
-        pairwise_df.to_csv("ocr_pairwise_comparison.csv", index=False)
-        print("✅ Pairwise comparison saved to ocr_pairwise_comparison.csv")
-
-    summarize_results(results_df, pairwise_df)
-    print("\n🎉 Pipeline finished successfully!")
-
+        if choice == "1": handle_train_model()
+        elif choice == "2": handle_evaluate_model()
+        elif choice == "3": handle_correlation_analysis()
+        elif choice == "4": handle_install_requirements()
+        elif choice == "5":
+            print("Exiting the program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 5.")
 
 if __name__ == "__main__":
-    main(inference_only=INFERENCE_ONLY)
+    main_menu()

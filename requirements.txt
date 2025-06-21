@@ -1,0 +1,12 @@
+bitsandbytes
+datasets
+google-generativeai
+huggingface-hub
+numpy
+pandas
+peft
+python-Levenshtein
+scikit-learn
+torch
+tqdm
+transformers

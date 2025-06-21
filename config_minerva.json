@@ -1,0 +1,19 @@
+{
+  "model_name": "sapienzanlp/Minerva-350M-base-v1.0",
+  "output_dir": "./ocr_model_minerva",
+  "prompt_style": "minerva",
+  "datasets": {
+    "eng": {
+      "ita_language": false,
+      "original_path": "dataset/eng/the_vampyre_ocr.json",
+      "cleaned_path": "dataset/eng/the_vampyre_clean.json",
+      "human_annotations_path": "general_utils/human_annotations_eng.json"
+    },
+    "ita": {
+      "ita_language": true,
+      "original_path": "dataset/ita/original_ocr.json",
+      "cleaned_path": "dataset/ita/cleaned.json",
+      "human_annotations_path": "general_utils/human_annotations.json"
+    }
+  }
+}

@@ -8,10 +8,8 @@ from transformers import (
     BitsAndBytesConfig
 )
 from peft import get_peft_model, LoraConfig, TaskType
-from transformers import EarlyStoppingCallback
 
-
-def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
+def train_model(model_name, output_dir, train_dataset, eval_dataset):
     """Fine-tunes a single decoder-only language model."""
     print(f"\n====== Training {model_name} ======")
 
@@ -21,15 +19,15 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
 
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        quantization_config=BitsAndBytesConfig(load_in_8bit=True)
+        quantization_config=BitsAndBytesConfig(load_in_8bit=True),
+        device_map={"":0} # Ensures model is on GPU
     )
 
-    task_type = TaskType.SEQ_2_SEQ_LM if "minerva" in model_name.lower() else TaskType.CAUSAL_LM
-
+    # CORRECTED: Causal LM is the correct task type for decoder-only models.
     peft_config = LoraConfig(
         r=32,
         lora_alpha=64,
-        task_type=task_type,
+        task_type=TaskType.CAUSAL_LM,
         lora_dropout=0.05,
         bias="none"
     )
@@ -37,7 +35,6 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
     model = get_peft_model(model, peft_config)
     model.print_trainable_parameters()
 
-    # --- TOKENISATION & FILTER  -----------------
     def tokenize_supervised(example):
         prompt_ids = tokenizer(example["prompt"], add_special_tokens=False)["input_ids"]
         target_ids = tokenizer(example["target"], add_special_tokens=False)["input_ids"]
@@ -49,16 +46,8 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
             "labels": [-100] * len(prompt_ids) + target_ids
         }
 
-    tokenized_train = (
-        train_dataset
-        .map(tokenize_supervised, remove_columns=train_dataset.column_names)
-        .filter(lambda x: len(x.get("input_ids", [])) > 0)
-    )
-    tokenized_eval  = (
-        eval_dataset
-        .map(tokenize_supervised, remove_columns=eval_dataset.column_names)
-        .filter(lambda x: len(x.get("input_ids", [])) > 0)
-    )
+    tokenized_train = train_dataset.map(tokenize_supervised, remove_columns=train_dataset.column_names)
+    tokenized_eval  = eval_dataset.map(tokenize_supervised, remove_columns=eval_dataset.column_names)
 
     data_collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model, padding=True)
 
@@ -89,9 +78,7 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
     )
 
     trainer.train()
-
     trainer.save_model(output_dir)
     tokenizer.save_pretrained(output_dir)
 
     print(f"✅ Training complete. Model and tokenizer saved to {output_dir}")
-
