@@ -8,6 +8,7 @@ from huggingface_hub import login
 from transformers import set_seed    
 import json
 import pandas as pd
+import Levenshtein
 
 
 def build_prompt(ITA, noisy_text, model_name=None):
@@ -16,11 +17,11 @@ def build_prompt(ITA, noisy_text, model_name=None):
         mario = 0 # PLACEHOLDER
     else:
         if "TinyLlama" in model_name:
-            return f"""<|system|>
-                    You are an OCR fixer. Only return the corrected text and nothing else.</s>
-                    <|user|>
-                    {noisy_text}</s>
-                    <|assistant|>"""
+            return f"""Correct the following OCR text:
+
+                {noisy_text}
+
+                Corrected text:"""
             
         else:  # Minerva or other base models
             return f"""### SYSTEM
@@ -67,3 +68,16 @@ def configure_gemini(api_key_path="general_utils/google_api.txt"):
     except Exception as e:
         print(f"⚠️ Failed to configure Gemini API: {e}. Evaluation with Gemini will fail.")
         return None
+    
+
+def calculate_cer(s1, s2):
+    """
+    Calculates the Character Error Rate (CER) between two strings.
+    """
+    s1 = s1.replace(' ', '')
+    s2 = s2.replace(' ', '')
+    distance = Levenshtein.distance(s1, s2)
+    length = len(s2)
+    if length == 0:
+        return 1.0 if distance > 0 else 0.0
+    return distance / length

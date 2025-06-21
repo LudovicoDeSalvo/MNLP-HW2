@@ -36,7 +36,7 @@ from src.eval import evaluate_models, run_pairwise_comparison
 # --- 1. SETUP AND CONFIGURATION ---
 
 #FLAGS
-MAX_TOKENS = 256
+MAX_TOKENS = 1024
 SENTENCE_SPLITTING = False
 ITA = False
 INFERENCE_ONLY = False
@@ -46,21 +46,21 @@ MINERVA_FIRST = False
 #   directly from Hugging Faces
 if MINERVA_FIRST:
     MODELS_TO_TRAIN = {
-        "sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
+        # "sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
         "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "./ocr_model_tinyllama",
     }
     MODELS_FOR_INFERENCE = {
-        "sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",
+        # "sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",
         "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     }
 else:
     MODELS_TO_TRAIN = {
         "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "./ocr_model_tinyllama",
-        "sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
+        #"sapienzanlp/Minerva-350M-base-v1.0": "./ocr_model_minerva350m",
     }
     MODELS_FOR_INFERENCE = {
         "TinyLlama/TinyLlama-1.1B-Chat-v1.0": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-        "sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",        
+        #"sapienzanlp/Minerva-350M-base-v1.0": "sapienzanlp/Minerva-350M-base-v1.0",        
     }
 
 
@@ -199,7 +199,7 @@ def main(inference_only=True):
     results_df.to_csv("ocr_eval_results_causal.csv", index=False)
     print("\n✅ Evaluation results saved to ocr_eval_results_causal.csv")
 
-    pairwise_df = run_pairwise_comparison(ITA, results_df, gemini_model, model_dict)
+    pairwise_df = None # run_pairwise_comparison(ITA, results_df, gemini_model, model_dict)
     if not pairwise_df.empty:
         pairwise_df.to_csv("ocr_pairwise_comparison.csv", index=False)
         print("✅ Pairwise comparison saved to ocr_pairwise_comparison.csv")

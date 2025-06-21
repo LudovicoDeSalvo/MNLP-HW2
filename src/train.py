@@ -8,6 +8,7 @@ from transformers import (
     BitsAndBytesConfig
 )
 from peft import get_peft_model, LoraConfig, TaskType
+from transformers import EarlyStoppingCallback
 
 
 def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
@@ -26,8 +27,8 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
     task_type = TaskType.SEQ_2_SEQ_LM if "minerva" in model_name.lower() else TaskType.CAUSAL_LM
 
     peft_config = LoraConfig(
-        r=8,
-        lora_alpha=16,
+        r=32,
+        lora_alpha=64,
         task_type=task_type,
         lora_dropout=0.05,
         bias="none"
@@ -63,7 +64,7 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
 
     training_args = TrainingArguments(
         output_dir=output_dir,
-        num_train_epochs= 25 ,
+        num_train_epochs=5,
         per_device_train_batch_size=2,
         per_device_eval_batch_size=2,
         eval_strategy="epoch",
@@ -75,7 +76,7 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
         metric_for_best_model="eval_loss",
         greater_is_better=False,
         seed=42,
-        fp16 = True,
+        fp16=True,
     )
 
     trainer = Trainer(
@@ -83,9 +84,8 @@ def train_model(ITA, model_name, output_dir, train_dataset, eval_dataset):
         args=training_args,
         train_dataset=tokenized_train,
         eval_dataset=tokenized_eval,
-        tokenizer=tokenizer,
         data_collator=data_collator,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)]
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=2)]
     )
 
     trainer.train()

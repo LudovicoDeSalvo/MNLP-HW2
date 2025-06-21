@@ -6,8 +6,7 @@ from tqdm import tqdm
 import pandas as pd
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from collections import defaultdict
-
-from src.utils import build_prompt
+from src.utils import build_prompt, calculate_cer
 
 def gemini_judge_score(ITA, noisy, predicted, gold, gemini_model):
 
@@ -52,6 +51,13 @@ def gemini_judge_score(ITA, noisy, predicted, gold, gemini_model):
         print(f"Error during Gemini scoring: {e}")
         return -1
 
+
+
+# This is a new helper function you added, which is a good idea.
+def clean_prediction(text):
+    """Removes simple adjacent word repetitions."""
+    return re.sub(r"(\b\w+\b)( \1\b)+", r"\1", text)
+
 def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
     """Evaluates the fine-tuned models on the evaluation dataset."""
     results = []
@@ -65,28 +71,21 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
         if tokenizer.pad_token is None:
             tokenizer.pad_token = tokenizer.eos_token
 
-        # Base decoding config
-        generation_args = {
-            "max_new_tokens": MAX_TOKENS,
-            "num_beams": 4,
-            "temperature": 0.7,
-            "pad_token_id": tokenizer.eos_token_id,
-        }
-
-        # Model-specific decoding behavior
-        if "TinyLlama" in model_name:
-            generation_args["eos_token_id"] = tokenizer.convert_tokens_to_ids("</s>")
-        else:
-            generation_args["no_repeat_ngram_size"] = 4
-            generation_args["repetition_penalty"] = 1.15
-
-
         for row in tqdm(eval_dataset, desc=f"Evaluating {model_name.split('/')[-1]}"):
             prompt = build_prompt(ITA, row["noisy"], model_name)
             gold = row["target"]
             noisy = row["noisy"]
 
             inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
+
+            generation_args = {
+                "max_new_tokens": 1024,
+                "num_beams": 4,
+                "repetition_penalty": 1.2,
+                "no_repeat_ngram_size": 4,
+                "pad_token_id": tokenizer.eos_token_id,
+                "eos_token_id": tokenizer.eos_token_id,
+            }
 
             with torch.no_grad():
                 output_ids = model.generate(
@@ -100,7 +99,8 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
             prediction = clean_prediction(prediction)
 
             lev_ratio = SequenceMatcher(None, prediction, gold).ratio()
-            gem_score = gemini_judge_score(ITA, noisy, prediction, gold, gemini_model)
+            cer_score = calculate_cer(prediction, gold)
+            #gem_score = gemini_judge_score(ITA, noisy, prediction, gold, gemini_model)
 
             results.append({
                 "model": model_name,
@@ -108,15 +108,13 @@ def evaluate_models(ITA, MAX_TOKENS, model_dict, eval_dataset, gemini_model):
                 "predicted_text": prediction,
                 "target_text": gold,
                 "levenshtein": lev_ratio,
-                "gemini_score": gem_score,
+                "char_error_rate": cer_score,
+                #"gemini_score": gem_score,
             })
 
         torch.cuda.empty_cache()
 
     return pd.DataFrame(results)
-
-def clean_prediction(text):
-    return re.sub(r"(\b\w+\b)( \1\b)+", r"\1", text)
 
 # --- 5. PAIRWISE COMPARISON ---
 
