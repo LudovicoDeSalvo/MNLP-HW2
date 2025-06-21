@@ -34,12 +34,6 @@ def train_model(config, paths, train_dataset, eval_dataset):
         device_map="auto"  # Let accelerate handle device placement
     )
 
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        quantization_config=BitsAndBytesConfig(load_in_8bit=True),
-        device_map={"":0} # Ensures model is on GPU
-    )
-
     # CORRECTED: Causal LM is the correct task type for decoder-only models.
     peft_config = LoraConfig(
         r=32,
