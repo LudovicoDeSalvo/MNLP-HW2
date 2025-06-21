@@ -22,7 +22,7 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     prompt_eng = f"""
     You are an expert judge of text quality. This is CORRECTED OCR text. Note any mistakes in spelling, grammar, punctuation, or formatting. Check semantinc logic, context consistency and possible hallucinations.
 
-    Here is the data:
+    Here is the text:
 
     "{predicted}"
 
@@ -39,19 +39,23 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     Your entire response should be a single number from 1 to 5.
     """
 
-    prompt_ita = f"""
-    Correzione del modello: {predicted}
-    Testo corretto (gold): {gold}
+    prompt_ita =  f"""
+    Sei un giudice esperto della qualità del testo. Questo è un testo OCR CORRETTO. Segnala eventuali errori di ortografia, grammatica, punteggiatura o formattazione. Controlla la logica semantica, la coerenza contestuale e possibili allucinazioni.
 
-    Valuta da 0 a 5 quanto è accurata la "Correzione del modello" rispetto al "Testo corretto", basandoti su questa metrica:
-    0: "Completamente errato o privo di senso."
-    1: "Gravemente compromesso. Molti errori gravi."
-    2: "Leggibilità o significato compromessi."
-    3: "Comprensibile, ma con diversi errori minori."
-    4: "Ottimo, con solo piccoli difetti (es. punteggiatura)."
-    5: "Perfetto. Corrisponde esattamente al testo di riferimento."
+    Ecco il text:
 
-    Rispondi solo con un singolo numero (0, 1, 2, 3, 4, o 5).
+    "{predicted}"
+
+    FINE TESTO
+
+    Ora fornisci la tua valutazione:
+        - 5 (Perfetto): Il testo è eccellente, con solo errori trascurabili che non influiscono sul significato o sulla leggibilità.
+        - 4 (Ottimo): Il testo è leggibile e per lo più corretto, ma presenta diversi errori minori.
+        - 3 (Buono): Il testo presenta alcuni errori che influiscono sulla leggibilità o sul significato, ma funziona nel complesso ed è comprensibile.
+        - 2 (Scarso): Il testo contiene numerosi errori che rendono difficile la comprensione in alcune parti.
+        - 1 (Fallito): La correzione è complessivamente sbagliata o priva di senso.
+
+    La tua intera risposta deve essere un singolo numero da 1 a 5.
     """
 
     prompt = prompt_ita if ita else prompt_eng
@@ -106,38 +110,36 @@ def correct_document(doc_text, model, tokenizer, config, dataset_config):
     return "\n".join(corrected_sentences)
 
 def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_gemini_scoring):
-    model_name = config["model_name"]
-    model_path = os.path.join(paths['trained_models_dir'], config['output_dir_name'])
-    
+    """Evaluates a single fine-tuned model by processing full documents chunk by chunk."""
     results = []
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
     model_name = config["model_name"]
-    model_path = config["output_dir"]
     dataset_config = config["datasets"][dataset_key]
-    is_ita = dataset_config.get("ita_language", False)
 
+    model_path = os.path.join(paths['trained_models_dir'], config['output_dir_name'])
+    
     print(f"\n====== Evaluating {model_name} from {model_path} on '{dataset_key}' dataset ======")
     
     try:
         model = AutoModelForCausalLM.from_pretrained(model_path).to(device)
         tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
     except OSError:
-        print(f"❌ Model not found at {model_path}. Please train the model first.")
+        print(f"❌ Model not found at {model_path}. Please train it first.")
         return None
         
-    if tokenizer.pad_token is None: tokenizer.pad_token = tokenizer.eos_token
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
 
     for _, row in tqdm(eval_docs_df.iterrows(), total=len(eval_docs_df), desc=f"Evaluating docs for {model_name.split('/')[-1]}"):
         noisy_doc = row["noisy_doc"]
         target_doc = row["target_doc"]
 
-        # Use our new chunking function to get the full prediction
         predicted_doc = correct_document(noisy_doc, model, tokenizer, config, dataset_config)
         
         gem_score = -1
-        if use_gemini_scoring:
-            gem_score = gemini_judge_score(noisy_doc, predicted_doc, target_doc, gemini_model, is_ita)
+        if use_gemini_scoring and gemini_model:
+            gem_score = gemini_judge_score(noisy_doc, predicted_doc, target_doc, gemini_model)
 
         results.append({
             "model": model_name,
@@ -156,7 +158,6 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     eval_dir = paths['evaluation_results_dir']
     os.makedirs(eval_dir, exist_ok=True)
     output_filename = os.path.join(eval_dir, f"eval_{model_name.replace('/', '_')}_{dataset_key}.csv")
-    
     results_df.to_csv(output_filename, index=False)
     print(f"✅ Evaluation results saved to {output_filename}")
     

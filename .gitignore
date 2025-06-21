@@ -7,3 +7,4 @@ general_utils/google_api.txt
 general_utils/hf_token.txt
 /src/__pycache__
 /ocr_model_minerva
+/trained_models
