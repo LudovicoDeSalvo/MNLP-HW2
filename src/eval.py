@@ -40,22 +40,22 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     """
 
     prompt_ita =  f"""
-    Sei un giudice esperto della qualità del testo. Questo è un testo OCR CORRETTO. Segnala eventuali errori di ortografia, grammatica, punteggiatura o formattazione. Controlla la logica semantica, la coerenza contestuale e possibili allucinazioni.
+    Sei un giudice esperto della qualità del testo. Questo è un testo OCR CORRETTO.
+    Devi essere sensibile a errori di ortografia, grammatica, punteggiatura o formattazione.
+    Controlla la logica semantica, la coerenza contestuale e possibili allucinazioni.
+    Devi dare i seguenti punteggi ad ogni categoria:
+    Punteggio da 0 a 10 per Leggibilità generale: quanto è facile e scorrevole leggere il testo.
+    Punteggio da 0 a 6ì7 per Correttezza: errori ortografici, punteggiatura, typos.
+    Punteggio da 0 a 2 per Formattazione: corretta spaziatura e interruzioni di riga.
+    Punteggio da 0 a 10 per Coerenza semantica: le frasi hanno senso.
 
-    Ecco il text:
+    Ecco il testo:
 
     "{predicted}"
 
     FINE TESTO
 
-    Ora fornisci la tua valutazione:
-        - 5 (Eccellente): Il testo è eccellente, con solo errori trascurabili che non influiscono sul significato o sulla leggibilità.
-        - 4 (Ottimo): Il testo è leggibile e corretto, ma presenta diversi errori minori.
-        - 3 (Buono): Il testo presenta alcuni errori che influiscono sulla leggibilità o sul significato, ma funziona nel complesso ed è comprensibile.
-        - 2 (Scarso): Il testo contiene numerosi errori che rendono difficile la comprensione in alcune parti.
-        - 1 (Fallito): La correzione è complessivamente sbagliata o priva di senso.
-
-    La tua intera risposta deve essere un singolo numero da 1 a 5.
+    La tua intera risposta deve essere un singolo numero ovvero la somma dei punteggi delle singole categorie.
     """
 
     prompt = prompt_ita if ita else prompt_eng
