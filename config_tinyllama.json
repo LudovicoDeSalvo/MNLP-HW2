@@ -1,19 +1,19 @@
 {
   "model_name": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-  "output_dir": "./ocr_model_tinyllama",
+  "output_dir_name": "ocr_model_tinyllama",
   "prompt_style": "tinyllama",
   "datasets": {
     "eng": {
       "ita_language": false,
-      "original_path": "dataset/eng/the_vampyre_ocr.json",
-      "cleaned_path": "dataset/eng/the_vampyre_clean.json",
-      "human_annotations_path": "general_utils/human_annotations_eng.json"
+      "original_filename": "the_vampyre_ocr.json",
+      "cleaned_filename": "the_vampyre_clean.json",
+      "human_annotations_filename": "human_annotations_eng.json"
     },
     "ita": {
       "ita_language": true,
-      "original_path": "dataset/ita/original_ocr.json",
-      "cleaned_path": "dataset/ita/cleaned.json",
-      "human_annotations_path": "general_utils/human_annotations.json"
+      "original_filename": "original_ocr.json",
+      "cleaned_filename": "cleaned.json",
+      "human_annotations_filename": "human_annotations.json"
     }
   }
 }
