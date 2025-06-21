@@ -40,7 +40,7 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     """
 
     prompt_ita =  f"""
-    Sei un giudice esperto della qualità del testo. Questo è un testo OCR CORRETTO.
+    S    Sei un giudice esperto della qualità del testo. Verrà fornito un test OCR CORRETTO, da confrontare col il testo di rifermento (100% Corretto).
     Devi essere sensibile a errori di ortografia, grammatica, punteggiatura o formattazione.
     Controlla la logica semantica, la coerenza contestuale e possibili allucinazioni.
     Devi dare i seguenti punteggi ad ogni categoria:
@@ -54,6 +54,11 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     "{predicted}"
 
     FINE TESTO
+    Testo di riferimento:
+
+    "{gold}"
+
+    FINE TESTO DI RIFERMENTO
 
     La tua intera risposta deve essere un singolo numero ovvero la somma dei punteggi delle singole categorie.
     """
