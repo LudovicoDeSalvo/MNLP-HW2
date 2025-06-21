@@ -8,7 +8,6 @@ from huggingface_hub import login
 from transformers import set_seed
 import Levenshtein
 
-# --- NEW FUNCTION TO FIX THE IMPORT ERROR ---
 def load_config(config_path):
     """Loads a JSON configuration file."""
     try:
@@ -26,30 +25,41 @@ def load_config(config_path):
 def build_prompt(noisy_text, prompt_style, ita=False):
     """Builds a model-specific prompt based on the style from the config."""
     if ita:
-        # Placeholder for Italian prompt, can be expanded
-        return f"Correggi il seguente testo OCR:\n\n{noisy_text}\n\nTesto corretto:"
-    
+        # For Italian, we'll use a specific, structured prompt for TinyLlama
+        if prompt_style == "tinyllama":
+            return f"""Sei un assistente esperto nella correzione di testi OCR. Il tuo compito è correggere il testo OCR fornito, sistemando ogni errore, refuso o problema di formattazione. Restituisci solo il testo corretto, senza commenti o spiegazioni aggiuntive.
+
+                    ### TESTO OCR:
+                    {noisy_text}
+
+                    ### TESTO CORRETTO:"""
+        # The Minerva prompt for Italian can remain the same if it works well
+        elif prompt_style == "minerva":
+            return f"Correggi il seguente testo OCR:\n\n{noisy_text}\n\nTesto corretto:"
+
+    # --- English Prompts ---
     if prompt_style == "tinyllama":
-        return f"""Correct the following OCR text:
+        # A more structured prompt for English as well
+        return f"""You are an expert OCR correction assistant. Your task is to correct the given OCR text, fixing any errors, misspellings, or formatting issues. Return only the perfectly corrected text, without any additional comments or explanations.
 
-{noisy_text}
+                ### OCR TEXT:
+                {noisy_text}
 
-Corrected text:"""
+                ### CORRECTED TEXT:"""
     elif prompt_style == "minerva":
         return f"""### SYSTEM
-You are a careful OCR fixer. Given a noisy paragraph, return only the corrected version.
+                You are a careful OCR fixer. Given a noisy paragraph, return only the corrected version.
 
-### USER
-<<<
-{noisy_text}
->>>
+                ### USER
+                <<<
+                {noisy_text}
+                >>>
 
-### RESPONSE
-"""
+                ### RESPONSE
+                """
     else:
         # A default fallback prompt
         return f"Correct the following OCR text:\n\n{noisy_text}\n\nCorrected text:"
-
 
 def set_all_seeds(seed=42):
     """Sets seeds for all relevant libraries to ensure reproducibility."""

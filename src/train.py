@@ -40,9 +40,12 @@ def train_model(model_name, output_dir, train_dataset, eval_dataset):
         target_ids = tokenizer(example["target"], add_special_tokens=False)["input_ids"]
         target_ids += [tokenizer.eos_token_id]
 
+        # The combined length is now naturally short due to sentence-splitting
+        input_ids = prompt_ids + target_ids
+        
         return {
-            "input_ids": prompt_ids + target_ids,
-            "attention_mask": [1] * (len(prompt_ids) + len(target_ids)),
+            "input_ids": input_ids,
+            "attention_mask": [1] * len(input_ids),
             "labels": [-100] * len(prompt_ids) + target_ids
         }
 
@@ -54,7 +57,10 @@ def train_model(model_name, output_dir, train_dataset, eval_dataset):
     training_args = TrainingArguments(
         output_dir=output_dir,
         num_train_epochs=5,
-        per_device_train_batch_size=2,
+        learning_rate=2e-4,
+        per_device_train_batch_size=1,      # REDUCED to 1
+        gradient_accumulation_steps=4,      # ADDED: effective batch size is 1*4=4
+        optim="paged_adamw_8bit",           # ADDED: Memory-efficient optimizer
         per_device_eval_batch_size=2,
         eval_strategy="epoch",
         save_strategy="epoch",

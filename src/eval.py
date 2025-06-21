@@ -8,6 +8,7 @@ from tqdm import tqdm
 from difflib import SequenceMatcher
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sklearn.metrics import cohen_kappa_score
+import nltk # <-- Add this import
 
 from src.utils import build_prompt, calculate_cer
 
@@ -15,23 +16,27 @@ EVAL_RESULTS_DIR = "evaluation_results"
 
 # This function is now passed the 'ita' flag from the dataset config
 def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
-    # ... (rest of the function is identical to the previous version)
     if not gemini_model:
         return -1
 
     prompt_eng = f"""
-    Model correction: {predicted}
-    Correct text (gold): {gold}
+    You are an expert judge of text quality. This is CORRECTED OCR text. Note any mistakes in spelling, grammar, punctuation, or formatting. Check semantinc logic, context consistency and possible hallucinations.
 
-    Rate from 0 to 5 how accurate the "Model correction" is compared to the "Correct text", based on this scale:
-    0: "Completely incorrect or nonsensical."
-    1: "Severely flawed. Many major errors."
-    2: "Readability or meaning compromised."
-    3: "Understandable, but with several minor errors."
-    4: "Great, with only small issues (e.g., punctuation)."
-    5: "Perfect. Matches the reference text exactly."
+    Here is the data:
 
-    Reply with a single number only (0, 1, 2, 3, 4, or 5).
+    "{predicted}"
+
+    END OF TEXT
+
+    Now provide your rating:
+        - 5 (Perfect): The text is excellent, with only trivial errors that do not impact meaning or readibily at all.
+        - 4 (Great): The text is readable and mostly correct, but has several minor errors.
+        - 3 (Good): The text has some errors that impact readability or meaning but works overall and it's understable.
+        - 2 (Poor): The text contains numerous error that make the understanding difficult in some parts.
+        - 1 (Failed): The correction is overall wrong or nonsensical.
+
+
+    Your entire response should be a single number from 1 to 5.
     """
 
     prompt_ita = f"""
@@ -59,15 +64,54 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
         print(f"Error during Gemini scoring: {e}")
         return -1
 
+def correct_document(doc_text, model, tokenizer, config, dataset_config):
+    """Splits a document into sentences, corrects each, and reassembles them."""
+    is_ita = dataset_config.get("ita_language", False)
+    prompt_style = config["prompt_style"]
+    device = model.device
 
-def evaluate_model(config, dataset_key, eval_dataset, gemini_model, use_gemini_scoring):
-    """Evaluates a single fine-tuned model on the evaluation dataset."""
+    # Split the document into individual sentences
+    sentences = nltk.sent_tokenize(doc_text, language='italian' if is_ita else 'english')
+    corrected_sentences = []
+
+    # Process each sentence one-by-one to ensure nothing is missed
+    for sent in sentences:
+        if not sent.strip():
+            continue
+            
+        prompt = build_prompt(sent, prompt_style, is_ita)
+        inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
+        
+        with torch.no_grad():
+            output_ids = model.generate(
+                input_ids=inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                max_new_tokens=1024,
+                repetition_penalty=1.3,
+                no_repeat_ngram_size=4,
+                num_beams=3,
+                pad_token_id=tokenizer.eos_token_id,
+                eos_token_id=tokenizer.eos_token_id,
+            )
+        
+        new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
+        prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+        
+        # Post-processing to remove leaked special tokens
+        prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
+
+        corrected_sentences.append(prediction)
+    
+    # Join the corrected sentences with a newline to preserve paragraph structure
+    return "\n".join(corrected_sentences)
+
+def evaluate_model(config, dataset_key, eval_docs_df, gemini_model, use_gemini_scoring):
+    """Evaluates a model by processing full documents chunk by chunk."""
     results = []
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
     model_name = config["model_name"]
     model_path = config["output_dir"]
-    prompt_style = config["prompt_style"]
     dataset_config = config["datasets"][dataset_key]
     is_ita = dataset_config.get("ita_language", False)
 
@@ -77,34 +121,29 @@ def evaluate_model(config, dataset_key, eval_dataset, gemini_model, use_gemini_s
         model = AutoModelForCausalLM.from_pretrained(model_path).to(device)
         tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
     except OSError:
-        print(f"❌ Model not found at {model_path}. Please train the model first or check the path in your config.")
+        print(f"❌ Model not found at {model_path}. Please train the model first.")
         return None
         
     if tokenizer.pad_token is None: tokenizer.pad_token = tokenizer.eos_token
 
-    for row in tqdm(eval_dataset, desc=f"Evaluating {model_name.split('/')[-1]}"):
-        prompt = build_prompt(row["noisy"], prompt_style, is_ita)
-        inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
-        
-        with torch.no_grad():
-            output_ids = model.generate(input_ids=inputs["input_ids"], attention_mask=inputs["attention_mask"], max_new_tokens=1024)
-        
-        new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
-        prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
-        gold = row["target"]
-        noisy = row["noisy"]
+    for _, row in tqdm(eval_docs_df.iterrows(), total=len(eval_docs_df), desc=f"Evaluating docs for {model_name.split('/')[-1]}"):
+        noisy_doc = row["noisy_doc"]
+        target_doc = row["target_doc"]
 
+        # Use our new chunking function to get the full prediction
+        predicted_doc = correct_document(noisy_doc, model, tokenizer, config, dataset_config)
+        
         gem_score = -1
         if use_gemini_scoring:
-            gem_score = gemini_judge_score(noisy, prediction, gold, gemini_model, is_ita)
+            gem_score = gemini_judge_score(noisy_doc, predicted_doc, target_doc, gemini_model, is_ita)
 
         results.append({
             "model": model_name,
-            "input_text": noisy,
-            "predicted_text": prediction,
-            "target_text": gold,
-            "levenshtein": SequenceMatcher(None, prediction, gold).ratio(),
-            "char_error_rate": calculate_cer(prediction, gold),
+            "input_text": noisy_doc,
+            "predicted_text": predicted_doc,
+            "target_text": target_doc,
+            "levenshtein": SequenceMatcher(None, predicted_doc, target_doc).ratio(),
+            "char_error_rate": calculate_cer(predicted_doc, target_doc),
             "gemini_score": gem_score,
         })
 
@@ -113,7 +152,6 @@ def evaluate_model(config, dataset_key, eval_dataset, gemini_model, use_gemini_s
     results_df = pd.DataFrame(results)
     
     os.makedirs(EVAL_RESULTS_DIR, exist_ok=True)
-    # Filename now includes the dataset key
     output_filename = os.path.join(EVAL_RESULTS_DIR, f"eval_{model_name.replace('/', '_')}_{dataset_key}.csv")
     results_df.to_csv(output_filename, index=False)
     print(f"✅ Evaluation results saved to {output_filename}")

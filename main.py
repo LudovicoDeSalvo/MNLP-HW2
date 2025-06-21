@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 import pandas as pd
+from datasets import Dataset
 from src.utils import set_all_seeds, login_to_huggingface, configure_gemini, load_config
 from src.data_prep import prepare_dataset
 from src.train import train_model
@@ -80,37 +81,77 @@ def handle_train_model():
     """Handler for training models."""
     dataset_key = select_dataset()
     selected_configs = select_model_configs()
+    
+    # Prepare the data ONCE for all selected models
+    print(f"\n--- Preparing data on '{dataset_key}' dataset ---")
+    master_config = selected_configs[0] # Use the first selected config for data paths
+    if not master_config: return
+    
+    train_ds, eval_sentence_ds, _ = prepare_dataset(master_config, dataset_key)
+    
+    if not train_ds or not eval_sentence_ds:
+        print("Could not prepare datasets. Aborting training.")
+        return
+
     for config in selected_configs:
         if not config: continue
-        print(f"\n--- Preparing data for {config['model_name']} on '{dataset_key}' dataset ---")
-        train_ds, eval_ds = prepare_dataset(config, dataset_key)
-        if train_ds:
-            train_model(
-                model_name=config['model_name'],
-                output_dir=config['output_dir'],
-                train_dataset=train_ds,
-                eval_dataset=eval_ds
-            )
+        
+        train_model(
+            model_name=config['model_name'],
+            output_dir=config['output_dir'],
+            train_dataset=train_ds,
+            eval_dataset=eval_sentence_ds
+        )
 
 def handle_evaluate_model():
     """Handler for evaluating models."""
     global GEMINI_MODEL
     dataset_key = select_dataset()
     selected_configs = select_model_configs()
-    use_gemini = ask_yes_no("⭐ Use Gemini for scoring? (Requires API key)")
     
+    # Prepare the evaluation data ONCE
+    print(f"\n--- Preparing data for evaluation on '{dataset_key}' dataset ---")
+    master_config = selected_configs[0]
+    if not master_config: return
+
+    _, _, eval_docs_df = prepare_dataset(master_config, dataset_key)
+    
+    if eval_docs_df is None or eval_docs_df.empty:
+        print("Could not prepare evaluation documents. Aborting.")
+        return
+
+    use_gemini = ask_yes_no("⭐ Use Gemini for scoring? (Requires API key)")
     if use_gemini and not GEMINI_MODEL:
         GEMINI_MODEL = configure_gemini()
         if not GEMINI_MODEL:
             print("⚠️ Cannot proceed with Gemini scoring. Continuing without it.")
             use_gemini = False
 
+    # Loop through each model configuration to evaluate it
     for config in selected_configs:
         if not config: continue
-        print(f"\n--- Preparing data for {config['model_name']} on '{dataset_key}' dataset ---")
-        _, eval_ds = prepare_dataset(config, dataset_key)
-        if eval_ds:
-            evaluate_model(config, dataset_key, eval_ds, GEMINI_MODEL, use_gemini)
+        
+        results_df = evaluate_model(config, dataset_key, eval_docs_df, GEMINI_MODEL, use_gemini)
+        
+        if results_df is not None and not results_df.empty:
+            avg_levenshtein = results_df['levenshtein'].mean()
+            avg_cer = results_df['char_error_rate'].mean()
+            model_name = config.get('model_name', 'Unknown Model')
+            
+            print("\n" + "-"*20 + " SUMMARY " + "-"*20)
+            print(f"Model: {model_name}")
+            print(f"📊 Average Levenshtein Score: {avg_levenshtein:.4f}")
+            print(f"📊 Average Character Error Rate (CER): {avg_cer:.4f}")
+
+            # --- START: Added logic for Gemini score average ---
+            if use_gemini:
+                # Filter out scores of -1 (which indicate an error or skipped scoring)
+                valid_gemini_scores = results_df[results_df['gemini_score'] != -1]['gemini_score']
+                if not valid_gemini_scores.empty:
+                    avg_gemini = valid_gemini_scores.mean()
+                    print(f"✨ Average Gemini Score: {avg_gemini:.4f}")
+            # --- END: Added logic ---
+            print("-"*(49))
 
 def handle_correlation_analysis():
     """Handler for human vs. Gemini correlation."""
