@@ -9,6 +9,7 @@ from transformers import (
 )
 from peft import get_peft_model, LoraConfig, TaskType
 import os
+import torch
 
 def train_model(config, paths, train_dataset, eval_dataset):
     model_name = config["model_name"]
@@ -19,6 +20,19 @@ def train_model(config, paths, train_dataset, eval_dataset):
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
+
+    quantization_config = None
+    if torch.cuda.is_available():
+        print("CUDA is available. Setting up 8-bit quantization.")
+        quantization_config = BitsAndBytesConfig(load_in_8bit=True)
+    else:
+        print("Warning: CUDA not available. Training in full precision. This will use more memory.")
+    
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        quantization_config=quantization_config,
+        device_map="auto"  # Let accelerate handle device placement
+    )
 
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
