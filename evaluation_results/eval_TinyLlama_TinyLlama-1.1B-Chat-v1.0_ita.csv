@@ -1,0 +1,2435 @@
+model,input_text,predicted_text,target_text,levenshtein,char_error_rate,gemini_score
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"XXXV. 
+Pinocchio  ritrova  in  corpo  al  Pesce-cane....   chi  ritrova? 
+Leggete  questo  capitolo  e  lo   saprete. 
+Pinoccliio,  appena  che  ebbe  detto  addio  al 
+suo  buon  amico  Tonno,  si  mosse  brancolando  in 
+mezzo  a  quel  buio,  e  camminando  a  tastoni  den- 
+tro il  corpo  del  Pesce-cane,  si  avviò,'  un  passo 
+dietro  r  altro,  verso  quel  piccolo  chiarore  che  ve- 
+deva baluginare  lontano  lontano. 
+E  nel  camminare  sentì  che  i  suoi  piedi  sguazza- 
+vano in  una  pozzanghera  d'acqua  grassa  e  sdruc- 
+ciolona,  e  quell'acqua  sapeva  di  un  odore  così 
+acuto  di  pesce  fritto,  che  gli  pareva  d'essere  a 
+mezza  quaresima. 
+E  più  andava  avanti,  e  più  il  chiarore  si  faceva 
+rilucente  e  distinto:  finché,  cammina  cammina, 
+alla  fine  arrivò  :  e  quando  fu  arrivato....  che  cosa 
+trovò?  Ve  lo  do  a  indovinare  in  mille:  trovò  una 
+piccola  tavola  apparecchiata,  con  sopra  una  can- 
+dela accesa  infilata  in  una  bottiglia  di  cristallo 
+verde,  e  seduto  a  tavola  un  vecchiettino  tutto 
+
+
+bianco,  come  se  fosse  di  neve  o  di  panna  montata, 
+il  qnale  se  ne  stava  lì  biascicando  alcuni  pescio- 
+lini vivi,  ma  tanto  vivi,  che  alle  volte,  mentre  li 
+mangiava,  gli  scappavano  perfino  di  bocca. 
+
+
+E  più  andava  avanti,  e  più  il  chiarore  si  faceva  rilucente. 
+
+A  quella  vista  il  povero  Pinoccliio  ebbe  un'al- 
+legrezza così  grande  e  così  inaspettata,  che  ci 
+mancò  un  ètte  che  non  cadesse  in  delirio.  Voleva 
+ridere,  voleva  piangere,  voleva  dire  un  monte  di 
+cose;  e  invece  mugolava  contusamente  e  balbet- 
+tava delle  i)arole  tronche  e  sconclusionate.  Final- 
+
+
+mente  gli  riuscì  di  cacciar  fuori  un  grido  di  gioia, 
+e  spalancando  le  braccia  e  gettandosi  al  collo  del 
+vecchietto,  cominciò  a  urlare: 
+—  Oh!  babbino  mio!  finalmente  vi  ho  ritrovato! 
+Ora  poi  non  vi  lascio  più,  mai  più,  mai  più! 
+
+
+Gettandosi  al  collo  del  vecchietto,  cominciò  a  urlare. 
+
+—  Dunque  gli  occhi  mi  dicono  il  vero  ì  —  re- 
+plicò il  vecchietto,  stropicciandosi  gli  occhi.  — 
+Dunque  tu  se' proprio  il  mi' caro  Pinocchio! 
+—  Sì,  sì!  sono  io,  proprio  io!  E  voi  mi  aA^ete 
+digià  perdonato,  non  è  vero?  Oh  babbino  mio, 
+come  siete  buono  !...  e  pensare  che  io,  invece....  Oh  ! 
+ma  se  sapeste  quante  disgrazie  mi  son  piovute  sul 
+capo  e  quante  cose  mi  sono  andate  a  traverso  !  Fi- 
+
+
+guratevi  che  il  giorno  che  voi,  povero  babbino, 
+col  vendere  la  vostra  casacca,  mi  compraste  l' Ab- 
+becedario per  andare  a  scuola,  io  scappai  a  ve- 
+dere i  burattini,  e  il  burattinaio  mi  voleva  met- 
+tere sul  fuoco  i^erchè  gli  cocessi  il  montone  arro- 
+sto, che  fu  quello  poi  che  mi  dette  cinque  monete 
+d'oro,  perchè  le  portassi  a  voi,  ma  io  trovai  la 
+Volpe  e  il  Gatto,  che  mi  condussero  all' Osteria 
+del  Gambero  Eosso,  dove  mangiarono  come  lupi, 
+e  partito  solo  di  notte  incontrai  gli  assassini  che 
+si  messero  a  corrermi  dietro,  e  io  via,  e  loro  die- 
+tro, e  io  via,  e  loro  sempre  dietro,  e  io  via,  finche 
+m'impiccarono  a  un  ramo  della  Quercia  Grande, 
+dovecchè  la  bella  Bambina  dai  capelli  turchini  mi 
+mandò  a  prendere  con  una  carrozzina,  e  i  medici, 
+quando  m'ebbero  visitato,  dissero  subito:  «  Se 
+non  è  morto,  è  segno  che  è  scDipre  vivo  »  e  allora 
+mi  scappò  detta  uua  bugia,  e  il  naso  cominciò  a 
+crescermi  e  non  mi  passava  più  dalla  porta  di  ca- 
+mera, motivo  i)er  cui  andai  con  la  Volpe  e  col 
+Gatto  a  sotterrare  le  quattro  monete  d' oro,  che 
+una  l' avevo  spesa  all'  Osteria,  e  il  pappagallo  si 
+messe  a  ridere,  e  viceversa  di  duemila  monete 
+non  trovai  più  nulla,  la  quale  il  Giudice  quando 
+seppe  che  ero  stato  derubato,  mi  fece  subito  met- 
+tere in  prigione,  per  dare  una  soddisfazione  ai 
+ladri,  di  dove,  col  venir  via,  vidi  un  bel  grappolo 
+
+
+d'uva  in  un  campo,  che  rimasi  preso  alla  tagliola 
+e  il  contadino  di  santa  ragione  mi  messe  il  col- 
+lare da  cane  perchè  facessi  la  guardia  al  pollaio, 
+che  riconobbe  la  mia  innocenza  e  mi  lasciò  an- 
+dare, e  il  serpente,  colla  coda  che  gli  fumava,  co- 
+minciò a  ridere  e  gli  si  strappò  una  vena  sul  petto, 
+e  cosi  ritornai  alla  casa  della  bella  Bambina,  che 
+era  morta,  e  il  Colombo  vedendo  che  piangevo  mi 
+disse:  «  Ho  visto  il  tu' babbo  che  si  fabbricava 
+una  barchettina  per  venirti  a  cercare  »  e  io  gli 
+dissi  :  «  Oh  !  se  avessi  le  ali  anch'  io  »  e  lui  mi  disse: 
+«  Vuoi  venire  dal  tuo  babbo!  »  e  io  gli  dissi:  «  Ma- 
+gari! ma  chi  mi  ci  porta!  »  e  lui  mi  disse.:  «  Ti  ci 
+porto  io  »  e  io  gli  dissi:  «  Come!  »  e  lui  mi  disse: 
+«  Montami  sulla  groppa  »  e  così  abbiamo  volato 
+tutta  la  notte,  poi  la  mattina  tutti  i  pescatori  che 
+guardavano  verso  il  mare  mi  dissero:  «  C'è  un 
+pover'omo  in  una  barchetta  che  sta  per  affogare  » 
+e  io  da  lontano  vi  riconobbi  subito,  perchè  me  lo 
+diceva  il  core,  e  vi  feci  segno  di  tornare  alla 
+spiaggia.... 
+—  Ti  riconobbi  anch'  io,  —  disse  Geppetto  —  e 
+sarei  volentieri  tornato  alla  spiaggia:  ma  come 
+fare  !  il  mare  era  grosso  e  un  cavallone  m' arro- 
+vesciò la  barchetta.  Allora  un  orribile  Pesce-cane 
+che  era  lì  vicino,  appena  che  m' ebbe  visto  nel- 
+r  acqua,  corse  subito  verso  di  me,  e  tirata  fuori  la 
+
+lingiin,  mi  prese  pari  pari,  e  m'inghiottì  come  im 
+tortellino  di  Bologna. 
+—  E  qnant'  è  che  siete  rinchiuso  qui  dentro  ?  — 
+domandò  Pinocchio. 
+—  Da  quel  giorno  in  poi,  saranno  ormai  due 
+anni:  due  anni,  Pinocchio  mio....  che  mi  son  parsi 
+due  secoli  ! 
+—  E  come  avete  fatto  a  campare?  E  dove  avete 
+trovatala  candela?  E  i  fiammiferi  per  accenderla, 
+chi  ve  li  ha  dati  ? 
+—  Ora  ti  racconterò  tutto.  Devi  dunque  sapere 
+che  quella  medesima  burrasca,  che  rovesciò  la 
+mia  barchetta,  fece  anche  affondare  un  basti- 
+mento mercantile.  I  marinai  si  salvarono  tutti,  ma 
+il  bastimento  colò  a  fondo,  e  il  solito  Pesce-cane, 
+che  quel  giorno  aveva  un  appetito  eccellente, 
+dopo  aver  inghiottito  me,  inghiottì  anche  il  ba- 
+stimento.... 
+—  Come!  Lo  inghiottì  tutto  in  un  boccone  1... — 
+domandò  Pinocchio  maravigliato. 
+—  Tutto  in  un  boccone:  e  risi)utò  solamente 
+r  albero  maestro,  perchè  gli  era  rimasto  fra  i  denti 
+come  una  lisca.  Per  mia  gran  fortuna,  quel  basti- 
+mento era  carico  non  solo  di  carne  conservata  in 
+cassette  di  stagno,  ma  di  biscotto,  ossia  di  pane 
+abbrostolito,  di  bottiglie  di  vino,  d'uva  secca,  di 
+cacio,  di  caffè,  di  zucchero,  di  candele  steariche 
+
+
+e  di  scatole  di  fiammiferi  di  cera.  Con  tutta  que- 
+sta grazia  di  Dio  ho  potuto  campare  due  anni: 
+ma  oggi  sono  agli  ultimi  sgoccioli:  oggi  nella  di- 
+spensa non  e'  è  più  nulla,  e  questa  candela,  che 
+vedi  accesa,  è  l'ultima  candela  che  mi  sia  ri- 
+masta.... 
+—  E  dopo? 
+—  E  dopo,  caro  mio,  rimarremo  tutt'e  due  al 
+buio. 
+—  Allora,  babbino  mio,  —  disse  Pinocchio  — 
+non  e'  è  tempo  da  perdere.  Bisogna  pensar  subito 
+a  fuggire. 
+—  A  fuggirei.,  e  come? 
+—  Scappando  dalla  bocca  del  Pesce-cane  e  get- 
+tandosi a  nuoto  in  mare. 
+—  Tu  parli  bene:  ma  io,  caro  Pinocchio,  non 
+so  nuotare! 
+—  E  che  importa!...  Voi  mi  monterete  a  caval- 
+luccio sulle  spalle,  e  io,  che  sono  un  buon  nuota- 
+tore, vi  ijorterò  sano  e  salvo  fino  alla  spiaggia. 
+—  Illusioni,  ragazzo  mio!  —  replicò  Geppetto, 
+SCO  tendo  il  capo  e  sorridendo  malinconicamente. 
+—  Ti  pare  egli  possibile  che  un  burattino,  alto 
+appena  un  metro  come  sei  tu,  possa  aver  tanta 
+forza  da  portarmi  a  nuoto  sulle  spalle? 
+—  Provatevi  e  vedrete!  A  ogni  modo,  se  sarà 
+scritto  in  cielo  che  dobbiamo  morire,  avremo  al- 
+
+
+meno  la  gran  coiisolazione  di  morire  abbracciati 
+iusieme.  — 
+E  senza  dir  altro,  Pinocchio  prese  in  mano  la 
+candela,  e  andando  avanti  per  far  lume,  disse 
+al  suo  babbo: 
+—  Venite  dietro  a  me,  e  non  abbiate  paura.  — 
+E  così  camminarono  un  bel  pezzo,  e  traversa- 
+rono tutto  il  corpo  e  tutto  lo  stomaco  del  Pesce- 
+cane. Ma  giunti  al  x)unto  dove  cominciava  la  spa- 
+ziosa gola  del  mostro,  pensarono  bene  di  fermarsi 
+per  dare  un'occhiata  e  cogliere  il  momento  op- 
+portuno alla  fuga. 
+Ora  bisogua  sapere  che  il  Pesce-cane,  essendo 
+molto  vecchio  e  soffrendo  d'asma  e  di  palpitazione 
+di  cuore,  era  costretto  a  dormire  a  bocca  aperta  : 
+per  ciii  Pinocchio  afitac^iandosi  al  principio  della 
+gola,  e  guardando  in  su,  potò  vedere  al  di  fuori 
+di  quell'enorme  bocca  spalancata  un  bel  pezzo 
+di  cielo  stellato  e  un  bellissimo  lume  di  luna. 
+—  Questo  è  il  vero  momento  di  scappare  — 
+bisbigliò  allora,  voltandosi  al  suo  babbo.  —  Il  Pe- 
+sce-cane dorme  come  un  ghiro:  il  mare  è  tran- 
+quillo e  ci  si  vede  come  di  giorno.  Venite  dunque, 
+babbino,  dietro  a  me,  e  fra  poco  saremo  salvi.  — 
+Detto  fatto  salirono  su  per  la  gola  del  mostro 
+marino,  e  arrivati  in  quelP  immensa  bocca  comin- 
+ciarono a  camminare  in  punta  di  piedi  sulla  lin- 
+
+
+glia;  una  liugua  così  larga  e  così  Inng^,  che  pa- 
+reva il  viottolone  d'un  giardino.  E  già  stavano  lì 
+lì  per  fare  il  gran  salto  e  per  gettarsi  a  nuoto  nel 
+mare,  quando,  sul  più  bello,  il  Pesce-cane  star- 
+nuti, e  nello  starnutire,  détte  uno  scossone  così 
+violento,  elle  PinoccMo  e  Geppetto  si  trovarono 
+rimbalzati  all'  indietro  e  scaraventati  nuovamente 
+in  fondo  allo  stomaco  del  mostro. 
+ISTel  grand'  urto  della  caduta  la  candela  si  spen- 
+se, e  padre  e  figliuolo  rimasero  al  buio. 
+—  E  ora?...  —  domandò  Pinocchio  facendosi 
+serio. 
+—  Ora,  ragazzo  mio,  siamo  beli' e  perduti. 
+—  Perchè  perduti?  Datemi  la  mano,  babbino, 
+e  badate  di  non  sdrucciolare!... 
+—  Dove  mi  conduci? 
+—  Dobbiamo  ritentare  la  fuga.  Venite  con  me 
+e  non  abbiate  jjaura.  — 
+Ciò  detto,  Pinocchio  prese  il  suo  babbo  per  la 
+mano:  e  camminando  sempre  in  punta  di  piedi, 
+risalirono  insieme  su  per  la  gola  del  mostro:  poi 
+traversarono  tutta  la  lingua  e  scavalcarono  i  tre 
+filari  di  denti.  Prima  però  di  fare  il  gran  salto,  il 
+burattino  disse  al  suo  babbo: 
+—  Montatemi  a  cavalluccio  sulle  spalle  e  ab- 
+bracciatemi forte  forte.  Al  resto  ci  penso  io.  — 
+Appena  Geijpetto  si  fu  accomodato  per  bene 
+
+tói  gettò  neir acqua  e  comiuciu  a  luiutart;. 
+
+
+sulle  spalle  del  figliuolo,  il  bravo  Pinocchio,  si- 
+curo del  fatto  suo,  si  gettò  nell'acqua  e  cominciò 
+a  nuotare.  Il  mare  era  tranquillo  come  un  olio: 
+la  luna  splendeva  in  tutto  il  suo  chiarore,  e  il 
+Pesce-cane  seguitava  a  dormire  di  un  sonno  così 
+profondo,  che  non  l'avrebbe  svegliato  nemmeno 
+una  cannonata.  )","XXXV.
+Pinocchio ritrova in corpo al Pescecane.... chi ritrova?: Pinocchio?
+Leggete questo capitolo e lo saprete!
+Pinocchio, appena che ebbe detto addio al suo buon amico Tonno, si mosse brancolando in mezzo a quel buio, e camminando a tastoni denterto il corpo del pesce-cane, si avviò, un passo dietro più, verso quel piccolo chiarore che veniva baluginare lontano lontano
+E nel camminare sentì che i suoi piedi sguazzo-
+avano in una pozzangheria d’acqua grassa e sdrucciolare, e quell’acqua sapeva di un odore così acuto di pesce fritto che gli pareva d’essere a mezza quarta.
+E più andava avanti, e più il chiarore si faceva rilucente e distinto: finché, cammina cammina, alla fine arrivò: e quando fu arrivato.... che cosa trovò?
+— Che cosa vuoi che mi faccia?
+E più andava avanti, e più il chiarore si faceva riluccente.
+A quella vista il povero Pinocchio ebbe un'allegria così grande e così inaspettosa, che ci mancò un ètte che non cadesse in delirio.
+Voleva ridere, voleva piangere... voleva dire un monte di cose; e invece muogolava contusamente e balbetta delle iarde troncate.
+Finalmente gli riuscì di cacciar fuori un grido di gioia e spalancandole le braccia e gettandose al collo del vecchietto cominciò a urlare:
+— Oh!
+babbino mio!
+— Che cosa vuoi che mi faccia?
+Ora poi non vi lascio più, nunca più, mai più!
+— Che cosa vuoi che mi faccia?
+— Dunque gli occhi mi dicono il vero!
+—
+Dunque tu se’ proprio il mi’ caro Pinocchio?
+— Sì, sì!
+— Che cosa vuoi che mi faccia?
+E voi mi apei di digià perdonato e non è vero?
+— Che cosa vuoi che io faccio?
+e pensare che io, invece....
+—
+Pinocchio si avvicinò e gli disse:
+— Che cosa vuoi che io faccia?
+ma se sapeste quante disgrazie mi son piovute sul capo e quante cose mi sono andate a traverso!
+:
+— Ecco il nostro padrone!
+se avessi le ali anch’io » e lui mi disse:
+« Vuoi venire dal tuo babbo?
+— Che cosa vuoi che mi faccia?
+ma chi mi ci porta?
+— Che cosa vuoi che io faccio?
+— disse il burattino.
+— Ti riconobbi anch’io, — disse Geppetto — e sarei volentieri tornato alla spiaglia: ma come fare!
+Il mare era grosso e un cavallone m’ arrovesciava la barche.
+Allora un orribile Pescecane che era lì vicino, appena che m’eve visto nell’acqua, corse subito verso di me, e tirata fuori la lingina, mi prese pari pari, e m’inghiottò come un tortellino di Bologna.
+— Rinchiuso?
+— domandò il burattino.
+—
+Pinocchio si avvicinò al burattinaio e gli disse:
+— Che cosa vuoi che io faccia?
+— E come avete fatto a campare?
+E dove avete trovata la candela?
+E i fiammeri per accederla, chi ve li ha dati?
+— Ora ti racconteremo tutto.
+Devi dunque sapere che quelle medesime burrasche, che rovesciarono la mia barca, fece anche affondare un bastimpo mercantiale.
+I marinai si salvarono tutti, ma il bastimento colò a fondo, e il solito Pescecane, che quel giorno aveva un appetito eccellento, dapprima inghiottiva me, inghiottivo anche il bastimento....
+— domandò Pinocchio maravigliatosi.
+— Tutto in un boccono: e rispietò solamente all’albero maestro, perchè gli era rimasto fra i denti come una liscia.
+Per mia gran fortuna, quel bastimonti era carico solo di carne conservata in cassette di stagno, ma di biscotto ossia di pane abbrostolto, di bottiglie di vino, d’uva secca, di cacio, di candele steariche
+e di scatole di fiammeri di cera.
+Con tutta grazia di Dio ho potuto campare due anni: ma oggi sono agli ultimi sgocchioli: oggi nella dispensa non e’ più nulla, e questa candela, che vedi accesa, è l’ultima candela che mi sia rimasta…
+— E dopo?
+— E dopo, caro mio, rimarreno tutt’e due al buio.
+— Allora, babbino mio, — disse Pinocchio — non e’ è tempo da perdere.
+Bisogna pensar subito a fuggiare.
+— A fuggire io!
+— Scappando dalla bocca del Pescecane e gettingsi a nuoto in mare.
+— Che cosa vuoi che io faccia?
+— E che importa!...
+Voi mi monterete a cavalcioni sulle spalle, e io, che sono un buon nuotatore, vi ijortererò sano e salvo fino alla spiaggia.
+— Che cosa vuoi che io faccio?
+— replicò Geppetto.
+— Ti pare egli possibile che un burattino alto appena un metro come sei tu, possa aver tanta forza da portarmi a nuoto sulle spalle?
+— Provatevi e vedrete.
+A ogni modo, se sarà scritto in cielo che dobbiammo morire, avremo almeno la grande isolazione di morire abbracciate.
+—
+E senza dir altro, Pinocchio prese in mano la candela, e andando avanti per far lume, disse al suo babbo;
+— Venite dietro a me, e non abbiate paura.
+—
+E così camminarono un bel pezzo e traversarono tutto il corpo e lo stomaco del pesce.
+Ma giunti al punto dove cominciavano la spazzia della gola del mostro, pensarono bene di fermarsi per dare un’occhiata e cogliere il momento opportuno alla fuga.
+Ora bisogua sapere che il Pescecane, essendo molto vecchio e soffrandosi d’asma e di palpitazione di cuore, era costretto a dormire a bocca aperta: per la prima parte della gola, e guardando in su, potò vedere al di fuori di quell’enorme buco spalancato un bel pezzo di cielo stellato e un bellissimo lume di luna.
+— Questo è il vero momento di scappare.
+— Il Pepsi-Cane dormi come un ghiro; il mare è tranquillo e ci si vede come di giorno.
+Venite dunque, babbino, dietro a me, e fra poco saremo salvi.
+—
+Detto fatto salirono su per la gola del mostro marino, e arrivarono in quel pieno immensa bocca cominciarono a camminare in punta di piedi sulla ligna; una liuga così larga e così ingrandita, che pareva il viottolo d’un giardinio.
+E già stavano lì per fare il gran salto e per gettarsi a nuoto nel mare, quando, sul più bello, il Pescecane starntuti, e nello starnutirsi, dette uno scossone così violento, lei PinoccMo e Geppetto si trovarono rimbalzati all’indietro e scaraventarsi nuovamente in fondo allo stomaco del mostro.
+ISTel grand’ urto della caduta la candela si spense, e padre e figliuolino rimasero al buio.
+— E ora?...
+— domandò Pinocchio facendosi serio.
+— Ora, ragazzo mio, siamo belli e perduti.
+— Perchè perduti?
+Datemi la mano, babbo, e badate di non sdrucciare!...
+— Dove mi conduci?
+— Dobbiamoi ritentare la fuga.
+Venite con me e non abbiate juara.
+Ciò detto, Pinocchio prese il suo babbo per la mano: e camminando sempre in punta di piedi, risalirono insieme su per la gola del mostro: poi traversarono tutta la lingua e scavalcavano i tre filari di denti.
+Prima però di fare il gran salto, il burattino disse al suo babbo,
+— Montatemi a cavallucchio sulle spalle e abbracciatemi forte forte.
+Al resto ci penso io.
+—
+Appena Geijpettò si fu accomodato per bene
+
+— Tutta la mia vita!
+sulle spalle del figliuolino, il bravo Pinocchio sicuro del fatto suo, si gettò nell’acqua e cominciò a nuotare..
+Il mare era tranquillo come un olio: la luna splendeva in tutto il suo chiaro, e il Pesce-canne seguitava a dormire di un sonno così profondo, che non l’avrebbe svegliati nemmeno una cannonata.","XXXV.
+
+Pinocchio ritrova in corpo al Pesce-cane.... chi ritrova?Leggete questo capitolo e lo saprete.
+
+Pinocchio, appena che ebbe detto addio al suo buon amico Tonno, si mosse brancolando in mezzo a quel buio, e camminando a tastoni dentro il corpo del Pesce-cane, si avviò, un passo dietro l’altro, verso quel piccolo chiarore che vedeva baluginare lontano lontano.
+E nel camminare sentì che i suoi piedi sguazzavano in una pozzanghera d’acqua grassa e sdrucciolona, e quell’acqua sapeva di un odore così acuto di pesce fritto, che gli pareva di essere a mezza quaresima.
+E più andava avanti, e più il chiarore si faceva rilucente e distinto: finchè, cammina cammina, alla fine arrivò: e quando fu arrivato.... che cosa trovò? Ve lo do a indovinare in mille: trovò una piccola tavola apparecchiata, con sopra una candela accesa infilata in una bottiglia di cristallo verde, e seduto a tavola un vecchiettino tuttobianco, come se fosse di neve o di panna montata, il quale se ne stava lì biascicando alcuni pesciolini vivi, ma tanto vivi, che alle volte, mentre li mangiava, gli scappavano perfino di bocca.
+E più andava avanti, e più il chiarore si faceva rilucente.
+
+A quella vista il povero Pinocchio ebbe un’allegrezza così grande e così inaspettata, che ci mancò un ètte non cadesse in delirio. Voleva ridere, voleva piangere, voleva dire un monte di cose; e invece mugolava confusamente e balbettava delle parole tronche e sconclusionate.Finalmente gli riuscì di cacciar fuori un grido di gioia, e spalancando le braccia e gettandosi al collo del vecchietto, cominciò a urlare:
+— Oh! babbino mio! finalmente vi ho ritrovato! Ora poi non vi lascio più, mai più, mai più!
+Gettandosi al collo del vecchietto, cominciò a urlare.
+— Dunque gli occhi mi dicono il vero? — replicò il vecchietto stropicciandosi gli occhi. — Dunque tu se’ proprio il mi’ caro Pinocchio?
+— Sì, sì, sono io, proprio io! E voi mi avete digià perdonato, non è vero? Oh! babbino mio, come siete buono!... e pensare che io, invece.... Oh! ma se sapeste quante disgrazie mi son piovute sul capo e quante cose mi son andate a traverso! Figurateviche il giorno che voi, povero babbino, col vendere la vostra casacca, mi compraste l’Abbecedario per andare a scuola, io scappai a vedere i burattini, e il burattinaio mi voleva mettere sul fuoco perchè gli cocessi il montone arrosto, che fu quello poi che mi dètte cinque monete d’oro, perchè le portassi a voi, ma io trovai la Volpe e il Gatto, che mi condussero all’Osteria del Gambero Rosso dove mangiarono come lupi, e partito solo di notte incontrai gli assassini che si messero a corrermi dietro, e io via, e loro dietro, e io via e loro sempre dietro, e io via, finchè m’impiccarono a un ramo della Quercia Grande, dovecchè la bella Bambina dai capelli turchini mi mandò a prendere con una carrozzina, e i medici, quando m’ebbero visitato, dissero subito: «Se non è morto, è segno che è sempre vivo», e allora mi scappò detto una bugia, e il naso cominciò a crescermi e non mi passava più dalla porta di camera, motivo per cui andai con la Volpe e col Gatto a sotterrare le quattro monete d’oro, che una l’avevo spesa all’osteria, e il pappagallo si messe a ridere, e viceversa di duemila monete non trovai più nulla, la quale il giudice quando seppe che ero stato derubato, mi fece subito mettere in prigione, per dare una soddisfazione ai ladri, di dove, col venir via, vidi un bel grappolod’uva in un campo, che rimasi preso alla tagliola e il contadino di santa ragione mi messe il collare da cane perchè facessi la guardia al pollaio, che riconobbe la mia innocenza e mi lasciò andare, e il serpente, colla coda che gli fumava, cominciò a ridere e gli si strappò una vena sul petto, e così ritornai alla casa della bella Bambina, che era morta, e il Colombo vedendo che piangevo mi disse: «Ho visto il tu’ babbo che si fabbricava una barchettina per venirti a cercare» e io gli dissi: «Oh! se avessi le ali anch’io» e lui mi disse: «Vuoi venire dal tuo babbo?» e io gli dissi: « Magari! ma chi mi ci porta?» e lui mi disse: «Ti ci porto io» e io gli dissi: «Come?» e lui mi disse: «Montami sulla groppa» e così abbiamo volato tutta la notte, poi la mattina tutti i pescatori che guardavano verso il mare mi dissero: «C’è un pover’omo in una barchetta che sta per affogare» e io da lontano vi riconobbi subito, perchè me lo diceva il core, e vi feci segno di tornare alla spiaggia....— Ti riconobbi anch’ io, — disse Geppetto — e sarei volentieri tornato alla spiaggia: ma come fare? il mare era grosso e un cavallone m’arrovesciò la barchetta. Allora un orribile Pesce-cane che era lì vicino, appena che m’ebbe visto nell’acqua, corse subito verso di me, e tirata fuori lalingua, mi prese pari pari, e m’inghiottì come un tortellino di Bologna.
+— E quant’è che siete chiuso qui dentro? — domandò Pinocchio.
+— Da quel giorno in poi, saranno ormai due anni: due anni, Pinocchio mio.... che mi son parsi due secoli!
+— E come avete fatto a campare? E dove avete trovata la candela? E i fiammiferi per accenderla, chi ve li ha dati?
+— Ora ti racconterò tutto. Devi dunque sapere che quella medesima burrasca, che rovesciò la mia barchetta, fece anche affondare un bastimento mercantile. I marinai si salvarono tutti, ma il bastimento colò a fondo, e il solito Pesce-cane, che quel giorno aveva un appetito eccellente, dopo aver inghiottito me, inghiottì anche il bastimento....
+— Come? Lo inghiottì tutto in un boccone?... — domandò Pinocchio maravigliato.
+— Tutto in un boccone: e risputò solamente l’albero maestro, perchè gli era rimasto fra i denti come una lisca. Per mia gran fortuna, quel bastimento era carico di carne conservata in cassette di stagno, ma di biscotto, ossia di pane abbrostolito, di bottiglie di vino, d’uva secca, di cacio, di caffè, di zucchero, di candele stearichee di scatole di fiammiferi di cera. Con tutta questa grazia di Dio ho potuto campare due anni: ma oggi sono agli ultimi sgoccioli: oggi nella dispensa non c’è più nulla, e questa candela, che vedi accesa, è l’ultima candela che mi sia rimasta…
+— E dopo?
+— E dopo, caro mio, rimarremo tutt’e due al buio.
+— Allora, babbino mio, — disse Pinocchio — non c’è tempo da perdere. Bisogna pensar subito a fuggire.
+— A fuggire?… e come?
+— Scappando dalla bocca del Pesce-cane e gettandosi a nuoto in mare.
+— Tu parli bene: ma io, caro Pinocchio, non so nuotare!
+— E che importa?… Voi mi monterete a cavalluccio sulle spalle, e io, che sono un buon nuotatore, vi porterò sano e salvo fino alla spiaggia.
+— Illusioni, ragazzo mio! — replicò Geppetto, scotendo il capo e sorridendo malinconicamente. — Ti par egli possibile che un burattino, alto appena un metro come sei tu, possa aver tanta forza da portarmi a nuoto sulle spalle?
+— Provatevi e vedrete! A ogni modo, se sarà scritto in cielo che dobbiamo morire, avremo almenola gran consolazione di morire abbracciati insieme. ―
+E senza dir altro, Pinocchio prese in mano la candela, e andando avanti per far lume, disse al suo babbo:
+— Venite dietro a me, e non abbiate paura. — E così camminarono un bel pezzo, e traversarono tutto il corpo e tutto lo stomaco del Pesce-cane. Ma giunti che furono al punto dove cominciava la spaziosa gola del mostro, pensarono bene di fermarsi per dare un’occhiata e cogliere il momento opportuno alla fuga.
+Ora bisogna sapere che il Pesce-cane, essendo molto vecchio e soffrendo d’asma e di palpitazione di cuore, era costretto a dormire a bocca aperta: per cui Pinocchio affacciandosi al principio della gola, e guardando in su, potè vedere al di fuori di quell’enorme bocca spalancata un bel pezzo di cielo stellato e un bellissimo lume di luna.
+— Questo è il vero momento di scappare — bisbigliò allora, voltandosi al suo babbo. — Il Pesce-cane dorme come un ghiro: il mare è tranquillo e ci si vede come di giorno. Venite dunque, babbino, dietro a me, e fra poco saremo salvi. —
+Detto fatto salirono su per la gola del mostro marino, e arrivati in quell’immensa bocca cominciarono a camminare in punta di piedi sulla lingua;; una lingua così larga e così lunga, che pareva il viottolone d’un giardino. E già stavano lì lì per fare il gran salto e per gettarsi a nuoto nel mare, quando, sul più bello, il Pesce-cane starnutì, e nello starnutire, dètte uno scossone così violento, che Pinocchio e Geppetto si trovarono rimbalzati all’indietro e scaraventati nuovamente in fondo allo stomaco del mostro.
+Nel grand’urto della caduta la candela si spense, e padre e figliuolo rimasero al buio.
+— E ora?… — domandò Pinocchio facendosi serio.
+— Ora, ragazzo mio, siamo bell’e perduti.
+— Perchè perduti? Datemi la mano, babbino, e badate di non sdrucciolare!…
+— Dove mi conduci?
+— Dobbiamo ritentare la fuga. Venite con me e non abbiate paura. —
+Ciò detto, Pinocchio prese il suo babbo per la mano: e camminando sempre in punta di piedi, risalirono insieme su per la gola del mostro: poi traversarono tutta la lingua e scavalcarono i tre filari di denti. Prima però di fare il gran salto, il burattino disse al suo babbo:
+— Montatemi a cavalluccio sulle spalle e abbracciatemi forte forte. Al resto ci penso io. —
+Si gettò nell’acqua e cominciò a nuotare.
+sulle spalle del figliuolo, il bravo Pinocchio, sicuro del fatto suo, si gettò nell’acqua e cominciò a nuotare. Il mare era tranquillo come un olio: la luna splendeva in tutto il suo chiarore, e il Pesce-cane seguitava a dormire di un sonno così profondo, che non l’avrebbe svegliato nemmeno una cannonata.
+
+__________",0.06805572679077795,0.37046928653185807,6
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"XXXYL 
+FinalDiente  Pinocchio  cessa  d'essere  nn  Lurattino 
+e  diventa  un  ragazzo. 
+Mentre  Pinocchio  nuotava  alla  svelta  per  rag- 
+giungere la  spiaggia,  si  accòrse  clie  il  suo  babbo, 
+il  quale  gli  stava  a  cavalluccio  sulle  spalle  e 
+aveva  le  gambe  mezze  nell'  acqua,  tremava  fìtto 
+fìtto,  come  se  al  pover'  uomo  gli  battesse  la  feb- 
+bre terzana. 
+Tremava  di  freddo  o  di  paura?  Ohi  lo  sai... 
+Forse  un  x)o'  dell'  uno  e  un  po'  dell'  altra.  Ma 
+Pinocchio,  credendo  che  quel  tremito  fosse  di 
+paura,  gli  disse  per  confortarlo  : 
+—  Coraggio,  babbo!  Fra  pochi  minuti  arrive- 
+remo a  terra  e  saremo  salvi. 
+—  Ma  dov'  è  questa  spiaggia  benedetta  ?  — 
+domandò  il  vecchietto,  diventando  sempre  più 
+inquieto,  e  appuntando  gli  occhi,  come  fanno  i 
+sarti  quando  infilano  l'ago.  —  Eccomi  qui,  che 
+guardo  da  tutte  le  parti  e  non  vedo  altro  che 
+cielo  e  mare. 
+—  Ma  io  vedo  anche  la  spiaggia  —  disse  il 
+
+
+burattino.  —  Per  vostra  regola  io  sono  come  i 
+gatti:  ci  vedo  meglio  di  notte  che  di  giorno.  — 
+Il  povero  Pinocchio  faceva  fìnta  di  esser  di 
+buon  nmore  :  ma  invece....  invece  cominciava  a 
+scoraggirsi  :  le  forze  gli  scemavano,  il  suo  respiro 
+diventava  grosso  e  affannoso....  insomma  non  ne 
+poteva  piÌT,  e  la  spiaggia  era  sempre  lontana. 
+Nnotò  finché  ebbe  fiato:  poi  si  voltò  col  capo 
+verso  Geppetto,  e  disse  con  parole  interrotte: 
+—  Babbo  mio,  aiutatemi....  perchè  io  muoio....  — 
+E  padre  e  figliuolo  erano  oramai  sul  punto  di 
+afibgare,  quando  udirono  una  voce  di  chitarra 
+scordata  che  disse: 
+—  Chi  è  che  muore? 
+—  Sono  io  e  il  mio  povero  babbo! 
+—  Questa  voce  la  riconosco!  Tu  sei  Pinoc- 
+chio !... 
+—  Preciso  ;  e  tu  ? 
+—  Io  sono  il  Tonno,  il  tuo  compagno  di  pri- 
+gionia in  corpo  al  Pesce-cane. 
+—  E  come  hai  fatto  a  scappare? 
+—  Ho  imitato  il  tuo  esempio.  Tu  sei  quello 
+che  mi  hai  insegnato  la  strada,  e  dopo  te  sono 
+fuggito  anch'  io. 
+—  Tonno  mio,  tu  capiti  proprio  a  tempo!  Ti 
+prego,  per  V  amore  che  porti  ai  tonnini  tuoi 
+figliuoli;  aiutaci,  o  siamo  i)erduti. 
+
+—  Volentieri  e  con  tutto  il  cuore.  Attaccatevi 
+tutt'e  due  alla  mia  coda,  e  lasciatevi  guidare. 
+In  quattro  minuti  vi  condurrò  alla  riva.  — 
+
+Giudicarono  più  comodo  di  mettersi  addirittura  a  sedere 
+sulla  groppa  del  Tonno. 
+
+Geppetto  e  Pinocchio,  come  potete  immagi- 
+narvelo,  accettarono  subito  l'invito;  ma  invece 
+di  attaccarsi  alla  coda,  giudicarono  più  comodo 
+di  mettersi  addirittura  a  sedere  sulla  groppa  del 
+Tonno. 
+
+—  Siamo  troppo  pesi  ?  —  gli  domandò  Pi- 
+nocchio. 
+—  Pesi!  I^eanclie  per  ombra:  mi  par  di  aver 
+addosso  due  gusci  di  conchiglia  —  rispose  il  Ton- 
+no, il  quale  era  di  una  corporatura  così  grossa 
+e  robusta,  da  parere  un  vitello  di  due  anni. 
+Giunti  alla  riva,  Pinocchio  saltò  a  terra  il 
+primo  ijer  aiutare  il  suo  babbo  a  fare  altret- 
+tanto :  poi  si  voltò  al  Tonno,  e  con  voce  com- 
+mossa gli  disse: 
+—  Amico  mio,  tu  hai  salvato  il  mio  babbo  ! 
+Dunque  non  ho  parole  per  ringraziarti  abba- 
+stanza! Permetti  almeno  che  ti  dia  un  bacio, 
+in  segno  di  riconoscenza  eterna  !...  — 
+Il  Tonno  cacciò  il  muso  fuori  dell'acqua,  e 
+Pinocchio,  piegatosi  coi  ginocchi  a  terra,  gli 
+posò  un  affettuosissimo  bacio  sulla  bocca.  A  que- 
+sto tratto  di  spontanea  e  vivissima  tenerezza,  il 
+povero  Tonno,  che  non  e'  era  avvezzo,  si  sentì 
+talmente  commosso,  che  vergognandosi  a  farsi 
+veder  piangere  come  un  bambino,  ricacciò  il  capo 
+sott'acqua  e  sparì. 
+Intanto  s'  era  fatto  giorno. 
+Allora  Pinocchio,  offrendo  il  suo  l)raccio  a 
+Geppetto,  che  aveva  api)ena  il  fiato  di  reggersi 
+in  piedi,  gli  disse  : 
+—  Ai>poggiatevi  i^ure  al  ujìo  braccio,  caro  bab- 
+
+
+bino,  e  andiamo.  Cammineremo  pian  pianino  come 
+]e  formicole,  e  qnando  saremo  stanchi,  ci  ripo- 
+seremo lungo  la  via. 
+
+Pinocchio,  piegandosi  coi  ginocchi  a  terra,  gli  posò  un  affettaosissimo 
+bacio  salla  bocca. 
+
+—  E  dove  dobbiamo  andare?  —  domandò  Gep- 
+petto. 
+—  In  cerca  di  una  casa  o  d'una  capanna,  dove 
+ci  diano  per  carità  un  boccon  di  pane  e  un  po'  di 
+imglia  che  ci  serva  da  letto.  — 
+Non  avevano  ancora  fatti  cento  passi,  che  vi- 
+dero seduti  sul  ciglione  della  strada  due  brutti 
+
+
+ceffi,  i  quali  stavano  lì  in  atto  di  chieder  1'  ele- 
+mosina. 
+Erano  il  Gatto  e  la  Volpe:  ma  non  si  ricono- 
+scevano più  da  quelli  d'una  volta.  Figuratevi 
+che  il  Gatto,  a  furia  di  fingersi  cieco,  aveva  finito 
+coli' accecare  davvero:  e  la  Volpe  invecchiata, 
+intignata  e  tutta  i)erduta  da  una  parte,  non 
+aveva  più  nemmeno  la  coda.  Così  è.  Quella  tri- 
+sta ladracchiola,  caduta  nella  più  squallida  mi- 
+seria, si  trovò  costretta  un  bel  giorno  a  vendere 
+perfino  la  sua  bellissima  coda  a  uu  mereiaio  am- 
+bulante, che  la  comin^ò  i)er  farsene  uno  scaccia- 
+mosche. 
+—  O  Pinocchio  !  —  gridò  la  volpe  con  voce 
+di  piagnisteo  —  fai  un  po' di  carità  a  questi  due 
+Ijoveri  infermi! 
+—  Infermi!  — ripetè  il  Gatto. 
+—  Addio,  mascherine!  — rispose  il  burattino. 
+—  Mi  avete  ingannato  una  volta,  e  ora  non  mi 
+ripigliate  più. 
+—  Credilo,  Pinocchio,  che  oggi  siamo  poveri 
+e  disgraziati  davvero! 
+—  Davvero!  —  ripetè  il  Gatto. 
+—  Se  siete  i)overi  ve  lo  meritate.  Eicordatevi 
+del  proverbio  che  dice:  «I  quattrini  rubati  non 
+fanno  mai  frutto.»   Addio,  mascherine. 
+—  Abbi  compassione  di  noi  !... 
+
+
+—  Di  noi  ! 
+—  Addio,  masclierine  !  Eicordatevi  del  pro- 
+verbio che  dice  :  «  La  farina  del  diavolo  va  tutta 
+in  crusca.  » 
+—  Non  ci  abbandonare!... 
+—  are....!  —  ripetè  il  Gatto. 
+—  Addio,  masclierine  !  Eicordatevi  del  pro- 
+verbio elle  dice:  «  Olii  ruba  il  mantello  al  suo 
+prossimo,  per  il  solito  muore  senza  camicia.»  — 
+E  così  dicendo.  Pinocchio  e  Geppetto  segui- 
+tarono tranquiUamente  per  la  loro  strada:  fin- 
+ché fatti  altri  cento  passi,  videro  in  fondo  amia 
+viottola,  in  mezzo  ai  campi,  una  bella  capanna 
+tutta  di  paglia,  e  col  tetto  coi)erto  d'embrici  e 
+di  mattoni. 
+—  Quella  capanna  dev'essere  abitata  da  qual- 
+cuno —  disse  Pinocchio.  —  Andiamo  là,  e  bus- 
+siamo. — 
+Difatti  andarono,  e  bussarono  alla  porta. 
+—  Ohi  è?  —  disse  una  vocina  di  dentro. 
+—  Siam o  un  j)overo  babbo  e  un  povero  figliuolo, 
+senza  pane  e  senza  tetto,  —  rispose  il  burattino. 
+— ^Girate  la  chiave,  e  la  porta  si  aprirà,  — 
+disse  la  solita  vocina. 
+Pinocchio  girò  la  chiave,  e  la  porta  si  aprì. 
+Appena  entrati  dentro,  guardarono  di  qua,  guar- 
+darono di  là,  e  non  videro  nessuno. 
+
+
+^  ^       F'irenze. 
+—  Addiu,  mascherine!  Ricordatevi  del  proverbio  che  dice:  ""  Chi  ruba  il  mantello 
+al  suo  prossimo,  per  il  solito  muore  senza  camicia.  „ 
+
+
+—  O  il  padrone  della  capanna  dov'è  ?  —  disse 
+Pinocchio  maravigliato. 
+—  Eccomi  quassù  !  — 
+Babbo  e  figliuolo  si  voltarono  subito  verso  il 
+soffitto,  e  videro  sopra  un  travicello  il  Grillo- 
+parlante. 
+—  Oli!  mio  caro  Grillino  —  disse  Pinoccliio, 
+salutandolo  garbatamente. 
+—  Ora  mi  eli  lami  il  «  Tuo  caro  Grillino  »  non  è 
+vero!  Ma  ti  rammenti  di  quando,  per  cacciarmi 
+di  casa  tua,  mi  tirasti  un  manico  di  martello! 
+—  Hai  ragione.  Grillino!  Scaccia  anche  me.... 
+tira  anche  a  me  un  manico  di  martello  :  ma 
+abbi  pietà  del  mio  povero  babbo.... 
+—  Io  avrò  pietà  del  babbo  e  anche  del  figliuolo! 
+ma  ho  voluto  rammentarti  il  brutto  garbo  rice- 
+vuto, per  insegnarti  che  in  questo  mondo,  quando 
+si  può,  bisogna  mostrarsi  cortesi  con  tutti,  se 
+vogliamo  esser  ricambiati  con  pari  cortesia  nei 
+giorni  del  bisogno. 
+—  Hai  ragione,  Grillino,  hai  ragione  da  ven- 
+dere; e  io  terrò  a  mente  la  lezione  che  mi  hai 
+data.  Ma  mi  dici  come  hai  fatto  a  comprarti 
+questa  bella  capanna? 
+—  Questa  capanna  mi  è  stata  regalata  jeri  da 
+una  graziosa  capra,  che  aveva  la  lana  d'  un  bel- 
+lissimj  colore  turchino. 
+
+
+—  E  la  capra  dov'è  andata?  — domandò  Pi- 
+nocchio, con  vivissima  cnriosità. 
+—  Non  lo  so. 
+—  E  qnando  ritornerà  1.. 
+—  Non  ritornerà  mai.  Ieri  è  partita  tutta  af- 
+flitta, e,  belando,  pareva  che  dicesse:  «  Povero 
+Pinocchio!...  oramai  non  lo  rivedrò  più!...  Il  Pe- 
+sce-cane a  quest'ora  l'avrà  beli' e  divorato!...  » 
+—  Ha  detto  i^roprio  così?...  Dunque  era  lei!... 
+era  lei!...  era  la  mia  cara  Fatina!...  —  cominciò 
+a  urlare  Pinocchio,  singhiozzando  e  piangendo  di- 
+rottamente. 
+Quand'ebbe  pianto  ben  bene,  si  rasciugò  gli 
+occhi,  e  ijreparato  un  buon  lettino  di  i^agiia,  vi 
+distese  sopra  il  vecchio  Geppetto.  Poi  domandò 
+al  Grillo-parlante: 
+—  Dimmi,  Grillino,  dove  potrei  trovare  un  bic- 
+chiere di  latte  i)er  il  mio  povero  babbo? 
+—  Tre  campi  distante  di  qui  c'è  l'ortolano 
+Giangio,  che  tiene  le  mucche.  Va'  da  lui,  e  tro- 
+verai il  latte  che  cerchi.  — 
+Pinocchio  andò  di  corsa  a  casa  dell'ortolano 
+Giangio  :  ma  l' ortolano  gli  disse  : 
+—  Quanto  ne  vuoi  del  latte? 
+—  Ne  voglio  un  bicchiere  pieno. 
+—  Un  bicchiere  di  latte  costa  un  soldo.  Co- 
+mincia intanto  dal  darmi  il  soldo. 
+
+
+—  Non  ho  nemmeno  un  centesimo  —  rispose 
+Pinocchio,  tutto  mortificato  e  dolente. 
+—  Male,  burattino  mio,  — replicò  l'ortolano.  — 
+Se  tu  non  hai  nemmeno  un  centesimo,  io  non 
+ho  nemmeno  un  dito  di  latte. 
+—  Pazienza!  —  disse  Pinocchio,  e  fece  l'atto 
+di  andarsene. 
+—  Aspetta  un  i)o'  —  disse  Giaugio.  —  Fra  te 
+e  me  ci  possiamo  accomodare.  Vuoi  adattarti  a 
+girare  il  ìnndolof 
+—  Che  cos'è  il  bindolo? 
+—  Gli  è  quell'ordigno  di  legno  che  serve  a 
+tirar  su  l'acqua  dalla  cisterna  per  annaffiare  gii 
+ortaggi. 
+—  Mi  proverò.... 
+—  Dunque,  tirami  su  cento  secchie  d'  acqua,  e 
+io  ti  regalerò  in  compenso  un  bicchiere  di  latte. 
+—  8ta  bene.  — 
+Giangio  condusse  il  burattino  nell'orto  e  gi' in- 
+segnò la  maniera  di  girare  il  hindolo.  Pinocchio  si 
+pose  subito  al  lavoro;  ma  prima  di  aver  tirato  su 
+le  cento  secchie  d'acqua,  era  tutto  grondante  di 
+sudore  dalla  testa  ai  piedi.  Una  fatica  a  quel  modo 
+non  l' aveva  durata  mai. 
+—  Finora  questa  fatica  di  girare  il  bindolo  — 
+disse  l'ortolano  —  l' ho  fatta  fare  al  mio  ciuchino; 
+ma  oggi  quel  j)overo  animale  è  in  fin  di  vita. 
+
+
+—  Mi  menate  a  vederlo?  —  disse  Pinocchio. 
+—  Volentieri.  — 
+Appena  che  Pinocchio  fu  entrato  nella  stalla, 
+vide  un  bel  ciuchino  disteso  sulla  paglia,  rifinito 
+
+
+E  chinatosi  fino  a  lui,  gli  domandò  in  dialetto  asinino:  —  Chi  sei? 
+
+dalla  fame  e  dal  troppo  lavoro.  Quando  l'ebbe 
+guardato  fìsso  fìsso,  disse  dentro  di  se,  turban- 
+dosi : 
+—  Eppure  quel  ciuchino  lo  conosco!  Non  mi 
+ò  fìsonoinia  nuova!  — 
+E  cliinatosi  fino  a  lui,  gli  domandò  in  dialetto 
+asinino  : 
+—  Chi  sei?  — 
+
+A  questa  domanda,  il  ciucliino  aprì  gli  occhi 
+moribondi,  e  rispose  balbettando  nel  medesimo 
+dialetto: 
+—  Sono  Lu....ci....gno....lo.  — 
+E  dopo  ricliinse  gli  occhi  e  spirò. 
+—  Oh!  povero  Lucignolo!  —  disse  Pinocchio 
+a  mezza  voce:  e  presa  una  manciata  di  paglia 
+si  rasciugò  una  lacrima  che  gli  colava  giù  per 
+il  viso. 
+—  Ti  commuovi  tanto  per  un  asino  che  non 
+ti  costa  nulla!  —  disse  l'ortolano.  —  Che  cosa 
+dovrei  far  io  che  lo  comprai  a  quattrini  con- 
+tanti? 
+—  Vi  dirò....  era  un  mio  amico.... 
+.  —  Tuo  amico  ? 
+—  Un  mio  compagno  di  scuola!... 
+—  Comef!  — urlò  Giangio  dando  in  una  gran 
+risata.  —  Come?!  avevi  dei  somari  per  compagni 
+di  scuola?...  Figuriamoci  i  begli  studj  che  devi 
+aver  fatto!...  — 
+11  burattino,  sentendosi  mortificato  da  quelle 
+parole,  non  rispose  :  ma  prese  il  suo  bicchiere 
+dì  latte  quasi  caldo,  e  se  ne  tornò  alla  capanna. 
+E  da  quel  giorno  in  poi,  continuò  più  di  cinque 
+mesi  a  levarsi  ogni  mattina,  prima  dell'alba,  per 
+andare  a  girare  il  bindolo,  e  guadagnare  così  quel 
+bicchiere  di  latte,  che  faceva  tanto  bene  alla  sa- 
+
+
+Iute  cagionosa  del  suo  babbo.  Né  si  contentò  di 
+questo  :  perchè  a  tempo  avanzato,  imparò  a  fab- 
+bricare anche  i  canestri  e  i  panieri  di  giunco  : 
+e  coi  quattrini  che  ne  ricavava,  provvedeva  con 
+moltissimo  giudizio  a  tutte  le  spese  giornaliere. 
+Fra  le  altre  cose  costruì  da  se  stesso  un  elegante 
+carrettino  per  condurre  a  spasso  il  suo  babbo 
+nelle  belle  giornate,  e  per  fargli  prendere  una 
+boccata  d'aria. 
+Nelle  veglie  poi  della  sera,  si  esercitava  a  leg- 
+gere e  a  scrivere.  Aveva  comprato  nel  vicino  paese 
+per  x)ochi  centesimi  un  grosso  libro,  al  quale  man- 
+cavano il  frontesj)izlo  e  l'indice,  e  con  quello  fa- 
+ceva la  sua  lettura.  Quanto  allo  scrivere,  si  ser- 
+viva di  un  fuscello  temperato  a  uso  penna;  e 
+non  avendo  né  calamaio  né  inchiostro,  lo  intin- 
+geva in  una  boccettina  ripiena  di  sugò  di  more 
+e  di  ciliege. 
+Fatto  sta  che  con  la  sua  buona  volontà  d'in- 
+gegnarsi, di  lavorare  e  di  tirarsi  avanti,  non  solo 
+era  riuscito  a  mantenere  quasi  agiatamente  il  suo 
+genitore  sempre  malaticcio,  ma  per  di  più  aveva 
+potuto  mettere  da  parte  anche  quaranta  soldi  per 
+comprarsi  un  vestitino  nuovo. 
+Una  mattina  disse  a  suo  padre: 
+—  Vado  qui  al  mercato  vicino  a  comprarmi 
+una  giacchettiua,   un   berrettino  e  un   paio  di 
+
+scarpe.  Quando  tornerò  a  casa  —  soggiunse  ri- 
+dendo —  sarò  vestito  così  bene,  che  mi  scambie- 
+rete  per  un  gran  signore.  — 
+E  uscito  di  casa,  cominciò  a  correre  tutto  alle- 
+gro e  contento.  Quando  a  un  tratto  sentì  chia- 
+marsi per  nome,  e  voltandosi,  vide  una  bella 
+Lumaca  che  sbucava  fuori  dalla  siepe. 
+—  IS'on  mi  riconosci?  —  disse  la  Lumaca. 
+—  Mi  pare  e  non  mi  pare.... 
+—  Non  ti  ricordi  di  quella  Lumaca,  che  stava 
+per  cameriera  con  la  Fata  dai  cai)elli  turchini? 
+non  ti  rammenti  di  quella  volta  quando  scesi  a 
+farti  lume,  e  tu  rinmnesti  con  un  piede  confìtto 
+nell'uscio  di  casa? 
+—  Mi  rammento  di  tutto,  —  gridò  Pinocchio  !  — 
+—  rispondimi  subito.  Lumachina  bella;  dove  hai 
+lasciato  la  mia  buona  Fata?  che  fa?  mi  ha  per- 
+donato? si  ricorda  sempre  di  me?  mi  vuol  sempre 
+bene?  è  molto  lontana  di  qui?  potrei  andare  a 
+trovarla?  — 
+A  tutte  queste  domande,  fatte  precipitosamente 
+e  senza  ripigliar  fiato,  la  Lumaca  rispose  con  la 
+sua  solita  flemma: 
+—  Pinoccliio  mio!  La  povera  Fata  giace  in  un 
+fondo  di  letto  allo  spedale!.... 
+—  Allò  spedale?... 
+—  Pur  troppo.  Colpita  da  mille  disgrazie,  si  è 
+
+
+gmvemcnte  ammalata,  e  non  ha  più  da  com- 
+prarsi un  boccon  di  pane. 
+—  Davvero!..  Oh!  che  gran  dolore  che  mi  hai 
+dato  !  Oh  !  povera  Fatina  !  povera  Fatina  !  povera 
+Fatina!...  Se  avessi  un  milione,  correrei  a  portar- 
+glielo.... Ma  io  non  ho  che  quaranta  soldi....  eccoli 
+qui!  andavo  giusto  a  comprarmi  un  vestito  nuovo. 
+Prendili,  Lumaca,  e  va' a  ijortarli  subito  alla  mia 
+buona  Fata. 
+—  E  il  tuo  vestito  nuovo? 
+—  Che  m'importa  del  vestito  nuovo?  Venderei 
+anche  questi  cenci  che  ho  addosso,  i^er  poterla  aiu- 
+tare! Va',  Lumaca,  e  spicciati!  e  fra  due  giorni 
+ritorna  qui,  che  spero  di  poterti  dare  qualche  altro 
+soldo.  Finora  ho  lavorato  per  mantenere  il  mio 
+babbo:  da  oggi  in  là,  lavorerò  cinque  ore  di  più 
+per  mantenere  anche  la  mia  buona  mamma.  Ad- 
+dio, Lumaca,  e  fra  due  giorni  ti  aspetto.  — 
+La  Lumaca,  contro  il  suo  costume,  cominciò 
+a  correre  come  una  lucertola  nei  grandi  solleoni 
+d'agosto. 
+Quando  Pinocchio  tornò  a  casa,  il  suo  babbo 
+gli  domandò: 
+—  E  il  vestito  nuovo? 
+—  !N'on  mi  è  stato  possibile  di  trovarne  uno 
+che  mi  tornasse  bene.  Pazienza!...  Lo  comprerò 
+un'altra  volta.  — 
+
+
+Quella  sera  Pinocchio,  invece  di  vegliare  fino 
+alle  dieci,  vegliò  fino  alla  mezzanotte  sonata! 
+e  invece  di  far  otto  canestri  di  giunco  ne  fece 
+sedici. 
+Poi  andò  a  letto  e  si  addormentò.  E  nel  dor- 
+mire, gli  pareva  di  vedere  in  sogno  la  Fata,  tutta 
+bella  e  sorridente,  la  quale,  dopo  avergli  dato  un 
+bacio,  gli  disse  così: 
+—  Bravo  Pinocchio!  In  grazia  del  tuo  buon 
+cuore,  io  ti  perdono  tutte  le  monellerie  che  hai 
+fatto  fino  a  oggi.  I  ragazzi  che  assistono  amo- 
+rosamente i  propri  genitori  nelle  loro  miserie  e 
+nelle  loro  infermità,  meritano  sempre  gran  lode 
+e  grande  affetto,  anche  se  non  possono  esser  citati 
+come  modelli  d' ubbidienza  e  di  buona  condotta. 
+Metti  giudizio  per  l'avvenire,  e  sarai  felice.  — 
+A  questo  punto  il  sogno  finì,  e  Pinocchio  si 
+svegliò  con  tanto  d'occhi  spalancati. 
+Ora  immaginatevi  voi  quale  fu  la  sua  meravi- 
+glia quando,  svegliandosi,  si  accòrse  che  non  era 
+X)iù  un  burattino  di  legno:  ma  che  era  diventato, 
+invece,  un  ragazzo  come  tutti  gli  altri. Détte  un'oc- 
+chiata all'intorno,  e  invece  delle  solite  pareti  di 
+paglia  della  capanna,  vide  una  bella  camerina  am- 
+mobiliata e  agghindata  con  una  semplicità  quasi 
+elegante.  Saltando  giù  dal  letto,  trovò  preparato 
+un  bel  vestiario  nuovo,  un  berretto  nuovo  e  un 
+1) 
+
+
+paio  di  stivaletti  di  pelle,  che  gli  tornavano  una 
+vera  pittura. 
+Appena  si  fu  vestito,  gli  venne  fatto,  natural- 
+mente di  mettere  le  mani  nelle  tasche  e  tirò  fuori 
+un  piccolo  portamonete  d' aA  orlo,  sul  quale  erano 
+scritte  queste  parole  :  «  La  Fata  dai  capelli  tur- 
+chini restituisce  al  suo  caro  Pinocchio  i  quaranta 
+soldi,  e  lo  ringrazia  tanto  del  suo  buon  cuore.  » 
+Aperto  il  portafoglio,  invece  di  quaranta  soldi  di 
+rame,  vi  luccicavano  quaranta  zecchini  d'oro  tutti 
+nuovi  di  zecca. 
+Dopo  andò  a  guardarsi  allo  specchio  e  gli  parve 
+d'essere  un  altro.  I^on  vide  più  riflessa  la  solita 
+immagine  della  marionetta  di  legno,  ma  vide 
+r  immagine  vispa  e  intelligente  di  un  bel  fan- 
+ciullo coi  capelli  castagni,  cogli  occhi  celesti  e 
+con  un'aria  allegra  e  festosa  come  una  pasqua 
+di  rose. 
+In  mezzo  a  tutte  queste  meraviglie,  che  si  suc- 
+cedevano le  une  alle  altre.  Pinocchio  non  sapeva 
+più  nemmeno  lui  se  era  desto  davvero  o  se  so- 
+gnava sempre  a  occhi  aperti. 
+—  E  il  mio  babbo  dov'  è  !  —  gridò  tutt'  a  un 
+tratto;  ed  entrato  nella  stanza  accanto  trovò  il 
+vecchio  Geppetto  sano,  arzillo  e  di  buon  umore, 
+come  una  volta,  il  quale,  avendo  ripreso  subito 
+la  sua  professione  d' intagliatore,  stava  appunto 
+
+
+disegnando  una  bellissima  cornice  ricca  di  fo- 
+gliami, di  fiori  e  di  testine  di  diversi  animali. 
+—  Levatemi  una  curiosità,  babbino  :  ma  come 
+si  spiega  tutto  questo  cambiamento  improvviso  I 
+
+f- 
+
+Gli  accennò  un  grosso  burattino  appoggiato  a  una  seggiola. 
+—  gli  domandò  Pinocchio  saltandogli  al  collo  e 
+coprendolo  di  baci. 
+—  Questo  improvviso  cambiamento  in  casa  no- 
+stra è  tutto  merito  tuo  —  disse  Geppetto. 
+—  Perette  merito  mio?... 
+—  Perchè  quando  i  ragazzi,  di  cattivi  diven- 
+
+-^  296  — 
+tano  buoni,  hanno  la  virtù  di  far  ijrendere  un 
+aspetto  nuovo  e  sorridente  anclie  nell'interno 
+delle  loro  famiglie. 
+—  E  il  vecchio  Pinocchio  di  legno  dove  si  sarà 
+nascosto  ! 
+—  Eccolo  là!  —  rispose  Geppetto;  e  gli  accennò 
+un  grosso  burattino  appoggiato  a  una  seggiola, 
+col  capo  girato  sur  una  parte,  con  le  braccia  cion- 
+doloni e  con  le  gambe  incrocicchiate  e  ripiegate 
+a  mezzo,  da  parere  un  miracolo  se  stava  ritto. 
+Pinocchio  si  voltò  a  guardarlo:  e  dopo  che 
+l' ebbe  guardato  un  poco,  disse  dentro  di  se  con 
+grandissima  compiacenza: 
+—  Com'ero  buffo,  quand'ero  un  burattino!  e 
+come  ora  son  contento  di  esser  diventato  un  ra- 
+gazzino perbene  !...  — 
+
+FINE.","―
+Pinocchio, che non era più Pinocchio, era diventato un ragazzo.
+Mentre Pinocchio nuotava alla svelta per raggiungere la spiagge, si accòrsi il suo babbo il quale gli stava a cavallucchio sulle spalle e aveva le gambe mezze nell’acqua, tremava fitto fitto, come se al pover’uomo gli battesse la febbre terzanca.
+Tremava di freddo o di paura?
+Ohi lo sai…
+Forse un poco dell’uno e un po’ dell’altro.
+Ma Pinocchio, credendo che quel tremito fosse di paura, gli disse per confortarlo:
+— Coraggio, babbo?
+Fra pochi minuti arrivammo a terra e saremo salvi.
+— Che cosa vuoi che mi faccia?
+— domandò il vecchietta, diventando sempre più inquieto, e appuntando gli occhi, come fanno i sarti quando infilano l’ago.
+— Ecco il mio povero burattino!
+— Che cosa vuoi che mi faccia?
+— Per vostra regola io sono come i gatti: ci vedo meglio di notte che di giorno.
+—
+Il povero Pinocchio faceva finta di essere di buon nmore: ma invece... invece...
+Nnotò finché ebbe fiato: poi si voltò col capo verso Geppetto e disse:
+— Babbo mio, aiutatemi... perchè io muoio.
+— Sono io e il mio povero babbo?
+— Questa voce la riconosco?
+Tu sei Pinocchio!
+— Preciso; e tu?
+— Io sono il Tonno, il tuo compagno di prigionia in corpo al pescecano.
+— E come hai fatto a scappare!
+— Ho imitato il tuo esempio.
+Tu sei quello che mi hai insegnato la strada, e dopo te sono fuggito anch’io.
+— Tonno mio, tu capiti proprio a tempo!
+Ti prego, per V amore che porti ai tonnini tuoi figliuoli: aiutaci o siamo iperterti.
+— Volentieri e con tutto il cuore.
+Attaccati tutt’e due alla mia coda, e lasciatevi guidare.
+In quattro minuti vi condurrò alla riva.
+Giudicarono più comodo di mettersi addiritture a sedere sulla groppa del Tonno.
+Geppetto e Pinocchio come potete immaginarvelo, accettarono subito l’invito; ma invece di attaccarsela alla coda, giudicavano più comodo di mettersi addiritture a sedere sulla groppa del Tonno.
+— Siamo troppo pesi?
+— gli domandò Pinocchio.
+— Pesi!
+— E che cosa vuoi che io facciai?
+Giunti alla riva, Pinocchio saltò a terra il primo aiutare il suo babbo a fare tanto: poi si voltò al Tonno, e con voce commossa gli disse:
+— Amico mio, tu hai salvato il mio babbo!
+Dunque non ho parole per ringraziare abbastanza!
+Permetti almeno che ti dia un bacio, in segno di riconoscenza eterna!
+—
+Il Tonno cacciò il muso fuori dell’acqua, e Pinocchio, piegatosci a terra, gli posò un affettuoso bacio sulle bocche.
+A questo tratto di spontanee e vivissime tenerezie, il povero Tonno, che non e’ avvezzo; si sentì talmente commosso da vergognarsi a farsi vedere piangere come un bambino: ricacciò il capo sott’acqua e sparì..
+Intanto s’ era fatto giorno.
+Allora Pinocchio offrendo il suo lucarcio a Geppetto, che aveva appena pianga il fiato di reggersi in piedi, gli disse:
+— Ah!
+Cammineremo pian pianino come e formicole, e quando saramo stanchi, ci riposeremo lungo la via.
+—
+Pinocchio, piangendo e pigliandosi un bacio salla bocca, gli posò un affettoosissimo.
+— E dove dobbiamoi andare?
+— domandò Gepetto.
+— In cerca di una casa o d’una capanna, dove ci diano per carità un boccon di pane e un po’ di imglia che ci serva da letto.
+Non avevano ancora fatti cento passi, che videro seduti sul ciglione della strada due brutti ceffi, i quali stavano lì in atto di chieder loro.
+Erano il Gatto e la Volpe: ma non si riconscevano più da quelli d’una volta.
+— E che cosa vuoi che io faccia?
+Così è.
+Quella trista ladracchia, caduta nella più squallida malattia, si trovò costretta un bel giorno a vendere perfino la sua bellissima coda.
+— O Pinocchio!
+— gridò la volpe con voce di piagnistao — fai un po’ di carità a questi due Ijoveri infermi!
+— Infermi?
+— ripetò il Gatto.
+— Addio, mascherina!
+— disse Pinocchio.
+— Mi avete ingannato una volta, e ora non mi ripigliate più.
+— Credilo, Pinocchio; che oggi siamo poveri e disgrazzati davvero?
+— davvero!
+— ripetè il Gatto.
+— Se siete io!
+E icordatevi del proverbio che dice: «I quattrini rubati non fanno mai frutto.»
+— Abbi compassione di noi!
+— Di noi!
+— Addio, masclierina!
+E la farina del diavolo va tutta in crusca!
+Non ci abbandonate!
+— E che cosa vuoi che mi faccia?
+— ripetè il Gatto.
+— Addio, masclierina!
+E icordatevi del proverbio ella dice: «Olii ruba il mantello al suo prossimo, per il solito muore senza camicia.» — E così dicendo.
+Pinocchio e Geppetto segui-tarono tranquilli per la loro strada: finché fatti altri cento passi, videro in fondo amia viottola, in mezzo ai campi, una bella capanna tutta di paglia, e col tetto cochèrto d’embrici e di mattoni..
+— Quella capanna dev’essere abitata da qualcuno.
+— Andiamo là, e bussiamo.
+Difatti andarono, e bussarono alla porta.
+— Ohi è?
+— disse una vocina di dentro.
+— Siam o un jovero babbo e un povero figliuolino, senza pane e senza tetto, — rispose il burattino..
+— Che cosa vuoi che mi faccia?
+Pinocchio girò la chiave e la porta si aprì.
+Appena entrati dentro, guardarono di qua, guaridarono di là, e non videro nessuno....
+F’irenze.
+— Addiu, mascherina!
+Ricordati del proverbio che dice: «Chi ruba il mantello al suo prossimo per il solito muore senza camicia.
+— rispose Pinocchio.
+— disse Pinocchio, maravigliatosi.
+— Eccammi quassù!
+— Che cosa vuoi che io faccia?
+— Oli!
+mio caro Grillino — disse Pinocchio, salutandolo garbatamente..
+— Ora mi eli lami il «Tuo caro Grillino» non è vero!
+Ma ti rammenti di quando, per cacciarlo di casa tua, mi tirasti un manico di martello?
+— Hai ragione.
+―
+Pinocchio, che non sapeva che Pinocchio era un burattino, gli disse:
+— Ecco il mio burattino!
+Scaccia anche me....
+tira anche a me un manico di martello: ma abbi pietà del mio povero babbo.
+ma ho voluto rimetterlo in piedi, perchè non volevo farlo morire.
+— Hai ragione, Grillino!
+Ma mi dici come hai fatto a comprarti questa bella capanna?
+— Questa capanna mi è stata regalata da una grazioso capra, che aveva la lana d’un belliestimj colore turco.
+— E la capra dov’è andata?
+— disse Pinocchio, con vivissima cordialità.
+— Non lo so.
+— Che cosa vuoi che io faccio?
+Ieri è partita tutta afflittita, e, belando, pareva che dicesce: «Povero Pinocchio!...
+Oramai non lo rivedr’ò più!…
+— Che cosa vuoi che io faccio?
+Il Peccarecane a quest’ora l’avrà belli e divorato!...
+— Che cosa vuoi che io faccio?
+Dunque era lei!...
+Era lei!...
+Era la mia cara Fatina!
+— cominciò a urlare
+Pinocchio, sghignazzando e piangendo di-rottamente.
+Quand’ebbe pianto ben bene, si rasciagì gli occhi, e i suoi pareri un buon lettino di giada, vi distese sopra il vecchio Geppetto..
+Poi domandò al Grillo parlante:
+— Dimmi, grillino, dove potrei trovare un bicchiere di latte?
+— E io non ho mai visto nessuno di essi.
+— Che cosa vuoi che io faccio?
+— Che cosa vuoi che mi faccia?
+— Ne voglio un bicchierino pieno!
+— Un bicchieri di latte costa un soldo.
+— Che cosa vuoi che mi faccia?
+— Non ho nemmeno un centesimo — rispose Pinocchio, tutto mortificato e dolente.
+— Male, burattino mio, — replicarono gli ortolani.
+—
+Se tu non hai nemmeno un centesima, io non ho nemmeno un dito di latte.
+— Pazienza!
+— disse Pinocchio; e fece l’atto di andarsi.
+— Aspetta un io!
+— Fra te e me ci possiamo accomodare!
+— Che cos’è il bindolo?
+— Gli è quell’ordigno di legno che serve a tirar su l’acqua dalla cisternà per annaffiare gli ortaggi.
+— Mi proverò…
+— Dunque, tirami su cento secchie d’acqua, e io ti regalerò in compenso un bicchierino di latte.
+— E che cosa vuoi che io faccio?
+Giangio condusse il burattino nell’orto e gi’ insegnò la maniera di girare il Hindolo.
+Pinocchio si pose subito al lavoro; ma prima di aver tirato su le cento secchie d’acqua, era tutto grondante di sudore dalla testa ai piedi.
+Una fatica a quel modo non l’aveva durata mai.
+— Finora questa fatica di girare il bindolo — disse l’ortolano — l’ ho fatta fare al mio ciuchino: ma oggi quel jovero animale è in fin di vita.
+— Mi menate a vederlo!
+— disse Pinocchio.—
+— Che cosa vuoi che io faccia?
+— Volentieri!
+—
+Appena che Pinocchio fu entrato nella stalla, vide un bel ciuchino disteso sulla paglia, rifinito
+E chinatossi fino a lui, gli domandò in dialetto asinino :— Chi sei?
+— Che cosa vuoi che io faccio?
+Quando l’ebbe guardato fisso fisso, disse dentro di se, turban-dosi:
+— Eppure quel ciuchino lo conosco?
+—
+E Pinocchio, che non sapeva più nulla, cominciò a piangere e a sobbalzare.
+—
+E cliinatoso fino a lui, gli domandò in dialetto asinino:
+— Chi sei?
+—
+A questa domanda, il ciuchino aprì gli occhi moribondi e rispose balbettandosi nel medesimo dialetto:
+— Sono Luciano....lo.
+—
+E dopo riclinse gli occhi e spirò.
+— Oh!
+povero lucignolo!
+— disse Pinocchio, a mezza voce: e presa una manciata di paglia, si rasciagò una lacrima che gli colava giù per il viso.
+— Ti commuovi tanto per un asino che non ti costa nulla!
+— disse l’Ortoleano.
+— Che cosa dovrei far io che lo comprai a quattrini contenenti?
+— Che cosa vuoi che io faccio?
+— Che cosa vuoi che mi faccia?
+— Un mio compagno di scuola!...
+— Che cosa vuoi che mi faccia?
+— urlò Giangio dando in una gran risata.
+— Come?!
+avevi dei somari per compagni di scuola?
+Figuriamoli i begli studj che devi aver fatto!...
+—
+12  burattina, sentendosi mortificato da quelle parole, non rispose: ma prese il suo bicchieri di latte quasi caldo, e se ne tornò alla capanna.
+E da quel giorno in poi, continuò più di cinque mesi a levarsi ogni mattina prima dell’alba, per andare a girare il bindolo, e guadagnarsi così quel bicchiere di latte, che faceva tanto bene alla sauteca.
+Non si contentò di questo: perchè a tempo avanzato imparò a fabbricare i canestri e i panieri di giunco: e coi quattrini che ne ricavava, provvediva con moltissimo giudizio a tutte le spese giurnaliere.
+Fra le altre cose costruì da se stesso un elegante carrettino per condurre a spasso il suo babbo nelle belle giornate e per fargli prendere una boccata d’aria.
+Nelle veglie poi della sera, si esercitavano a leggere e a scrivere.
+Aveva comprato nel vicino paese per x dollari un grosso libro, al quale mancavano il frontespizio e l’indice, e con quello faceva la sua lettura.
+Quanto allo scrivere, si serviva di un fuscello temperato a uso penna; e non avendo né calamaio né inchisto, lo intingeva in una boccetta ripiena di sughi di more e di ciliego.
+Fatto sta che con la sua buona volontà di lavorare e di tirarsi avanti, non solo era riuscito a mantenere quasi agiatamente il suo genitore sempre malaticcio ma per di più aveva potuto mettere da parte anche quaranta soldi per comprarsi un vestitino nuovo.
+Una mattina disse a suo padre:
+— Vado qui al mercato vicino a comprarmi una giacchettia, un berrettino e un paio di scarpe.
+Quando tornerò a casa — sguggiunse ridendo — sarò vestito così bene, che mi scambierebbe per un gran signore.
+—
+E uscito di casa, cominciò a correre tutto algrido e contento.
+Quando a un tratto sentì chiararsi per nome, e voltandosi vide una bella Lumaca che sbucava fuori dalla siepe.
+— Mi riconosci?
+— disse la Fata.
+— Mi pare e non mi pare.
+Non ti rammenti di quella volta quando scesi a farti lume, e tu rinmnesti con un piede confitto nell’uscio di casa?
+— Mi rammento di tutto, — gridò Pinocchio.
+— rispondimi subito.
+—
+E Pinocchio, che non sapeva più nulla, si avvicinò e gli disse:
+— Che cosa stai facendo?
+che fa?
+Mi ha perdonato?
+Si ricorda sempre di me?
+Mi vuol sempre bene?
+È molto lontana di qui?
+Potrei andare a trovarla?
+—
+A tutte queste domande, fatte precipitosamente e senza ripigliar fiato, la Lumaca rispose con la sua solita flemma:
+— Pinocchiio mio!
+La povera Fata giace in un fondo di letto allo spedale!...
+— All’ospedale!
+— Pur troppo.
+Colpita da mille disgrazi, si è
+gliamonte ammalata e non ha più da comprarsi un boccon di pane.
+— davvero!
+—
+Pinocchio, che non sapeva che Pinocchio era un burattino, si avvicinò e gli disse:
+— Che cosa vuoi che io faccia?
+che gran dolore che mi hai dato!
+—
+Pinocchio si avvicinò e gli disse:
+— Che cosa vuoi che io faccia?
+povera Fatina!
+povera Fatina!
+povera Fatina!...
+Se avessi un milione, correrei a portarglielo.
+Ma io non ho che quaranta soldi.... eccoli qui!
+Andavo giusto a comprarmi un vestito nuovo.
+Prendoli, lumaca, e va’ a portarli subito alla mia buona Fata.
+— E il tuo vestito nuovo?
+— Che m’importa del vestito nuovo?
+Venderei anche questi cenci che ho addosso e poterla aiutare!
+— Che cosa vuoi che io faccio?
+e fra due giorni ritorna qui, che spero di poterti dare qualche altro soldino.
+Finora ho lavorato per mantenere il mio babbo: da oggi in là, lavorerò cinque ore di più per mantenere anche la mia buona mamma.
+— Che cosa vuoi che mi faccia?
+La Lumaca cominciò a correre come una lucertola nei grandi solleoni d’agosto.
+Quando Pinocchio tornò a casa, il suo babbo gli domanderà:
+— E il vestito nuovo?
+— Che cosa vuoi che io faccio?
+Pazienza!
+Lo comprerò un’altra volta.
+Quella sera Pinocchio invece di vegliare fino alle dieci, vegliò fino alla mezzanotta!
+e invece di far otto canestri di giunco ne fece sedici.
+Poi andò a letto e si addorentò.
+E nel dolore, gli pareva di vedere in sogno la Fata, tutta bella e sorridente; la quale, dopo avergli dato un bacio, gli disse così:
+— Bravo Pinocchio!...
+In grazia del tuo buon cuore, io ti perdono tutte le monellerie che hai fatto fino a oggi.
+I ragazzi che assistono amorosamente i propri genitori nelle loro miserie e nelle loro infermità meritano sempre gran lode e grande affetto, anche se non possono esser citati come modelli d’ubbidienza e di buona condotta.
+Metti giudizio per l’avvenire e sarai felice.
+—
+A questo punto il sogno finì, e Pinocchio si svegliò con tanto d’occhi spalanchati.
+Ora immaginavi voi quale fu la sua meraviglia quando, svegliando sé stesso, si accorgesse che non era più un burattino di legno: ma che era diventato, invece, un ragazzo come tutti gli altri.
+Détte un’occhiata all’intorno, e invece delle solte pareti di paglia della capanna, vide una bella camerina ammodibiliata e ghindata con una simplicità quasi elegante.
+Saltando giù dal letto, trovò preparato un bel vestiario nuovo, un berretto nuovo e un 1)
+paio di stivaletto di pelle, che gli tornavano una vera pittura.
+Appena si fu vestito, gli venne fatto, naturalmente di mettere le mani nelle tasche e tirò fuori un piccolo portamonte d’oro orlo, sul quale erano scritte queste parole: «La Fata dai capelli turchini rimette al suo caro Pinocchio i quaranta soldi, e lo ringrazia tanto del suo buon cuore.
+— Che cosa vuoi che mi faccia?
+Dopo andò a guardarsi allo specchio e gli parve d’essere un altro.
+I’on vide più riflessa la solita immagine della marionetta di legno, ma vide immagine vispa e intelligente di un bel fanciullo, cogli occhi celesti e con un’aria allegra e festosa come una pasqua di rose.
+In mezzo a tutte queste meravigliose, che si succedevano le une alle altre.
+Pinocchio non sapeva piuttosto nemmeno lui se era desto davvero o se sognava sempre a occhi aperti.
+— E il mio babbo dov’è?
+— gridò tutt’ a un tratto; ed entrato nella stanza accanto trovò il vecchio Geppetto sano, arzillo e di buon umore, come una volta, il quale, avendo ripreso subito la sua professione d’intagliatore, stava appunto disegnando una bellissima cornice ricca di fogliimi, di fiori e di testine di diversi animali.
+— Levatemi una curiosità, babbino: ma come si spiega tutto questo cambiamento improvviso?
+— gli domandò Pinocchio, saltandogli al collo e coprendolo di baci.
+— Questo improvviso cambiamento in casa nonstra è tutto merito tuo — disse Geppetto..
+— Perette merito mio?
+— Perchè quando i ragazzi di cattivi divenono buoni, hanno la virtù di far vedere un aspetto nuovo e sorridente nelle famiglie loro.
+— E il vecchio Pinocchio di legno dove si sarà nascosto!
+— Eccolo là!
+— rispose Geppetto, e gli accennò un grosso burattino appoggiatosa a una seggiola col capo girato sur una parte, con le braccia cion-coldoni e con le gambe ripiegate a mezzo, da parere un miracolo se stava ritto.
+Pinocchio si voltò a guardarlo: e dopo che l’ebbe guardato un poco, disse dentro di se con grandissima compiacimento:
+— Com'ero buffo, quando era un burattino?
+e come ora son contento di esser diventato un ragazzino per bene!…
+— Che cosa vuoi che io faccio?
+—
+Pinocchio si avvicinò a Pinocchio e gli disse:
+— Che cosa vuoi che io faccia?","XXXVI.
+
+Finalmente Pinocchio cessa d’essere un burattino e diventa un ragazzo.
+
+Mentre Pinocchio nuotava alla svelta per raggiungere la spiaggia, si accòrse che il suo babbo, il quale gli stava a cavalluccio sulle spalle e aveva le gambe mezze nell’acqua, tremava fitto fitto, come se al pover’uomo gli battesse la febbre terzana.
+Tremava di freddo o di paura? Chi lo sa?... Forse un po’ dell’uno e un po’ dell’altra. Ma Pinocchio, credendo che quel tremito fosse di paura, gli disse per confortarlo:
+— Coraggio babbo! Fra pochi minuti arriveremo a terra e saremo salvi.
+— Ma dov’è questa spiaggia benedetta? — domandò il vecchietto diventando sempre più inquieto, e appuntando gli occhi, come fanno i sarti quando infilano l’ago. — Eccomi qui, che guardo da tutte le parti, e non vedo altro che cielo e mare.
+— Ma io vedo anche la spiaggia — disse ilburattino. — Per vostra regola io sono come i gatti: ci vedo meglio di notte che di giorno.―
+Il povero Pinocchio faceva finta di essere di buonumore: ma invece… Invece cominciava a scoraggiarsi: le forze gli scemavano, il suo respiro diventava grosso e affannoso… insomma non ne poteva più, e la spiaggia era sempre lontana.
+Nuotò finchè ebbe fiato: poi si voltò col capo verso Geppetto, e disse con parole interrotte:
+— Babbo mio, aiutatemi… perchè io muoio...―
+E il padre e il figliuolo erano oramai sul punto di affogare, quando udirono una voce di chitarra scordata che disse:
+— Chi è che muore?
+— Sono io e il mio povero babbo!
+— Questa voce la riconosco! Tu sei Pinocchio!…
+— Preciso; e tu?
+— Io sono il Tonno, il tuo compagno di prigionia in corpo al Pesce-cane.
+— E come hai fatto a scappare?
+— Ho imitato il tuo esempio. Tu sei quello che mi hai insegnato la strada, e dopo te, sono fuggito anch’io.
+— Tonno mio, tu càpiti proprio a tempo! Ti prego, per l’amore che porti ai tonnini tuoi figliuoli; aiutaci, o siamo perduti.— Volentieri e con tutto il cuore. Attaccatevi tutt’e due alla mia coda, e lasciatevi guidare. In quattro minuti vi condurrò alla riva. ―
+Giudicarono più comodo di mettersi addirittura a sedere sulla groppa del Tonno.
+
+Geppetto e Pinocchio, come potete immaginarvelo, accettarono subito l’invito; ma invece di attaccarsi alla coda, giudicarono più comodo di mettersi addirittura a sedere sulla groppa del Tonno.— Siamo troppo pesi? — gli domandò Pinocchio.
+— Pesi? Neanche per ombra: mi par di avere addosso due gusci di conchiglia — rispose il Tonno, il quale era di una corporatura così grossa e robusta, da parere un vitello di due anni.
+Giunti alla riva, Pinocchio saltò a terra il primo per aiutare il suo babbo a fare altrettanto: poi si voltò al Tonno, e con voce commossa gli disse:
+— Amico mio, tu hai salvato il mio babbo! Dunque non ho parole per ringraziarti abbastanza! Permetti almeno che ti dia un bacio in segno di riconoscenza eterna!… —
+Il Tonno cacciò il muso fuori dall’acqua, e Pinocchio, piegandosi coi ginocchi a terra, gli posò un affettuosissimo bacio sulla bocca. A questo tratto di spontanea e vivissima tenerezza, il povero Tonno, che non c’era avvezzo, si sentì talmente commosso, che vergognandosi a farsi veder piangere come un bambino, ricacciò il capo sott’acqua e sparì.
+Intanto s’era fatto giorno.
+Allora Pinocchio, offrendo il suo braccio a Geppetto, che aveva appena il fiato di reggersi in piedi, gli disse:
+— Appoggiatevi pure al mio braccio, caro babbino,e andiamo. Cammineremo pian pianino come le formicole, e quando saremo stanchi, ci riposeremo lungo la via.
+Pinocchio, piegandosi coi ginocchi a terra, gli posò un affettuosissimo
+bacio sulla bocca.
+
+— E dove dobbiamo andare? — domandò Geppetto.
+— In cerca di una casa o d’una capanna, dove ci diano per carità un boccon di pane e un po’ di paglia che ci serva da letto. ―
+Non avevano ancora fatti cento passi, che videro seduti sul ciglione della strada due brutticeffi, i quali stavano lì in atto di chiedere l’elemosina.
+Erano il Gatto e la Volpe: ma non si riconoscevano più da quelli d’una volta. Figuratevi che il Gatto, a furia di fingersi cieco, aveva finito coll’accecare davvero: e la Volpe invecchiata, intignata e tutta perduta da una parte, non aveva più nemmeno la coda. Così è. Quella trista ladracchiola, caduta nella più squallida miseria, si trovò costretta un bel giorno a vendere perfino la sua bellissima coda a un merciaio ambulante, che la comprò per farsene uno scacciamosche.
+— O Pinocchio! — gridò la Volpe con voce di piagnisteo — fai un po’ di carità a questi due poveri infermi!
+— Infermi! — ripetè il Gatto.
+— Addio, mascherine! — rispose il burattino. — Mi avete ingannato una volta, e ora non mi ripigliate più.
+— Credilo, Pinocchio, che oggi siamo poveri e disgraziati davvero!
+— Davvero! — ripetè il Gatto.
+— Se siete poveri ve lo meritate. Ricordatevi del proverbio che dice: «I quattrini rubati non fanno mai frutto.» Addio, mascherine.
+— Abbi compassione di noi!…— Di noi!
+— Addio, mascherine! Ricordatevi del proverbio che dice: «La farina del diavolo va tutta in crusca.»
+— Non ci abbandonare!…
+— are…! — ripetè il Gatto.
+— Addio, mascherine! Ricordatevi del proverbio che dice: «Chi ruba il mantello al suo prossimo, per il solito muore senza camicia.» —
+E così dicendo, Pinocchio e Geppetto seguitarono tranquillamente per la loro strada: finchè fatti altri cento passi, videro in fondo a una viottola, in mezzo ai campi, una bella capanna tutta di paglia, e col tetto coperto d’embrici e di mattoni.
+— Quella capanna dev’essere abitata da qualcuno, — disse Pinocchio. — Andiamo là, e bussiamo. —
+Difatti andarono, e bussarono alla porta.
+— Chi è? — disse una vocina di dentro.
+— Siamo un povero babbo e un povero figliuolo, senza pane e senza tetto, — rispose il burattino.
+— Girate la chiave, e la porta si aprirà, — disse la solita vocina.
+Pinocchio girò la chiave, e la porta si aprì. Appena entrati dentro, guardarono di qua, guardarono di là, e non videro nessuno.
+— Addio, mascherine! Ricordatevi del proverbio che dice: “Chi ruba il mantello
+al suo prossimo, per il solito muore senza camicia.„
+— O il padrone della capanna dov’è? — disse Pinocchio maravigliato.
+— Eccomi quassù!
+Babbo e figliuolo si voltarono subito verso il soffitto, e videro sopra un travicello il Grillo-parlante.
+— Oh! mio caro Grillino — disse Pinocchio salutandolo garbatamente.
+— Ora mi chiami il «Tuo caro Grillino» non è vero? Ma ti rammenti di quando, per cacciarmi di casa tua, mi tirasti un manico di martello?
+— Hai ragione, Grillino! Scaccia anche me.... tira anche a me un manico di martello: ma abbi pietà del mio povero babbo....
+— Io avrò pietà del babbo e anche del figliuolo! ma ho voluto rammentarti il brutto garbo ricevuto, per insegnarti che in questo mondo, quando si può, bisogna mostrarsi cortesi con tutti, se vogliamo esser ricambiati con pari cortesia nei giorni del bisogno.
+— Hai ragione, Grillino, hai ragione da vendere; e io terrò a mente la lezione che mi hai data. Ma mi dici come hai fatto a comprarti questa bella capanna?
+— Questa capanna mi è stata regalata jeri da una graziosa capra, che aveva la lana d’un bellissimo colore turchino.— E la capra dov’è andata? — domandò Pinocchio, con vivissima curiosità.
+— Non lo so.
+— E quando ritornerà?…
+— Non ritornerà mai. Ieri è partita tutta afflitta, e, belando, pareva che dicesse: «Povero Pinocchio!… oramai non lo rivedrò più!… il Pesce-cane a quest’ora l’avrà bell’e divorato!…»
+— Ha detto proprio così?… Dunque era lei!… era lei!… era la mia cara Fatina!… — cominciò a urlare Pinocchio, singhiozzando e piangendo dirottamente.
+Quand’ebbe pianto ben bene, si rasciugò gli occhi, e preparato un buon lettino di paglia, vi distese sopra il vecchio Geppetto. Poi domandò al Grillo-parlante:
+— Dimmi, Grillino: dove potrei trovare un bicchiere di latte per il mio povero babbo?
+— Tre campi distante di qui c’è l’ortolano Giangio, che tiene le mucche. Va’ da lui, e troverai il latte che cerchi. —
+Pinocchio andò di corsa a casa dell’ortolano Giangio; ma l’ortolano gli disse:
+— Quanto ne vuoi del latte?
+— Ne voglio un bicchiere pieno.
+— Un bicchiere di latte costa un soldo. Comincia intanto dal darmi il soldo.— Non ho nemmeno un centesimo — rispose Pinocchio, tutto mortificato e dolente.
+— Male, burattino mio, — replicò l’ortolano. — Se tu non hai nemmeno un centesimo, io non ho nemmeno un dito di latte.
+— Pazienza! — disse Pinocchio e fece l’atto di andarsene.
+— Aspetta un po’ — disse Giangio. — Fra te e me ci possiamo accomodare. Vuoi adattarti a girare ilbindolo?
+— Che cos’è il bindolo?
+— Gli è quell’ordigno di legno che serve a tirar su l’acqua dalla cisterna per annaffiare gli ortaggi.
+— Mi proverò…
+— Dunque, tirami su cento secchie d’acqua, e io ti regalerò in compenso un bicchiere di latte.
+— Sta bene. —
+Giangio condusse il burattino nell’orto e gl’insegnò la maniera di girare ilbindolo. Pinocchio si pose subito al lavoro; ma prima di aver tirato su le cento secchie d’acqua, era tutto grondante di sudore dalla testa ai piedi. Una fatica a quel modo non l’aveva durata mai.
+— Finora questa fatica di girare il bindolo — disse l’ortolano, — l’ho fatta fare al mio ciuchino; ma oggi quel povero animale è in fin di vita.— Mi menate a vederlo? — disse Pinocchio.
+— Volentieri.—
+Appena che Pinocchio fu entrato nella stalla vide un bel ciuchino disteso sulla paglia, rifinito
+E chinatosi fino a lui, gli domandò in dialetto asinino: — Chi sei? —
+dalla fame e dal troppo lavoro. Quando l’ebbe guardato fisso fisso, disse dentro di sè, turbandosi:
+— Eppure quel ciuchino lo conosco! Non mi è fisonomia nuova! —
+E chinatosi fino a lui, gli domandò in dialetto asinino:
+— Chi sei?—
+A questa domanda, il ciuchino aprì gli occhi moribondi, e rispose balbettando nel medesimo dialetto:
+— Sono Lu....ci....gno....lo. —
+E dopo richiuse gli occhi e spirò.
+— Oh! povero Lucignolo! — disse Pinocchio a mezza voce: e presa una manciata di paglia si rasciugò una lacrima che gli colava giù per il viso.
+— Ti commovi tanto per un asino che non ti costa nulla? — disse l’ortolano. — Che cosa dovrei far io che lo comprai a quattrini contanti?
+— Vi dirò... era un mio amico....
+— Tuo amico?
+— Un mio compagno di scuola!…
+— Come?! — urlò Giangio dando in una gran risata. — Come?! avevi dei somari per compagni di scuola?… Figuriamoci i begli studj che devi aver fatto!… —
+Il burattino, sentendosi mortificato da quelle parole, non rispose: ma prese il suo bicchiere di latte quasi caldo, e se ne tornò alla capanna.
+E da quel giorno in poi, continuò più di cinque mesi a levarsi ogni mattina, prima dell’alba, per andare a girare il bindolo, e guadagnare così quel bicchiere di latte, che faceva tanto bene alla salute cagionosa del suo babbo. Nè si contentò di questo: perchè a tempo avanzato, imparò a fabbricare anche i canestri e i panieri di giunco: e coi quattrini che ne ricavava, provvedeva con moltissimo giudizio a tutte le spese giornaliere. Fra le altre cose costruì da sè stesso un elegante carrettino per condurre a spasso il suo babbo nelle belle giornate, e per fargli prendere una boccata d’aria.
+Nelle veglie poi della sera, si esercitava a leggere e a scrivere. Aveva comprato nel vicino paese per pochi centesimi un grosso libro, al quale mancavano il frontespizio e l’indice, e con quello faceva la sua lettura. Quanto allo scrivere, si serviva di un fuscello temperato a uso penna; e non avendo nè calamaio nè inchiostro, lo intingeva in una boccettina ripiena di sugo di more e di ciliege.
+Fatto sta che con la sua buona volontà d’ingegnarsi, di lavorare e di tirarsi avanti, non solo era riuscito a mantenere quasi agiatamente il suo genitore sempre malaticcio, ma per di più aveva potuto mettere da parte anche quaranta soldi per comprarsi un vestitino nuovo.
+Una mattina disse a suo padre:
+— Vado qui al mercato vicino a comprarmi una giacchettina, un berrettino e un paio discarpe. Quando tornerò a casa — soggiunse ridendo — sarò vestito così bene, che mi scambierete per un gran signore. —
+E uscito di casa, cominciò a correre tutto allegro e contento. Quando a un tratto sentì chiamarsi per nome, e voltandosi, vide una bella Lumaca che sbucava fuori dalla siepe.
+— Non mi riconosci? — disse la Lumaca.
+— Mi pare e non mi pare....
+— Non ti ricordi di quella Lumaca, che stava per cameriera con la Fata dai capelli turchini? non ti rammenti di quella volta quando scesi a farti lume, e che tu rimanesti con un piede confitto nell’uscio di casa?
+— Mi rammento di tutto, — gridò Pinocchio! — — rispondimi subito, Lumachina bella; dove hai lasciato la mia buona Fata? che fa? mi ha perdonato? si ricorda sempre di me? mi vuol sempre bene? è molto lontana da qui? potrei andare a trovarla? ―
+A tutte queste domande, fatte precipitosamente e senza ripigliar fiato, la Lumaca rispose con la sua solita flemma:
+— Pinocchio mio! La povera Fata giace in un fondo di letto allo spedale!....
+— Allo spedale?…
+— Pur troppo. Colpita da mille disgrazie, si ègravemente ammalata, e non ha più da comprarsi un boccon di pane.
+— Davvero?… Oh! che gran dolore che mi hai dato! Oh! povera Fatina! povera Fatina! povera Fatina!… Se avessi un milione, correrei a portarglielo.... Ma io non ho che quaranta soldi.... eccoli qui! andavo giusto a comprarmi un vestito nuovo. Prendili, Lumaca, e va’ a portarli subito alla mia buona Fata.
+— E il tuo vestito nuovo?
+— Che m’importa del vestito nuovo? Venderei anche questi cenci che ho addosso, per poterla aiutare! Va’, Lumaca, e spicciati! e fra due giorni ritorna qui, che spero di poterti dare qualche altro soldo. Finora ho lavorato per mantenere il mio babbo: da oggi in là, lavorerò cinque ore di più per mantenere anche la mia buona mamma. Addio, Lumaca, e fra due giorni ti aspetto. ―
+La Lumaca, contro il suo costume, cominciò a correre come una lucertola nei grandi solleoni d’agosto.
+Quando Pinocchio tornò a casa, il suo babbo gli domandò:
+— E il vestito nuovo?
+— Non m’è stato possibile di trovarne uno che mi tornasse bene. Pazienza!… Lo comprerò un’altra volta.Quella sera Pinocchio, invece di vegliare fino alle dieci, vegliò fino alla mezzanotte sonata! e invece di far otto canestri di giunco ne fece sedici.
+Poi andò a letto e si addormentò. E nel dormire, gli pareva di vedere in sogno la Fata, tutta bella e sorridente, la quale, dopo avergli dato un bacio, gli disse così:
+— Bravo Pinocchio! In grazia del tuo buon cuore, io ti perdono tutte le monellerie che hai fatto fino a oggi. I ragazzi che assistono amorosamente i propri genitori nelle loro miserie e nelle loro infermità, meritano sempre gran lode e grande affetto, anche se non possono esser citati come modelli d’ubbidienza e di buona condotta. Metti giudizio per l’avvenire, e sarai felice. ―
+A questo punto il sogno finì, e Pinocchio si svegliò con tanto d’occhi spalancati.
+Ora immaginatevi voi quale fu la sua maraviglia quando, svegliandosi, si accòrse che non era più un burattino di legno: ma che era diventato, invece, un ragazzo come tutti gli altri. Dètte un’occhiata all’intorno, e invece delle solite pareti di paglia della capanna, vide una bella camerina ammobiliata e agghindata con una semplicità quasi elegante. Saltando giù dal letto, trovò preparato un bel vestiario nuovo, un berretto nuovo e unpaio di stivaletti di pelle, che gli tornavano una vera pittura.
+Appena si fu vestito, gli venne fatto, naturalmente di mettere le mani nelle tasche e tirò fuori un piccolo portamonete d’avorio, sul quale erano scritte queste parole: «La Fata dai capelli turchini restituisce al suo caro Pinocchio i quaranta soldi, e lo ringrazia tanto del suo buon cuore.» Aperto il portafoglio, invece dei quaranta soldi di rame, vi luccicavano quaranta zecchini d’oro tutti nuovi di zecca.
+Dopo andò a guardarsi allo specchio e gli parve d’essere un altro. Non vide più riflessa la solita immagine della marionetta di legno, ma vide l’immagine vispa e intelligente di un bel fanciullo coi capelli castagni, cogli occhi celesti e con un’aria allegra e festosa come una pasqua di rose.
+In mezzo a tutte queste meraviglie, che si succedevano le une alle altre, Pinocchio non sapeva più nemmeno lui se era desto davvero o se sognava sempre a occhi aperti.
+— E il mio babbo dov’è? — gridò tutt’a un tratto; ed entrato nella stanza accanto trovò il vecchio Geppetto sano, arzillo e di buonumore, come una volta, il quale, avendo ripreso subito la sua professione d’intagliatore, stava appuntodisegnando una bellissima cornice ricca di fogliami, di fiori e di testine di diversi animali.
+— Levatemi una curiosità, babbino: ma come si spiega tutto questo cambiamento improvviso?
+Gli accennò un grosso burattino appoggiato a una seggiola.
+— gli domandò Pinocchio saltandogli al collo e coprendolo di baci.
+— Questo improvviso cambiamento in casa nostra è tutto merito tuo — disse Geppetto.
+— Perchè merito mio?…
+— Perchè quando i ragazzi, di cattivi diventanobuoni, hanno la virtù di far prendere un aspetto nuovo e sorridente anche nell’interno delle loro famiglie.
+— E il vecchio Pinocchio di legno dove si sarà nascosto?
+— Eccolo là! — rispose Geppetto; e gli accennò un grosso burattino appoggiato a una seggiola, col capo girato sur una parte, con le braccia ciondoloni e con le gambe incrocicchiate e ripiegate a mezzo, da parere un miracolo se stava ritto.
+Pinocchio si voltò a guardarlo: e dopo che l’ebbe guardato un poco, disse dentro di sè con grandissima compiacenza:
+— Com’ero buffo, quand’ero un burattino! e come ora son contento di esser diventato un ragazzino perbene!… ―
+
+
+F I N E.",0.10469109259756935,0.22611443093619069,6
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"IV. 
+La  storia  di  Pinocchio  col  Grillo-parlante,  dove  si  vede  come 
+i  ragazzi  cattivi  lianno  a  iioja  di  sentirsi  correggere  da  chi 
+ne  sa  più  di  loro. 
+Vi  dirò  dunque,  ragazzi,  che  mentre  il  povero 
+Geppetto  era  condotto  senza  sua  colica  in  pri- 
+gione, quel  monello  di  Pinocchio,  rimasto  libero 
+dalle  grinfie  del  carabiniere,  se  la  dava  a  gambe 
+giù  attraverso  ai  campi,  i)er  far  più  presto  a  tor- 
+narsene a  casa;  e  nella  gran  furia  del  correre 
+saltava  greppi  altissimi,  siepi  di  pruni  e  fossi 
+pieni  d' acqua,  tale  e  quale  come  avrebbe  potuto 
+fare  lui  capretto  o  un  leprottino  inseguito  dai 
+cacciatori. 
+Giunto  dinanzi  a  casa,  trovò  l'uscio  di  strada 
+socchiuso.  Lo  spinse,  entrò  dentro,  e  appena  ebbe 
+messo  tanto  di  i)aletto,  si  gettò  a  sedere  per 
+terra,  lasciando  andare  un  gran  sospirone  di  con- 
+tentezza. 
+Ma  quella  contentezza  durò  poco,  perchè  sentì 
+nella  stanza  qualcuno  che  fece: 
+—  Cri-cri-cri  ! 
+
+
+—  Olii  è  che  mi  chiama?  —  disse  Pinocchio 
+tutto  impaurito. 
+—  Sono  io  !  ^- 
+Pinocchio  si  voltò,  e 'vide  un  grosso  grillo  che 
+saliva  lentamente  su  su  per  il  muro. 
+—  Dimmi,  Grillo,  e  tu  chi  sei  I 
+—  Io  sono  il  Grillo-parlante,  e  abito  in  que- 
+sta stanza  da  più  di  cent'anni. 
+—  Oggi  però  questa  stanza  è  mia,  —  disse 
+il  burattino  ^  e  se  vuoi  farmi  uh  vero  pia- 
+cere, vattene  subito,  senza  nemmeno  voltarsi  in- 
+dietro. 
+—  Io  non  me  ne  anderò  di  qui,  —  rispose  il 
+Grillo  —  se  prima  non  ti  avrò  detto  una  gran 
+verità. 
+—  Dimmela,  e  spicciati. 
+—  Guai  a  quei  ragazzi  che  si  ribellano  ai  loro 
+genitori,  e  che  abbandonano  capricciosamente 
+la  casa  paterna.  Xon  avranno  mai  bene  in  que- 
+sto mondo;  e  prima  o  poi  dovranno  pentirsene 
+amaramente. 
+—  Canta  pure.  Grillo  mio,  come  ti  pare  e  piace: 
+ma  io  so  che  domani,  all'  alba,  voglio  andarmene 
+di  qui,  perchè  se  rimango  qui,  avverrà  a  me 
+quel  che  avviene  a  tutti  gli  altri  ragazzi,  vale 
+a  dire  mi  manderanno  a  scuola,  e  per  amore  o 
+per  forza  mi  toccherà  a  studiare;  e  io,  a  dirtela 
+
+
+iu  confidenza,  di  studiare  non  ho  punta  voglia 
+e  mi  diverto  più  a  correre  dietro  alle  farfalle  e 
+a  salire  su  per  gli  alberi  a  prendere  gii  uccel- 
+lini di  nido. 
+—  Povero  grullerello!- Ma  non  sai  che,  fa- 
+cendo così,  diventerai  da  grande  un  bellissimo 
+somaro,  e  che  tutti  si  piglieranno  gioco  di  te  1 
+—  Chetati,  grillaecio  del  mal'  augurio  !  —  gridò 
+Pinocchio. 
+Ma  il  grillo,  che  era  paziente  e  filosofo,  invece 
+di  aversi  a  male  di  questa  impertinenza,  con- 
+tinuò con  lo  stesso  tono  di  voce: 
+—  E  se  non  ti  garba  di  andare  a  scuola,  per- 
+chè non  impari  almeno  un  mestiere  tanto  da 
+guadagnarti  onestamente  un  pezzo  di  panel 
+—  Vuoi  che  te  lo  dica  !  —  rei)licò  Pinocchio, 
+che  cominciava  a  perdere  la  pazienza.  —  Fra  i 
+mestieri  del  mondo  non  ce  n'  è  che  uno  solo,  che 
+veramente  mi  vada  a  genio. 
+— r  E  questo  mestiere  sarebbe  1 
+—  Quello  di  mangiare,  bere,  dormire,  diver- 
+tirmi, e  fare  dalla  mattina  alla  sera  la  vita  del 
+vagabondo. 
+—  Per  tua  regola  —  disse  il  Grillo-parlante 
+con  la  sua  solita  calma  —  tutti  quelli  che  fanno 
+codesto  mestiere,  finiscono  quasi  sempre  allo 
+spedale  o  in  prigione. 
+
+
+—  Bada,  grillaccio  del  mal' augurio  !...  se  mi 
+monta  la  bizza,  guai  a  te!... 
+—  Povero  Pinocchio:  mi  fai  proimo  compas- 
+sione!... 1 
+—  Perchè  ti  faccio  compas- 
+sione 1 
+—  Perchè  sei  un  burattino  e, 
+quel  che  è  peggio,  perchè  hai  la 
+testa  Ui  legno.  — 
+A  queste  ultime  parole,  Pi- 
+nocchio saltò  su  tutt' infuriato, 
+e  preso  di  sul  banco  un 
+martello  di  legno,  lo  sca- 
+gliò contro  il  Grillo-par- 
+lante. 
+Forse  non  credeva 
+nemmeno  di  colpirlo  ; 
+ma  disgraziatamente  lo 
+colse  per  l'appunto  nel 
+capo,  tanto  che  il  po- 
+vero Grillo  ebbe  appena 
+il  fiato  di  fare  crì-crì-crì^  e  poi  rimase  lì  stecchito 
+e  appiccicato  alla  x^^i'ete. 
+
+CIP 
+
+Preso  di  sul  banco  un  raartello  di  le- 
+gno, lo  scagliò  contro  il  Gì  ilio  parlante.","IV.
+La storia di Pinocchio col Grillo parlante, dove si vede come i ragazzi cattivi lianno a ioja di sentirsi correggere da chi ne sa più di loro.
+—
+Pinocchio, che non sapeva più nulla, si avvicinò al burattinaio e gli disse:
+— Che cosa vuoi che io faccia?
+Giunto dinanzi a casa, trovò l’uscio di strada socchiuso..
+Lo spinse, entrò dentro, e appena ebbe messo tanto di letto, si gettò a sedere per terra, lasciando andare un gran sospironino di contentezza.
+Ma quella contentezza durò poco, perchè sentì nella stanza qualcuno che fece:
+— Cri cri cri cri!
+— Olii è che mi chiama?
+— disse Pinocchio tutti impaurito;
+— Sono io!
+Pinocchio si voltò, e «vide un grosso grillo che saliva lentamente su su per il muro.
+— Dimmi, Grillo, e tu chi sei?
+— Oggi però questa stanza è mia, — disse il burattino e se vuoi farmi vero piacere, vatene subito, senza nemmeno voltarsi indietro.
+— Io non me ne anderò di qui, — rispose il Grillo — se prima non ti avrò detto una gran verità.
+— Dimmela!
+— Guai a quei ragazzi che si ribellano ai loro genitori, e che abbandonino capricciamente la casa paterna.
+Xon avranno mai bene in questo mondo; e prima o poi dovranno pentirsi amaramente.
+— Canta pure.
+Grillo mio, come ti pare e piace: ma io so che domani, all’alba, voglio andar meno di qui, perchè se rimangera qui, avverrà a me quello che avviene a tutti gli altri ragazzi: vale a dire mi manderanno a scuola, e per amore o per forza mi toccerà a studiare; e io, a dirtela
+iu confidenza di studiare non ho punta voglia e mi diverto più a correre dietro alle farfalle e a salire su per gli alberi a prendere gli uccelini di nido.
+— Povero grulla!
+— gridò Pinocchio.
+Ma il grillo, che era paziente e filosofo, invece di aversi a male di questa impertinenze, continuò con lo stesso tono di voce:
+— E se non ti garba di andare a scuola, perchè non impari almeno un mestiere tanto da guadagnargli onestamente un pezzo di panel — vuoi che te lo dica?
+— disse il burattino.
+— Fra i mestieri del mondo non ce n’è che uno solo, che veramente mi vada a genio.
+— r E questo mestiere sarebbe
+— Quello di mangiare, bere, dormire; divertirsi, e fare dalla mattina alla sera la vita del vagabondo.
+— Per tua regola — disse il Grillo parlante con la sua solita calma — tutti quelli che fanno codesto mestiere, finiscono quasi sempre allo spedale o in prigione.<|assistant|
+— Bada, grillacchio del mal’augurio!…
+— Bada, Pinocchio!
+se mi monta la bizza, guai a te!...
+— Povero Pinocchio!
+— Perchè ti faccio compasi-
+sione.
+—
+A queste ultime parole, Pinocchio saltò su tutt’ infuriato e preso di sul banco un martello di legno, lo scagliò contro il Grilloparlante.
+Forse non credeva nemmeno di colpirelo; ma disgrazzatamente lo colse per l’appunto nel capo, tanto che il povero Grillo ebbe appena il fiato di fare crìcrìcrì, e poi rimase staccato e appliccicato alla pietà.
+Preso di sul banco un raartello di legno, lo scagliò contro il Gì ilio parlante.","IV.
+
+La storia di Pinocchio col Grillo-parlante, dove si vede come i ragazzi cattivi hanno a noia di sentirsi correggere da chi ne sa più di loro.
+
+Vi dirò dunque, ragazzi, che mentre il povero Geppetto era condotto senza sua colpa in prigione, quel monello di Pinocchio, rimasto libero dalle grinfie del carabiniere, se la dava a gambe giù attraverso ai campi, per far più presto a tornarsene a casa; e nella gran furia del correre saltava greppi altissimi, siepi di pruni e fossi pieni d’acqua, tale e quale come avrebbe potuto fare un capretto o un leprottino inseguito dai cacciatori.
+Giunto dinanzi a casa, trovò l’uscio di strada socchiuso. Lo spinse, entrò dentro, e appena ebbe messo tanto di paletto, si gettò a sedere per terra, lasciando andare un gran sospirone di contentezza.
+Ma quella contentezza durò poco, perchè sentì nella stanza qualcuno che fece:
+— Crì-crì-crì!
+— Chi è che mi chiama? — disse Pinocchio tutto impaurito.
+— Sono io! —
+Pinocchio si voltò, e vide un grosso Grillo che saliva lentamente su su per il muro.
+— Dimmi, Grillo, e tu chi sei?
+— Io sono il Grillo-parlante, e abito in questa stanza da più di cent’anni.
+— Oggi però questa stanza è mia, — disse il burattino — e se vuoi farmi un vero piacere, vattene subito, senza nemmeno voltarsi indietro.
+— Io non me ne anderò di qui, — rispose il Grillo — se prima non ti avrò detto una gran verità.
+— Dimmela, e spicciati.
+— Guai a quei ragazzi che si ribellano ai loro genitori, e che abbandonano capricciosamente la casa paterna. Non avranno mai bene in questo mondo; e prima o poi dovranno pentirsene amaramente.
+— Canta pure, Grillo mio, come ti pare e piace: ma io so che domani, all’alba, voglio andarmene di qui, perchè se rimango qui, avverrà a me quel che avviene a tutti gli altri ragazzi, vale a dire mi manderanno a scuola, e per amore o per forza mi toccherà studiare; e io, a dirtela
+in confidenza, di studiare non ho punto voglia e mi diverto più a correre dietro alle farfalle e a salire su per gli alberi a prendere gli uccellini di nido.
+— Povero grullerello! Ma non sai che, facendo così, diventerai da grande un bellissimo somaro, e che tutti si piglieranno gioco di te?
+— Chetati, Grillaccio del mal’augurio! — gridò Pinocchio.
+Ma il Grillo, che era paziente e filosofo, invece di aversi a male di questa impertinenza, continuò con lo stesso tono di voce:
+— E se non ti garba di andare a scuola, perchè non impari almeno un mestiere tanto da guadagnarti onestamente un pezzo di pane?
+— Vuoi che te lo dica? — replicò Pinocchio, che cominciava a perdere la pazienza. — Fra tutti i mestieri del mondo non ce n’è che uno solo, che veramente mi vada a genio.
+— E questo mestiere sarebbe?
+— Quello di mangiare, bere, dormire, divertirmi, e fare dalla mattina alla sera la vita del vagabondo.
+— Per tua regola — disse il Grillo-parlante con la sua solita calma — tutti quelli che fanno codesto mestiere, finiscono sempre allo spedale o in prigione.
+— Bada, Grillaccio del mal’augurio!… se mi monta la bizza, guai a te!…
+— Povero Pinocchio! Mi fai proprio compassione!…
+— Perchè ti faccio compassione?
+— Perchè sei un burattino e, quel che è peggio, perchè hai la testa di legno. —
+A queste ultime parole, Pinocchio saltò su tutt’infuriato e preso sul banco un martello di legno, lo scagliò contro il Grillo-parlante.
+Forse non credeva nemmeno di colpirlo; ma disgraziatamente lo colse per l’appunto nel capo, tanto che il povero Grillo ebbe appena il fiato di fare crì-crì-crì, e poi rimase lì stecchito e appiccicato alla parete.",0.31952846285093844,0.2856655290102389,6
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"V. 
+Piuoccliio  lia  fame  e  cerca  un  uovo  per  farsi  mia  frittata; 
+ma  sul  più  bello,  la  frittata  gli  vola  via  dalla  finestra. 
+Intanto  cominciò  a  farsi  notte,  e  Pinocchio, 
+ricordandosi  che  non  aveva  mangiato  nulla,  sentì 
+un' uggiolina  allo  stomaco,  che  somigliava  mol- 
+tissimo all'appetito. 
+Ma  l'appetito  dei  ragazzi  cammina  presto,  e 
+difatti,  dopo  pochi  minuti  l'appetito  diventò 
+fame,  e  la  fame,  dal  vedere  al  non  vedere  si 
+convertì  in  una  fame  da  lupi,  in  una  fame  da 
+tagliarsi  col  coltello. 
+Il  povero  Pinocchio  corse  subito  al  focolare 
+dove  c'era  una  pentola  che  bolliva,  e  fece  l'atto 
+di  scoperchiarla,  per  vedere  che  cosa  ci  fosse 
+dentro:  ma  la  pentola  era  dipinta  sul  muro. 
+Immaginatevi  come  restò.  Il  suo  naso,  che  era 
+già  lungo,  gli  diventò  più  lungo  almeno  quat- 
+tro dita. 
+Allora  si  détte  a  correre  per  la  stanza  e  a  fru- 
+gare per  tutte  le  cassette  e  per  tutti  i  ripostigli 
+
+
+ili  cerca  di  un  po'  di  pane,  magari  un  po'  di  ijan 
+secco,  un  crosterello,  nn  osso  avanzato  al  cane, 
+un  po'  di  polenta  muffita,  una  lisca  di  pesce,  un 
+nocciolo  di  ciliegia,  insomma  qualche  cosa  da 
+masticare:  ma  non  trovò  nulla,  [il  gran  nulla, 
+proprio  nulla. 
+E  intanto  la  fame  cresceva,  e  cresceva  sem- 
+pre: e  il  povero  Pinocchio  non  aveva  altro  sol- 
+lievo che  quello  di  sbadigliare  e  faceva  degli 
+sbadigli  così  lunghi,  che  qualche  volta  la  bocca 
+gli  arrivava  fino  agli  orecchi.  E  dopo  avere  sba- 
+digliato, sputava,  e  sentiva  che  lo  stomaco  gli 
+andava  via. 
+Allora  piangendo  e  disperandosi,  diceva: 
+—  Il  Grillo-parlante  aveva  ragione.  Ho  fatto 
+male  a  rivoltarmi  al  mio  babbo  e  a  fuggire  di 
+casa....  Se  il  mio  babbo  fosse  qui  ora  non  mi 
+troverei  a  morire  di  sbadigli  !  Oh  !  che  brutta 
+malattia  che  è  la  fame  !  — 
+Quand'  ecco  che  gli  parve  di  vedere  nel  monte 
+della  spazzatura  qualche  cosa  di  tondo  e  di 
+bianco,  che  somigliava  tutto  ad  un  uovo  di  gal- 
+lina. Spiccare  un  salto  e  gettarvisi  sopra,  fu  un 
+punto  solo.  Era  un  uovo  davvero. 
+La  gioia  del  burattino  è  impossibile  descri- 
+verla: bisogna  sapersela  figurare.  Credendo  quasi 
+che  fosse  un  sogno,  si  rigirava   quest'uovo   fra 
+
+
+le  mani,  e  lo  toccava  e  lo  baciaA^a  e  baciandolo 
+diceva  : 
+—  E  ora  come  dovrò  cuocerlo?  ^e  farò  una 
+frittata!...  ]S""o,  è  meglio  cuocerlo  nel  piatto!... 
+o  non  sarebbe  più  saporito  se  lo  friggessi  in  pa- 
+della! O  se  invece  lo  cuocessi  a  uso  uovo  a  bere! 
+^o,  la  più  lesta  di  tutte  è  di  cuocerlo  nel  piatto 
+o  nel  tegamino:  ho  troi^pa  voglia  di  mangiar- 
+melo !  — 
+Detto  fatto,  pose  un  tegamino  sopra  un  cal- 
+dano pieno  di  brace  accesa  :  messe  nel  tegamino, 
+invece  d'olio  o  di  burro,  un  po'  d'acqua:  e  quando 
+l'acqua  i)rincii)iò  a  fumare,  tac  !...  spezzò  il  gu- 
+scio dell'uovo,  e  fece  l'atto  di  scodellarvelo 
+dentro. 
+Ma  invece  della  chiara  e  del  torlo  scappò  fuori 
+un  pulcino  tutto  allegro  e  complimentoso,  il 
+quale  facendo  una  bella  riverenza  disse: 
+—  Mille  grazie,  signor  Pinocchio,  d' avermi 
+risparmiata  la  fatica  di  rompere  il  guscio!  Ar- 
+ri vedell  a,  stia  bene  e  tanti  saluti  a  casa  !  — 
+Ciò  detto,  distese  le  ali,  e,  infilata  la  finestra 
+che  era  aperta,  se  ne  volò  via  a  perdita  d' occhio. 
+Il  povero  burattino  rimase  lì,  come  incantato, 
+cogli  occhi  fìssi,  colla  bocca  aperta  e  coi  gusci 
+dell'  uovo  in  mano.  Iliavutosi,  peraltro,  dal  primo 
+sbigottimento,  cominciò  a  piangere,  a  strillare, 
+
+
+a  battere  i  piedi  in  terra  per  la  disperazione,  e 
+piangendo  diceva: 
+—  Eppure  il  Grillo-parlante  aveva  ragione  ! 
+Se  non  fossi  scappato  di  casa  e  se  il  mio  babbo 
+fosse  qui,  ora  non  mi  troverei  a  morire  di  fame. 
+Eh  !  che  brutta  malattia  che  è  la  fame  !...  — 
+E  perchè  il  corpo  gli  seguitava  a  brontolare 
+più  che  mai,  e  non  sapeva  come  fare  a  chetarlo, 
+pensò  di  uscir  di  casa  e  di  dare  una  scappata  al 
+paesello  vicino,  nella  speranza  di  trovare  qual- 
+che persona  caritatevole,  che  gU  lacesse  V  elemo- 
+sina di  un  po'  di  pane.","V.
+Intanto cominciò a farsi notte, e Pinocchio ricordandosi che non aveva mangiato nulla, sentì un’uggiolina allo stomacco, che somigliava molteplicemente all’appetite.
+Ma l’appetito dei ragazzi cammina presto, e difatti, dopo pochi minuti l’Appetito diventò fame, e la fame, dal vedere al non vedere si convertì in una fame da lupi.
+Il povero Pinocchio corse subito al focolare dove c’era una pentola che bolliva e fece l’atto di scoparla, per vedere che cosa ci fosse dentro: ma la pentola era dipinta sul muro.
+Immaginevi come restò.
+Il suo naso, che era già lungo, gli diventò più lungo almeno quattro dita.
+Allora si détte a correre per la stanza e a frugare per tutte le cassette e per tutti i ripostigli
+
+ili cerca di un po’ di pane, magari un po' di ijano secco, un crosterello n’osso avanzato al cane, una lisca di pesce, un nocciolo di ciliega, insomma qualche cosa da masticare: ma non trovò nulla, [il gran nulla, proprio nulla.
+E intanto la fame cresceva e cresceva sempre: e il povero Pinocchio non aveva altro sollievo che quello di sbadagliare e faceva degli sbadigli così lunghi, che qualche volta la bocca gli arrivava fino agli orecchini.
+E dopo avere sbigliati, sputavano, e sentivano che lo stomaco gli andava via.
+Allora piangendo e disperandosene, diceva:
+— Il Grillo parlante aveva ragione.
+Ho fatto male a rivolatarmi al mio babbo e a fuggire di casa....
+Se il mio babbo fosse qui ora non mi troverei a morire di sbadigli!
+—
+Pinocchio si avvicinò e gli disse:
+— Che cosa vuoi che io faccia?
+che brutta malattia che è la fame!
+—
+Quand’ecco che gli parve di vedere nel monte della spazzatura qualche cosa di tondo e di bianco, che somigliava tutto ad un uovo di galinella.
+Spiccare un salto e gettarvi sopra, fu un punto solo.
+Era un uovo davvero!
+La gioia del burattino è impossibile descriverla: Bisogna sapersela figurare.
+Credendo quasi che fosse un sogno, si rigirava quest’uovo fra le mani, e lo toccava e lo baciava.
+―
+E Pinocchio, che non sapeva più nulla, cominciò a piangere e a sobbalzare.
+―
+E Pinocchio, che non sapeva più nulla, cominciò a cercare in tutti i luoghi.
+o non sarebbe più saporito se lo friggessi in padrone!
+O se invece lo cucessi a uso uovo a bere!
+— Che cosa vuoi che io faccio?
+—
+Detto fatto, pose un tegaminoso sopra un caldo pieno di brace accesa: messe nel tegamioso, invece d’olio o di burro, un po’ d’acqua: e quando l’acqua si infuriò a fumare…
+— Tac!
+Spezzò il guiscio dell’uovo, e fece l’atto di scodellarlo dentro.
+Ma invece della chiara e del torlo scappò fuori un pulcino tutto allegro e complimentoso il quale facendo una bella riverenza disse:
+— Mille grazie, signor Pinocchio; d’avermi risparmiata la fatica di rompere il guscio?
+Arrivederci, Pinocchio!
+Ciò detto, distese le ali, e, infilata la finestra che era aperta, se ne volò via a perdita d’occhio.
+Il povero burattino rimase lì, come incantato; cogli occhi fissi, colla bocca aperta e coi gusci dell’uovo in mano.
+— Eppure il Grillo parlante aveva ragione!
+Se non fossi scappato di casa e se il mio babbo fosse qui, ora non mi troverei a morire di fame.
+Eh!
+che brutta malattia che è la fame!
+—
+E perchè il corpo gli seguitava a brontolare piuttosto che mai, e non sapeva come fare a chetiarlo, pensò di uscir di casa e di dare una scappata al paesello vicino, nella speranza di trovare qualche persona caritatevole che gli avesse dato un po’ di pane.","V.
+
+Pinocchio ha fame, e cerca un uovo per farsi una frittata;ma sul più bello, la frittata gli vola via dalla finestra.
+
+Intanto cominciò a farsi notte, e Pinocchio, ricordandosi che non aveva mangiato nulla, sentì un’uggiolina allo stomaco, che somigliava moltissimo all’appetito.
+Ma l’appetito nei ragazzi cammina presto, e difatti, dopo pochi minuti l’appetito diventò fame, e la fame, dal vedere al non vedere, si convertì in una fame da lupi, una fame da tagliarsi col coltello.
+Il povero Pinocchio corse subito al focolare, dove c’era una pentola che bolliva e fece l’atto di scoperchiarla, per vedere che cosa ci fosse dentro, ma la pentola era dipinta sul muro. Immaginatevi come restò. Il suo naso, che era già lungo, gli diventò più lungo almeno quattro dita.
+Allora si dette a correre per la stanza e a frugare per tutte le cassette e per tutti i ripostigli
+in cerca di un po’ di pane, magari un po’ di pan secco, un crosterello, un osso avanzato al cane, un po’ di polenta muffita, una lisca di pesce, un nocciolo di ciliegia, insomma di qualche cosa da masticare: ma non trovò nulla, il gran nulla, proprio nulla.
+E intanto la fame cresceva, e cresceva sempre e il povero Pinocchio non aveva altro sollievo che quello di sbadigliare: e faceva degli sbadigli così lunghi, che qualche volta la bocca gli arrivava fino agli orecchi. E dopo avere sbadigliato, sputava, e sentiva che lo stomaco gli andava via.
+Allora piangendo e disperandosi, diceva:
+— Il Grillo-parlante aveva ragione. Ho fatto male a rivoltarmi al mio babbo e a fuggire di casa.... Se il mio babbo fosse qui, ora non mi troverei a morire di sbadigli! Oh! che brutta malattia che è la fame! —
+Quand’ecco gli parve di vedere nel monte della spazzatura qualche cosa di tondo e di bianco, che somigliava tutto a un uovo di gallina. Spiccare un salto e gettarvisi sopra, fu un punto solo. Era un uovo davvero.
+La gioia del burattino è impossibile descriverla: bisogna sapersela figurare. Credendo quasi che fosse un sogno, si rigirava quest’uovo fra
+le mani, e lo toccava e lo baciava, e baciandolo diceva:
+— E ora come dovrò cuocerlo? Ne farò una frittata?… No, è meglio cuocerlo nel piatto!… O non sarebbe più saporito se lo friggessi in padella? O se invece lo cuocessi a uso uovo a bere? No, la più lesta di tutte è di cuocerlo nel piatto o nel tegamino: ho troppa voglia di mangiarmelo! —
+Detto fatto, pose un tegamino sopra un caldano pieno di brace accesa: messe nel tegamino, invece d’olio o di burro, un po’ d’acqua: e quando l’acqua principiò a fumare, tac!... spezzò il guscio dell’uovo, e fece l’atto di scodellarvelo dentro.
+Ma invece della chiara e del torlo scappò fuori un pulcino tutto allegro e complimentoso, il quale facendo una bella riverenza disse:
+— Mille grazie, signor Pinocchio, d’avermi risparmiata la fatica di rompere il guscio! Arrivedella, stia bene e tanti saluti a casa! —
+Ciò detto, distese le ali, e, infilata la finestra che era aperta, se ne volò via a perdita d’occhio.
+Il povero burattino rimase lì, come incantato, cogli occhi fissi, colla bocca aperta e coi gusci dell’uovo in mano. Riavutosi, peraltro, dal primo sbigottimento, cominciò a piangere, a strillare,
+a battere i piedi in terra per la disperazione, e piangendo diceva:
+— Eppure il Grillo-parlante aveva ragione! Se non fossi scappato di casa e se il mio babbo fosse qui, ora non mi troverei a morire di fame. Eh! che brutta malattia che è la fame!... —
+E perchè il corpo gli seguitava a brontolare più che mai, e non sapeva come fare a chetarlo, pensò di uscir di casa e di dare una scappata al paesello vicino, nella speranza di trovare qualche persona caritatevole, che gli facesse l’elemosina di un po’ di pane.",0.5930956423316356,0.22233072916666666,7
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"VI. 
+Pinocchio  si  addormenta  coi  piedi  sul  caldano, 
+e  la  mattina  dopo  si  sveglia  coi  piedi  tutti  bruciati. 
+Per  r  appunto  era  una  nottataccia  d' inferno. 
+Tonava  forte  forte,  lampeggiava  come  se  il  cielo 
+pigliasse  fuoco,  e  un  ventaccio  freddo  e  strapaz- 
+zone, fischiando  rabbiosamente  e  sollevando  un 
+immenso  nuvolo  di  polvere,  faceva  stridere  e  ci- 
+golare tutti  gli  alberi  della  campagna. 
+Pinocchio  aveva  una  gran  paura  dei  tuoni  e 
+dei  lamj)i  :  se  non  che  la  fame  era  più  forte  della 
+paura:  motivo  per  cui  accostò  P uscio  di  casa,  e 
+presa  la  carriera,  in  un  centinaio  di  salti  arrivò 
+fino  al  paese,  colla  lingua  fuori  e  col  fiato  grosso, 
+come  un  can  da  caccia. 
+Ma  trovò  tutto  buio  e  tutto  deserto.  Le  bot- 
+teghe erano  chiuse;  le  porte  di  casa  chiuse,  le 
+finestre  chiuse,  e  nella  strada  nemmeno  un  cane. 
+Pareva  il  paese  dei  morti. 
+Allora  Pinocchio,  i)reso  dalla  disperazione  e 
+dalla  fame,  si  attaccò  al  campanello  d'una  casa,  e 
+cominciò  a  sonare  a  distesa,  dicendo  dentro  di  sé  : 
+—  Qualcuno  si  affaccerà.  — 
+
+Difatti  si  affacciò  un  veccliio,  col  berretto  da 
+uotte  in  capo,  il  quale  gridò  tutto  stizzito: 
+—  Ohe  cosa  volete  a  quest'ora! 
+
+Hi  ""il     <x  mi  V»  /■ , 
+
+Tornò  a  casa  bagnato  come  un  pulcino.... 
+
+—  Ohe  mi  fareste  il  piacere  di  darrai  un  po'  di 
+pane? 
+—  Aspettatemi  costì  che  torno  subito,  —  rispose 
+il  vecchino,  credendo  di  aver  da  fare  con  qualcuno 
+di  quei  ragazzacci  rompicolli  che  si  divertono  di 
+notte  a  sonare  i  cani  inanelli  delle  case,  per  mo- 
+lestare  la  gente  per  bene,  che  se  la  dorme,  tran- 
+quillamente. 
+Dopo  mezzo  minuto  la  finestra  si  riaprì,  e  la 
+voce  del  solito  vecchino  gridò  a  Finocchio  : 
+—  Fatti  sotto  e  para  il  cappello.  — 
+Pinocchio  che  non  aveva  ancora  un  cappello, 
+si  avvicinò  e  sentì  pioversi  addosso  un'enorme 
+catinellata  d'acqua  che  lo  annaffiò  tutto,  dalla 
+testa  ai  piedi,  come  se  fosse  un  vaso  di  giranio 
+appassito. 
+Tornò  a  casa  bagnato  come  un  pulcino  e  ri- 
+finito dalla  stanchezza  e  dalla  fame:  e  perchè 
+non  aveva  più  forza  di  reggersi  ritto,  si  pose  a 
+sedere,  appoggiando  i  piedi  fradici  e  impillac- 
+cherati sopra  un  caldano  pieno  di  brace  accesa. 
+E  lì  si  addormentò;  e  nel  dormire  i  piedi  che 
+erano  di  legno  gli  presero  fuoco,  e  adagio  adagio 
+gli  si  carbonizzarono  e  diventarono  cenere. 
+E  Pinocchio  seguitava  a  dormire  e  a  russare, 
+come  se  i  suoi  piedi  fossero  quelli  d'un  altro. 
+Finalmente  sul  far  del  giorno  si  svegliò,  perchè 
+qualcuno  aveva  bussato  alla  porta. 
+—  Chi  è?  —  domandò  sbadigliando  e  stropic- 
+ciandosi gli  occhi. 
+—  Sono  io  !  —  rispose  una  voce. 
+Quella  voce  era  la  voce  di  Geppetto,","VI.
+Pinocchio si addormentò coi piedi sul caldano; e la mattina dopo si sveglì coi suoi piedi tutti bruciati.<|assistant|
+Per r appunto era una nottata acciacia d’inferno.
+Tonava forte forte, lampeggiavo come se il cielo pigliasse fuoco, e un ventaccio freddo e strapazzone, fischeando rabbiosamente e sollevando un immenso nuvolo di polvere, faceva stridere e cigliare tutti gli alberi della campagna.
+Pinocchio aveva una gran paura dei tuoni e dei lampioni: se non che la fame era più forte della paura: motivo per cui accostò Pinocchio di casa, e prese la carriera, in un centinaio di salti arrivò fino al paese, colla lingua fuori e col fiato grosso, come un can da caccia.
+Ma trovò tutto buio e tutto deserto.
+Le bottege erano chiuse; le porte di casa chiuse, le finestre chiuse, e nella strada nemmeno un cane.
+Pareva il paese dei morti.
+— disse il burattino.
+—
+Difatto si affacciò un vecchietto, col berretto da uotta in capo, il quale gridò tutto stizziti:
+— Ohe cosa volete a quest’ora!
+— E io non ho mai mangiato pane!
+— Aspettarmi subito, — rispose il vecchino; credendo di aver da fare con qualcuno di quei ragazzacci romanpicolli che si divertono di notte a sonare i cani inanelli delle case, per modestare la gente per bene, che se la dorme tranquillmente.
+Dopo mezzo minuto la finestra si riapprimerà, e la voce del solito vecchino gridò a Finocchio:
+— Fatti sotto e para il capello.
+— Che cosa vuoi che io faccia?
+Tornò a casa bagnato come un pulcino e ri-finito dalla stanchezza e dalla fame: e perchè non aveva più forza di reggersi ritto, sipose a sedere, appoggiandi i piedi fradici e impillaccheratti sopra un caldano pieno di brace accesa.
+E lì si addormen¬tò; e nel dormire i piedi che erano di legno gli presero fuoco, e adagio adagio gli si carbonizzarono e diventarono cenere.
+E Pinocchio seguitava a dormire e a russare, come se i suoi piedi fossero quelli d’un altro.
+Finalmente sul far del giorno si svegliarono, perchè qualcuno aveva bussato alla porta.
+— Chi è?
+— domandò sbaligliando e stropicandosi gli occhi.
+— Sono io!
+— rispose una voce.
+Quella voce era la voce di Geppetto.","VI.
+
+Pinocchio si addormenta coi piedi sul caldano,
+e la mattina dopo si sveglia coi piedi tutti bruciati.
+
+Per l’appunto era una nottataccia d’inferno. Tuonava forte forte, lampeggiava come se il cielo pigliasse fuoco, e un ventaccio freddo e strapazzone, fischiando rabbiosamente e sollevando un immenso nuvolo di polvere, faceva stridere e cigolare tutti gli alberi della campagna.
+Pinocchio aveva una gran paura dei tuoni e dei lampi: se non che la fame era più forte della paura: motivo per cui accostò l’uscio di casa, e presa la carriera, in un centinaio di salti arrivò fino al paese, colla lingua fuori e col fiato grosso, come un can da caccia.
+Ma trovò tutto buio e tutto deserto. Le botteghe erano chiuse; le porte di casa chiuse, le finestre chiuse, e nella strada nemmeno un cane. Pareva il paese dei morti.
+Allora Pinocchio, preso dalla disperazione e dalla fame, si attaccò al campanello d’una casa, e cominciò a suonare a distesa, dicendo dentro di sè:
+— Qualcuno si affaccerà. —
+Difatti si affacciò un vecchio, col berretto da notte in capo, il quale gridò tutto stizzito:
+— Che cosa volete a quest’ora?
+Tornò a casa bagnato come un pulcino...
+
+— Che mi fareste il piacere di darmi un po’ di pane?
+— Aspettami costì che torno subito, — rispose il vecchino, credendo di aver da fare con qualcuno di quei ragazzacci rompicolli che si divertono di notte a suonare i campanelli delle case, per
+molestare la gente per bene, che se la dorme tranquillamente.
+Dopo mezzo minuto la finestra si riaprì, e la voce del solito vecchino gridò a Pinocchio:
+— Fàtti sotto e para il cappello. —
+Pinocchio che non aveva ancora un cappello, si avvicinò e sentì pioversi addosso un’enorme catinellata d’acqua che lo annaffiò tutto, dalla testa ai piedi, come se fosse un vaso di giranio appassito.
+Tornò a casa bagnato come un pulcino e rifinito dalla stanchezza e dalla fame: e perchè non aveva più forza di reggersi ritto, si pose a sedere, appoggiando i piedi fradici e impillaccherati sopra un caldano pieno di brace accesa.
+E lì si addormentò; e nel dormire, i piedi che erano di legno, gli presero fuoco, e adagio adagio gli si carbonizzarono e diventarono cenere.
+E Pinocchio seguitava a dormire e a russare, come se i suoi piedi fossero quelli d’un altro. Finalmente sul far del giorno si svegliò, perchè qualcuno aveva bussato alla porta.
+— Chi è? — domandò sbadigliando e stropicciandosi gli occhi.
+— Sono io! — rispose una voce.
+Quella voce era la voce di Geppetto.",0.039703315881326355,0.21701304978250363,6
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"VII. 
+Geppetto  torna  a  casa,  e  dà  al  burattino  la  colazione 
+che  il  pover'  uomo  aveva  portata  per  so. 
+Il  povero  Pinoccliio,  che  aveva  sempre  gii  oc- 
+chi fra  il  sonno,  non  s'era  ancora  avvisto  dei 
+piedi  che  gli  si  erano  tutti  brnciati:  per  cui  ap- 
+pena sentì  la  voce  di  suo  padre,  schizzò  giù  dallo 
+sgabello  per  correre  a  tirare  il  paletto;  ma  in- 
+vece, dopo  due  o  tre  traballoni,  cadde  di  picchio 
+tutto  lungo  disteso  sul  pavimento. 
+E  nel  battere  in  terra  fece  lo  stesso  rumore, 
+che  avrebbe  fatto  un  sacco  di  mestoli,  cascato 
+da  un  quinto  piano. 
+—  Aprimi  !  —  intanto  gridava  Geppetto  dalla 
+strada. 
+—  Babbo  mio,  non  posso....  —  rispondeva  il  bu- 
+rattino piangendo  e  ruzzolandosi  per  terra. 
+—  Perchè  non  puoi  ? 
+—  Perchè  mi  hanno  mangiato  i  piedi, 
+—  E  chi  te  li  ha  mangiati  ì 
+—'Il  gatto  —  disse  Pinoccliio,  vedendo  il  gatto 
+che  colle  zampine  davanti  si  divertiva  a  far  bal- 
+lare alcuni  trucioli  di  legno. 
+
+—  Aprimi,  ti  dico  !  —  ripetè  Geppetto  —  se  no, 
+quando  vengo  in  casa,  il  gatto  te  Io  do  io  ! 
+—  Non  posso  star  ritto,  credetelo.  Oh  !  povero 
+
+Entrò  in  casa  dalla  finestra. 
+
+me!  povero  me,  che  mi  toccherà  a  camminare 
+coi  ginocchi  per  tutta  la  vita.  — 
+Geppetto,  credendo  che  tutti  questi  piagnistei 
+fossero  un'  altra  monelleria  del  burattino,  pensò 
+bene  di  farla  finita;  e  arrampicatosi  su  ijcr  il 
+muro,  entrò  in  casa  dalla  finestra. 
+Da  principio  voleva  dire  e  voleva  fare;  ma  poi, 
+quando  vide  il  suo  Pinocchio  sdraiato  in  terra  e 
+rimasto  senza  piedi  davvero,  allora  sentì  intene- 
+rirsi; e  presolo  subito  in  collo  si  dette  a  baciarlo 
+e  a  fargli  mille  carezze  e  mille  moine,  e,  coi  luc- 
+ciconi che  gli  cascavano  giù  per  le  gote,  gli  disse 
+singhiozzando  : 
+—  Pinocchiuccio  mio  !  Gom'  è  che  ti  sei  bru- 
+ciato i  piedi? 
+—  Non  lo  so,  babbo,  ma  credetelo  che  è  stata 
+una  nottata  d' inferno,  e  me  ne  ricorderò  fin  che 
+campo.  Tonava,  balenava  e  io  avevo  una  gran 
+fame,  e  allora  il  Grillo-parlante  mi  disse  :  «  Ti 
+sta  bene:  sei  stato  cattivo  e  te  lo  meriti»  e  io 
+gli  dissi:  «  Bada,  Grillo!...  »  e  lui  mi  disse:  «  Tu 
+sei  un  burattino  e  hai  la  testa  di  legno  »  e  io 
+gli  tirai  un  manico  di  martello,  e  lui  morì,  ma 
+la  colpa  fu  sua,  perchè  io  non  volevo  ammaz- 
+zarlo, prova  ne  sia,  che  messi  un  tegamino  sulla 
+brace  accesa  del  caldano,  ma  il  pulcino  scappò 
+fuori  e  disse:  «  Arrivedella,...  e  tanti  saluti  a  ca- 
+sa. »  E  la  fame  cresceva  sempre,  motivo  per  cui 
+quel  vecchi  no  col  berretto  da  notte,  affacciandosi 
+alla  finestra  mi  disse  :  «  Fatti  sotto  e  para  il  cap- 
+pello »  e  io  con  quella  catinellatà  d' acqua  sul 
+capo,  perchè  il  chiedere  im  po'  di  pane  non  è 
+vergogna,  non   è  vero?   me  ne  tornai  subito  a 
+
+
+casa,  e  perchè  avevo  sempre  una  gran  fame, 
+messi  i  piedi  sul  caldano  per  ras^igarmi,  e  voi 
+siete  tornato,  e  me  li  sono  trovati  bruciati,  e  in- 
+tanto la  fame  l'ho  sempre  e  i  piedi  non  li  ho 
+più!  ih!...  ih!...  ih!...  ih!... — 
+E  il  povero  Pinocchio  cominciò  a  piangere  e 
+a  berciare  così  forte,  che  lo  sentivano  da  cinque 
+chilometri  lontano. 
+Geppetto,  che  di  tutto  quel  discorso  arruffato 
+aveva  capito  una  cosa  sola,  cioè  che  il  burattino 
+sentiva  morirsi  dalla  gran  fame,  tirò  fuori  di  ta- 
+sca tre  pere,  e  porgendogliele,  disse: 
+—  Queste  tre  pere  erano  la  mia  colazione:  ma 
+io  te  le  do  volentieri.  Mangiale,  e  buon  prò  ti 
+faccia. 
+— (Se  volete  che  le  mangi,  fatemi  il  piacere  di 
+sbucciarle. 
+—  Sbucciarle?  —  replicò  Geppetto  meraviglia- 
+to. —  Non  avrei  mai  creduto,  ragazzo  mio,  che 
+tu  fossi  così  boccuccia  e  così  schizzinoso  di  pa- 
+lato. Male!  In  questo  mondo,  fin  da  bambini, 
+bisogna  avvezzarsi  abboccati  e  a  saper  mangiar 
+di  tutto,  perchè  non  si  sa  mai  quel  che  ci  può 
+capitare.  I  casi  son  tanti!... 
+—  Voi  direte  bene,  —  soggiunse  Pinocchio  — 
+ma  io  non  mangerò  mai  una  frutta,  che  non  sia 
+sbucciata.  Le  bucce  non  le  posso  soffrire. — 
+
+
+E  quel  buon  uomo  di  Geppetto,  cavato  fuori 
+un  coltellino,  e  armatosi  di  santa  pazienza,  sbuc- 
+ciò le  tre  pere,  e  pose  tutte  le  bucce  sopra  un 
+angolo  della  tavola. 
+Quando  Pinocchio  in  due  bocconi  ebbe  man- 
+giata la  prima  pera,  fece  l'atto  di  buttar  via  il 
+torsolo;  ma  Geppetto  gli  trattenne  il  braccio  di- 
+cendogli : 
+—  'Non  lo  buttar  via  :  tutto  in  questo  mondo 
+può  far  comodo. 
+—  Ma  io  il  torsolo  non  lo  mangio  davvero  !... 
+—  gridò  il  burattino  rivoltandosi  come  una  vi- 
+pera. 
+—  Ohi  lo  sa!  I  casi  son  tanti!...  —  ripetè  Gep- 
+petto, senza  riscaldarsi. 
+Fatto  sta  che  i  tre  torsoli,  invece  di  essere 
+gettati  fuori  dalla  finestra,  vennero  posati  sul- 
+l'angolo della  tavola  in  compagnia  delle  bucce. 
+Mangiate,  o,  per  dir  meglio,  divorate  le  tre 
+pere,  Pinocchio  fece  un  lunghissimo  sbadiglio  e 
+disse  piagnucolando: 
+—  Ho  dell'  altra  fame  ! 
+—  Ma  io,  ragazzo  mio,  non  ho  più  nulla  da 
+darti. 
+—  Proprio  nulla,  nulla  ? 
+—  Ci  avrei  soltanto  queste  bucce  e  questi  tor- 
+soli di  pera. 
+
+
+—  Pazienza  !  —  disse  Pinoccliio  —  se  non  e'  è 
+altro,  mangerò  una  buccia. — 
+E  cominciò  a  masticare.  Da  principio  storse 
+un  po'  la  bocca  :  ma  poi  una  dietro  l' altra,  spol- 
+verò in  un  soffio  tutte  le  bucce  ;  e  dopo  le  bucce 
+anche  i  torsoli,  e  quand'ebbe  finito  di  mangiare 
+ogni  cosa,  si  battè  tutto  contento  le  mani  sul 
+corpo,  e  disse  gongolando: 
+—  Ora  sì,  che  sto  bene  ! 
+—  Yedi,  dunque,  —  osservò  Geppetto  —  che 
+avevo  ragione  io,  quando  ti  dicevo  che  non  bi- 
+sogna avvezzarsi  ne  troppo  sofistici  né  troppo 
+delicati  di  palato.  Caro  mio,  non  si  sa  mai  quel 
+che  ci  può  capitare  in  questo  mondo.  I  casi  son 
+tanti  !...  —","VII.
+Geppetto torna a casa, e dà al burattino la colazione che il pover’uomo aveva portata per so.
+Il povero Pinocchio, che aveva sempre gli occhi fra i sonni, non s’era ancora avvisto dei piedi che gli si erano tutti brunciati: per cui appena sentì la voce di suo padre, schizzò giù dallo sgabello per correre a tirare il paletto, ma invece dopo due o tre traballoni cadde di picchio tutto lungo disteso sul pavimento.
+E nel battere in terra fece lo stesso rumore, che avrebbe fatto un sacco di mestoli, cascato da un quinto piano.
+— Aprimi!
+— intanto gridava Geppetto dalla strada.
+— Babbo mio, non posso.
+— Perchè non puoi?
+— Perchè mi hanno mangiato i piedi,
+— E chi te li ha mangiati?
+— E io ti dico!
+— ripetè Geppetto — se no, quando vengo in casa, il gatto te io do io!
+— Non posso star ritto, credetelo.
+—
+Pinocchio si avvicinò e gli disse:
+— Che cosa vuoi che io faccia?
+Povero!
+— Che cosa vuoi che mi faccia?
+Povero me, che mi toccerà a camminare coi ginocchini per tutta la vita.
+Geppetto, credendo che tutti questi pignistei fossero un’altra monelleria del burattino Pinocchio, pensò bene di farla finita; e arrampicatosi su il muro, entrò in casa dalla finestra.
+Da principio voleva dire e voleva fare; ma poi, quando vide il suo Pinocchio rimasto senza piedi davvero e rimasto in terra, allora sentì intenersi; e presolo subito in collo si dette a baciarlo e a fargli mille carezze e mille moine, e, coi lucciconi quei che cascavano giù per le gote, gli disse:
+— Pinocchino mio!
+Gom’ è che ti sei bruciato i piedi?
+— Non lo so, babbo; ma credetelo che è stata una nottata d’inferno, e me ne ricorderò fin che campo.
+Tonava, balenava e io avevo una grande fame, e allora il Grillo parlante mi disse: «Ti stai bene: sei stato cattivo e te lo meriti» e io gli dissi: «Bada, Grillo!...
+―
+Pinocchio tornò indietro e si fermò davanti alla finestra.
+La fame cresceva sempre, motivo per cui quel vecchi no col berretto da notte, affacciandosela alla finestra, mi disse: «Fatti sotto e para il capello» e io con quella catinellata d’acqua sul capo, perchè il chiedere im po’ di pane non è vergogna, non è vero?
+―
+Pinocchio si avvicinò al burattinaio, e gli domandò:
+— Che cosa vuoi che io faccia?
+— Ah!
+— Ah!
+— Ah!
+— Ah!
+—
+E il povero Pinocchio cominciò a piangere e a berciare così forte, che lo sentivano da cinque chilometri lontano.
+Geppetto che di tutto quel discorso arrufigato aveva capito una cosa sola, cioè che il burattino sentiva morirsi dalla gran fame, tirò fuori tre pere, e porgendolele, disse:
+— Queste tre pere erano la mia colazione: ma io te le do volentieri
+Mangiale, e buon prò ti faccia.
+— disse Pinocchio.
+— Sbucciarlo!
+— replicò Geppetto meravigliato.
+— Non avrei mai creduto, ragazzo mio, che tu fossi così bocchiaccio e così schizzinoso di palato.
+Male!
+In questo mondo fin da bambini bisogna avverzarsi abboccati e a saper mangiar di tutto, perchè non si sa mai quel che ci può capire.
+I casi son tanti!...
+—
+Pinocchio si avvicinò al burattino e gli disse:
+— Che cosa vuoi che io faccia?
+Le bucche non le possiamo soffrir.
+—
+E quel buon uomo di Geppetto che, cavato fuori un coltello, armatosi di santa pazienza e sbucciò le tre pere, e pose tutte le bucche sopra un angolo della tavola..
+Quando Pinocchio in due boccone ebbe maneggiata la prima pera, fece l’atto di buttar via il torsolo; ma Geppetto gli trattenne il braccio dipendogli:
+— «Non lo buttar via: tutto in questo mondo può far comodo.»
+— Ma io il torsolo non lo mangio davvero!
+— gridò il burattino rivoltandosene come una vipera.
+— Ohi lo sa!
+I casi son tanti!...
+— ripetè Gepetto, senza riscaldarsene.
+Fatto sta che i tre torsole, invece di essere gettati fuori dalla finestra, vennero posati sul l’angolo della tavola in compagnia delle bucche.
+Mangiate, o, per dir meglio, divorate le tre pere, Pinocchio fece un lunghissima sbadiglia e disse piagnuolando:
+— Ho dell’altra fame!
+— Ma io, ragazzo mio, non ho più nulla da darti.
+— Proprio nulla, nulla?
+— Ci avrei soltanto queste bucce e questi torsoli di pera.
+— Pazienza!
+— disse Pinocchio.
+—
+E cominciò a masticare.
+Da principio storse un po’ la bocca: ma poi una dietro l’altra, spolverò in un soffio tutte le bucche; e dopo le bucce anche i torsoli e quand’ebbe finito di mangiare ogni cosa, si battè tutto contento le mani sul corpo, e disse gongolandone:
+— Ora sì, che sto bene!
+— Dunque, — osservò Geppetto, — che avevo ragione io, quando ti dicevo che non bisogna avverzarsi ne sofisticati né delicati di palato.
+Caro mio, non si sa mai quel che ci può capitare in questo mondo.
+I casi son tanti!
+—
+Pinocchio si avvicinò e gli disse:
+— Che cosa vuoi che io faccia?","VII.
+
+Geppetto torna a casa, e dà al burattino la colazione
+che il pover’uomo aveva portata per sè.
+
+Il povero Pinocchio, che aveva sempre gli occhi fra il sonno, non s’era ancora avvisto dei piedi, che gli si erano tutti bruciati: per cui appena sentì la voce di suo padre, schizzò giù dallo sgabello per correre a tirare il paletto; ma invece, dopo due o tre traballoni, cadde di picchio tutto lungo disteso sul pavimento.
+E nel battere in terra fece lo stesso rumore, che avrebbe fatto un sacco di mestoli, cascato da un quinto piano.
+— Aprimi! — intanto gridava Geppetto dalla strada.
+— Babbo mio, non posso, — rispondeva il burattino piangendo e ruzzolandosi per terra.
+— Perchè non puoi?
+— Perchè mi hanno mangiato i piedi.
+— E chi te li ha mangiati?
+— Il gatto, — disse Pinocchio, vedendo il gatto che colle zampine davanti si divertiva a far ballare alcuni trucioli di legno.
+— Aprimi, ti dico! — ripetè Geppetto — se no, quando vengo in casa, il gatto te lo do io!
+— Non posso star ritto, credetelo. Oh! povero
+Entrò in casa dalla finestra.
+
+me! povero me, che mi toccherà a camminare coi ginocchi per tutta la vita.―
+Geppetto, credendo che tutti questi piagnistei fossero un’altra monelleria del burattino, pensò bene di farla finita; e arrampicatosi su per il muro, entrò in casa dalla finestra.
+Da principio voleva dire e voleva fare; ma poi, quando vide il suo Pinocchio sdraiato in terra e rimasto senza piedi davvero, allora sentì intenerirsi; e presolo subito in collo si dette a baciarlo e a fargli mille carezze e mille moine, e, coi lucciconi che gli cascavano giù per le gote, gli disse singhiozzando:
+— Pinocchiuccio mio! Com’è che ti sei bruciato i piedi?
+— Non lo so, babbo, ma credetelo che è stata una nottata d’inferno, e me ne ricorderò fin che campo. Tonava, balenava e io avevo una gran fame, e allora il Grillo-parlante mi disse: «Ti sta bene: sei stato cattivo e te lo meriti», e io gli dissi: «Bada, Grillo!…» e lui mi disse: «Tu sei un burattino e hai la testa di legno» e io gli tirai un manico di martello, e lui morì, ma la colpa fu sua, perchè io non volevo ammazzarlo, prova ne sia, che messi un tegamino sulla brace accesa del caldano, ma il pulcino scappò fuori e disse: «Arrivedella,... e tanti saluti a casa.» E la fame cresceva sempre, motivo per cui quel vecchino col berretto da notte, affacciandosi alla finestra mi disse: «Fàtti sotto e para il cappello» e io con quella catinellata d’acqua sul capo, perchè il chiedere un po’ di pane non è vergogna, non è vero? me ne tornai subito a
+casa, e perchè avevo sempre una gran fame, messi i piedi sul caldano per rasciugarmi, e voi siete tornato, e me li sono trovati bruciati, e intanto la fame l’ho sempre e i piedi non li ho più! ih!... ih!... ih!... ih!... ―
+E il povero Pinocchio cominciò a piangere e a berciare così forte, che lo sentivano da cinque chilometri lontano.
+Geppetto, che di tutto quel discorso arruffato aveva capito una cosa sola, cioè che il burattino sentiva morirsi dalla gran fame, tirò fuori di tasca tre pere, e porgendogliele, disse:
+— Queste tre pere erano per la mia colazione: ma io te le do volentieri. Mangiale, e buon pro ti faccia.
+— Se volete che le mangi, fatemi il piacere di sbucciarle.
+— Sbucciarle? — replicò Geppetto meravigliato. — Non avrei mai creduto, ragazzo, mio, che tu fossi così boccuccia e così schizzinoso di palato. Male! In questo mondo, fin da bambini, bisogna avvezzarsi abboccati e a saper mangiare di tutto, perchè non si sa mai quel che ci può capitare. I casi son tanti!...
+— Voi direte bene, — soggiunse Pinocchio, — ma io non mangerò mai una frutta, che non sia sbucciata. Le bucce non le posso soffrire. ―
+E quel buon uomo di Geppetto, cavato fuori un coltellino, e armatosi di santa pazienza, sbucciò le tre pere, e pose tutte le bucce sopra un angolo della tavola.
+Quando Pinocchio in due bocconi ebbe mangiata la prima pera, fece l’atto di buttar via il torsolo; ma Geppetto gli trattenne il braccio, dicendogli:
+— Non lo buttar via: tutto in questo mondo può far comodo.
+— Ma io il torsolo non lo mangio davvero!... — gridò il burattino rivoltandosi come una vipera.
+— Chi lo sa! I casi son tanti!... — ripetè Geppetto, senza riscaldarsi.
+Fatto sta che i tre torsoli, invece di essere gettati fuori dalla finestra, vennero posati sull’angolo della tavola in compagnia delle bucce.
+Mangiate, o, per dir meglio, divorate le tre pere, Pinocchio fece un lunghissimo sbadiglio e disse piagnucolando:
+— Ho dell’altra fame!
+— Ma io, ragazzo mio, non ho più nulla da darti.
+— Proprio nulla, nulla?
+— Ci avrei soltanto queste bucce e questi torsoli di pera.
+— Pazienza! — disse Pinocchio — se non c’è altro, mangerò una buccia. —
+E cominciò a masticare. Da principio storse un po’ la bocca: ma poi, una dietro l’altra, spolverò in un soffio tutte le bucce; e dopo le bucce, anche i torsoli, e quand’ebbe finito di mangiare ogni cosa, si battè tutto contento le mani sul corpo, e disse gongolando:
+— Ora sì, che sto bene!
+— Vedi, dunque, — osservò Geppetto — che avevo ragione io quando ti dicevo che non bisogna avvezzarsi nè troppo sofistici nè troppo delicati di palato. Caro mio, non si sa mai quel che ci può capitare in questo mondo. I casi son tanti!... —",0.10920183019827148,0.2373117033603708,6
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"Vili. 
+Geppetto  rifa  i  pi  eoli  a  Pinocchio,  e  vende  la  propria  casacca 
+per  comprargli  l'Abbecedario. 
+Il  burattino,  appena  che  si  fu  levata  la  fame, 
+cominciò  subito  a  bofoncbiare  e  a  piangere,  per- 
+chè voleva  un  paio  di  piedi  nuovi. 
+
+Lo  lasciò  piangere  e  disperarsi  per  una  mezza  giornata. 
+Ma  Geppetto,  per  punirlo  della  monelleria  fatta, 
+lo  lasciò  piangere  e  disperarsi  per  una  mezza 
+giornata;  poi  gli  disse: 
+
+w. 
+—  E  percliè  dovrei  rifarti  i  i^iedi  ?  Forse  per 
+vederti  scappar  di  nuovo  da  casa  tua! 
+—  Vi  prometto  —  disse  il  burattino  singhioz- 
+zando —  elle  da  oggi  in  poi  sarò  buono.... 
+—  Tutti  i  ragazzi  —  replicò  Geppetto  —  quando 
+vogliono  ottenere  qualcosa,  dicono  così. 
+—  Vi  prometto  che  anderò  a  scuola,  studierò 
+e  mi  farò  onore.... 
+—  Tutti  i  ragazzi,  quando  vogliono  ottenere 
+qualcosa,  ripetono  la  medesima  storia. 
+—  Ma  io  non  sono  come  gli  altri  ragazzi!  Io 
+sono  più  buono  di  tutti,  e  dico  sempre  la  verità. 
+Vi  prometto,  babbo,  che  imparerò  un'  arte,  e  che 
+sarò  la  consolazione  e  il  bastone  della  vostra  vec- 
+chiaia. —  ,  V 
+Geppetto  che,  sebbene  facesse  il  viso  di  tiranno, 
+aveva  gli  occhi  pieni  di  pianto  e  il  cuore  grosso 
+dalla  passione  nel  vedere  il  suo  povero  Pinocchio 
+in  quello  stato  compassionevole,  non  rispose  altre 
+parole:  ma,  presi  in  mano  gli  arnesi  del  mestiere 
+e  due  pezzetti  di  legno  stagionato,  si  pose  a  la- 
+vorare di  grandissimo  impegno. 
+E  in  meno  d'un' ora,  i  piedi  erano  beli' e  fatti: 
+due  piedini  svelti,  asciutti  e  nervosi,  come  se 
+fossero  modellati  da  un  artista  di  genio. 
+Allora  Gepi)etto  disse  al  burattino: 
+—  Ghindi  gli  occhi  e  dormi!  — 
+
+
+E  Pinocchio  cliiuse  gii  ocelli  e  fece  fìnta  di 
+dormire.  E  nel  tempo  clie  si  fìngeva  addormen- 
+tato, Geppetto  con  un  po' di  colla  sciolta  in  nn 
+guscio  d'uoYO  gii  appiccicò  i  due  piedi  al  loro 
+
+Principiò  a  fare  mille  sgambetti. 
+
+posto,  e  glieli  appiccicò  così  bene,  che  uon^i 
+vedeva  nemmeno  il  segno  dell'attaccatura. 
+Appena  il  burattino  si  accòrse  di  avere  i  piedi, 
+saltò  giù  dalla  tavola  dove  stava  disteso,  e  prin- 
+cipiò a  fare  mille  sgambetti  e  mille  capriòle,  come 
+se  fosse  ammattito  dalla  gran  contentezza. 
+—  Per  ricompensarvi  di  quanto  avete  fatto  per 
+
+
+me  —  disse  Pinoccliio  al  suo  babbo  —  voglio  su- 
+bito andare  a  scuola. 
+—  Bravo  ragazzo. 
+—  Ma  per  andare  a  scuola  Lio  bisogno  d'un 
+po' di  vestito.  — 
+
+Gli  fece un  berrettino  di  midolla  di  pane. 
+
+Geppetto,  die  era  povero  e  non  aveva  in  ta- 
+sca nemmeno  un  centesimo,  gli  fece  allora  un 
+vestituccio  di  carta  fiorita,  un  paio  di  scarpe  di 
+scorza  d'albero  e  un  berrettino  di  midolla  di 
+pane. 
+Pinoccliio  corse  subito  a  specchiarsi  in  una  ca- 
+
+tinella  ])iena  d'acqua  e  rimase  così  contento  di 
+sé,  che  disse  pavoneggiandosi: 
+—  Paio  proprio  un  signore! 
+—  Davvero;  —  replicò  Geppetto  —  perchè, 
+tieni o  a  mente,  non  è  il  vestito  bello  che  fa  il 
+signore,  ma  è  piuttosto  il,  vestito  pulito. 
+—  A  proposito,  —  soggiunse  il  burattino  — 
+per  andare  alla  scuola  mi  manca  sempre  qual- 
+cosa: anzi  mi  manca  il  più  e  il  meglio. 
+—  Cioè! 
+—  Mi  manca  l'Abbecedario. 
+— .Hai  ragione:  ma  come  si  fa  per  averlo? 
+—  È  facilissimo  :  si  va  da  un  libraio  e  si  compra. 
+—  E  i  quattrini? 
+—  Io  non  ce  l'ho. 
+—  ISTemmen  io  —  soggiunse  il  buon  vecchio, 
+facendosi  tristo. 
+E  Pinocchio  sebbene  fosse  un  ragazzo  allegris- 
+simo, si  fece  tristo  anche  lui:  perchè  la  miseria, 
+quando  è  miseria  davvero,  la  intendono  tutti: 
+anche  i  ragazzi. 
+—  Pazienza  !  —  gridò  Geppetto  tutt'  a  un  tratto 
+rizzandosi  in  piedi;  e  infilatasi  la  vecchia  casacca 
+di  frustagno,  tutta  toppe  e  rimendi,  uscì  correndo 
+di  casa. 
+Dopo  poco  tornò:  e  quando  tornò,  aveva  in 
+mano  l'Abbecedario  per  il  figliuolo,  ma  la  ca- 
+
+
+sacca  non  l'aveva  più.  Il  pover'uomo  era  iu  ma- 
+uiche  di  camicia,  e  fuori  nevicava. 
+—  E  la  casacca,  babbo! 
+—  L'ho  venduta. 
+—  Perchè  l'avete  venduta? 
+—  Perchè  mi  faceva  caldo.  — 
+Pinocchio  capì  questa  risposta  a  volo,  e  non 
+potendo  frenare  l' impeto  del  suo  buon  cuore, 
+saltò  al  collo  di  Geppetto  e  cominciò  a  baciarlo 
+per  tutto  il  viso.","Vili.
+Geppetto rifa i pi eoli a Pinocchio e vende la propria casacca per comprargli l’Abbacedario.
+Il burattino appena che si fu levata la fame, cominciò subito a bofonciabiare e a piangere perchè volveva un paio di piedi nuovi.
+Lo lasciò piangere e disperarsi per una mezza giornata..
+— E perchè dovrei rifarti i piedi?
+Forse per vederti scappar di nuovo da casa tua!
+— Tutti i ragazzi, — replicò Geppetto, — quando vogliono ottenere qualcosa dicono così.
+— Tutti i ragazzi quando volevano ottenere qualcosa, ripetono la medesima storia.
+— Ma io non sono come gli altri ragazzi.
+Io sono più buono di tutti, e dico sempre la verità.
+— Che cosa vuoi che io faccio?
+Geppetto che, sebbene facesse il viso di tiranno, aveva gli occhi pieni di pianto e il cuore grosso dalla passione nel vedere il suo povero Pinocchio in quello stato compassioneabile, non rispose altre parole: ma, presi in mano gli arnesi del mestiere e due pezzetti di legno stagionatosi, si pose a lavorare di grandissimo impegno.
+E in meno d’un’ora, i piedi erano belli e fatti: due piedini svelti e asciuti e nervosi, come se fossero modellati da un artista di genio.
+Allora Geppetto disse al burattinaio:
+— Ghindi gli occhi e dormi?
+—
+E Pinocchio cliusò gli occhi e fece finta di dormire.
+E nel tempo che si fingeva addormendosi, Geppetто con un po’ di colla sciolta in guscio e appiccico i due piedi al loro
+Principò a fare mille sgambettis.
+— disse Pinocchio.
+Appena il burattino si accòrso di avere i piedi, saltò giù dalla tavola dove stava disteso, e principiò a fare mille sgambeti e mille capriole, come se fosse ammattico.
+— Che cosa vuoi che io faccio?
+— Che cosa vuoi che io faccio?
+— Per andare a scuola bisogna un po’ di vestito.
+—
+Gli fece un berrettino di midolla di pane.
+— Che cosa vuoi che mi faccia?
+Pinocchio corse subito a specchiarsi in una catinella d’acqua e rimase così contento di sè, che disse pavoneggiandosi:
+— Paio proprio un signore!
+— Davvero?
+— A proposito, — disse il burattino, — per andare alla scuola mi manca sempre qualcosa: anch’io mi manca il più e il meglio.
+— Cioè?
+— Mi manca l’abbecedario!
+— Che cosa vuoi che mi faccia?
+— È facilissimo: si va da un libraio e si compra.
+— E i quattrini!
+— Io non ce l’ho.
+— E io non sono mai stato un burattino!
+E Pinocchio sebbene fosse un ragazzo allegrisimoso, si fece tristo anche lui: perchè la miseria, quando è miseria davverno, la intendono tutti: anche i ragazzi
+— Pazienza!
+— gridò Geppetto, tutt’a un tratto rizzandosi in piedi; e infilatisi la vecchia casacca di frustaglio, tutta toppe e rimendi, uscì correndo di casa.
+Dopo poco tornò: e quando tornò, aveva in mano l’abbecedario per il piccolo, ma la sacca non l’aveva più.
+Il pover’uomo era iu mausuiche di camicia, e fuori nevicavano.
+— E la casaccia, babbo?
+— L’ho venduta.
+— Perchè l’avete venduta?
+— Perchè mi faceva caldo.
+— Che cosa vuoi che io faccia?","VIII.
+Geppetto rifà i piedi a Pinocchio e vende la propria casacca per comprargli l’Abbecedario.
+
+Il burattino, appena che si fu levata la fame, cominciò subito a bofonchiare e a piangere, perchè voleva un paio di piedi nuovi.
+Lo lasciò piangere e disperarsi per una mezza giornata.
+
+Ma Geppetto, per punirlo della monelleria fatta lo lasciò piangere e disperarsi per una mezza giornata; poi gli disse:
+— E perchè dovrei rifarti i piedi? Forse per vederti scappar di nuovo da casa tua?
+— Vi prometto, — disse il burattino singhiozzando, — che da oggi in poi sarò buono…
+— Tutti i ragazzi — replicò Geppetto, — quando vogliono ottenere qualcosa, dicono così.
+— Vi prometto che anderò a scuola, studierò e mi farò onore…
+— Tutti i ragazzi, quando vogliono ottenere qualcosa, ripetono la medesima storia.
+— Ma io non sono come gli altri ragazzi! Io sono più buono di tutti e dico sempre la verità. Vi prometto, babbo, che imparerò un’arte, e che sarò la consolazione e il bastone della vostra vecchiaia. —
+Geppetto che, sebbene facesse il viso di tiranno, aveva gli occhi pieni di pianto e il cuore grosso dalla passione di vedere il suo povero Pinocchio in quello stato compassionevole, non rispose altre parole: ma, presi in mano gli arnesi del mestiere e due pezzetti di legno stagionato, si pose a lavorare di grandissimo impegno.
+E in meno d’un’ora, i piedi erano bell’e fatti; due piedini svelti, asciutti e nervosi, come se fossero modellati da un artista di genio.
+Allora Geppetto disse al burattino:
+— Chiudi gli occhi e dormi! —
+E Pinocchio chiuse gli occhi e fece finta di dormire. E nel tempo che si fingeva addormentato, Geppetto con un po’ di colla sciolta in un guscio d’uovo gli appiccicò i due piedi al loro
+Principiò a fare mille sgambetti.
+
+posto, e glieli appiccicò così bene, che non si vedeva nemmeno il segno dell’attaccatura.
+Appena il burattino si accorse di avere i piedi, saltò giù dalla tavola dove stava disteso, e principiò a fare mille sgambetti e mille capriòle, come se fosse ammattito dalla gran contentezza.
+— Per ricompensarvi di quanto avete fatto per
+me — disse Pinocchio al suo babbo — voglio subito andare a scuola.
+— Bravo ragazzo.
+— Ma per andare a scuola ho bisogno d’un po’ di vestito. —
+Gli fece.... un berrettino di midolla di pane.
+
+Geppetto, che era povero e non aveva in tasca nemmeno un centesimo, gli fece allora un vestituccio di carta fiorita, un paio di scarpe di scorza d’albero e un berrettino di midolla di pane.
+Pinocchio corse subito a specchiarsi in una catinella
+piena d’acqua e rimase così contento di sè, che disse pavoneggiandosi:
+— Paio proprio un signore!
+— Davvero; — replicò Geppetto, — perchè, tienlo a mente, non è il vestito bello che fa il signore, ma è piuttosto il vestito pulito.
+— A proposito, — soggiunse il burattino, — per andare alla scuola mi manca sempre qualcosa: anzi mi manca il più e il meglio.
+— Cioè?
+— Mi manca l’Abbecedario.
+— Hai ragione: ma come si fa per averlo?
+— È facilissimo: si va da un libraio e si compra.
+— E i quattrini?
+— Io non ce l’ho.
+— Nemmeno io, — soggiunse il buon vecchio, facendosi tristo.
+E Pinocchio, sebbene fosse un ragazzo allegrissimo, si fece tristo anche lui: perchè la miseria, quando è miseria davvero, la intendono tutti: anche i ragazzi.
+— Pazienza! — gridò Geppetto tutt’a un tratto rizzandosi in piedi; e infilatasi la vecchia casacca di fustagno, tutta toppe e rimendi, uscì correndo di casa.
+Dopo poco tornò: e quando tornò aveva in mano l’Abbecedario per il figliuolo, ma la casacca
+non l’aveva più. Il pover’uomo era in maniche di camicia, e fuori nevicava.
+— E la casacca, babbo?
+— L’ho venduta.
+— Perchè l’avete venduta?
+— Perchè mi faceva caldo.―
+Pinocchio capì questa risposta a volo, e non potendo frenare l’impeto del suo buon cuore, saltò al collo di Geppetto e cominciò a baciarlo per tutto il viso.",0.4244593586875466,0.3174306205176177,6
+TinyLlama/TinyLlama-1.1B-Chat-v1.0,"IX. 
+Pinocchio  vende  V  Abbecedario  per  andare  a  vedere 
+il  teatro  dei  burattini. 
+Smesso  che  fu  di  nevicare,  Pinocchio,  col  suo 
+bravo  Abbecedario  nuovo  sotto  il  braccio,  prese 
+la  strada  che  menava  alla  scuola:  e  strada  fa- 
+cendo, fantasticava  nel  suo  cervellino  mille  ra- 
+gionamenti e  mille  castelli  in  aria,  uno  più  bello 
+delP  altro. 
+E  discorrendo  da  se  solo,  diceva: 
+—  Oggi,  alla  scuola,  voglio  subito  imparare  a 
+leggere:  domani  poi  imparerò  a  scrivere,  e  do- 
+mani l'altro  imparerò  a  fare  i  numeri.  Poi,  colla 
+mia  abilità,  guadagnerò  molti  quattrini  e  coi 
+primi  quattrini  che  mi  verranno  in  tasca,  voglio 
+subito  fare  al  mio  babbo  una  bella  casacca  di 
+panno.  Ma  che  dico  di  i)anno  ?  Gliela  voglio  fare 
+tutta  d'argento  e  d'oro,  e  coi  bottoni  di  bril- 
+lanti. E  quel  pover'uomo  se  la  merita  davvero; 
+perchè  insomma,  per  comprarmi  i  libri  e  per 
+farmi  istruire,  è  rimasto  in  maniche  di  camicia.... 
+a  questi  freddi!  Non  ci  sono  che  i  babbi  che 
+sieno  capaci  di  certi  sacrifizi!...  — 
+
+
+IMentre  tutto  commosso  diceva  così,  gli  parve 
+di  sentire  in  lontananza  una  musica  di  pifferi  e 
+di  colpi  di  grancassa:  pì-pì-pì,  pì-pì-pì,  zum,  zum, 
+zum,  zum. 
+Si  fermò  e  stette  in  ascolto.  Quei  suoni  veni- 
+vano di  fondo  a  una  lunghissima  strada  traversa, 
+che  con  duceva  a  un  piccolo  paesetto,  fabbricato 
+sulla  spiaggia  del  mare. 
+—  Ohe  cosa  sia  questa  musica!  Peccato  che 
+io  debba  andare  a  scuola,  se  no....  — 
+E  rimase  lì  perplesso.  A  ogiii  modo,  bisognava 
+prendere  una  risoluzione  ;  o  a  scuola,  o  a  sentire 
+i  pifferi. 
+—  Oggi  anderò  a  sentire  i  pifferi,  e  domani  a 
+scuola.  Per  andare  a  scuola  e'  è  sempre  tempo  — 
+disse  finalmente  quel  monello,  facendo  una  spal- 
+lucciata. 
+Detto  fatto,  infilò  giù  per  la  strada  traversa 
+e  cominciò  a  correre  a  gambe.  Più  correva  e 
+più  sentiva  distinto  il  suono  dei  pifferi  e  dei 
+tonfi  della  grancassa:  pì-pì-pì,  pì-pì-pì,  pì-pì-pì, 
+zum,  zum,  zupm,  zum. 
+Quand'ecco  che  si  trovò  in  mezzo  a  una  piazza 
+tutta  piena  di  gente,  la  quale  si  affollava  intorno 
+a  un  gran  baraccone  di  legno  e  di  tela  dijilnta 
+di  mille  colori. 
+—  Che  cos'è  quel  baraccone?  —  domandò  Pi- 
+
+
+nocchio,  voltandosi   a  un  ragazzetto  che  era  lì 
+del  paese. 
+—  Leggi  il  cartello,  che  c'è  scritto,  e  lo  saprai. 
+—  Lo  leggerei  volentieri,  ma  per  V  appunto 
+oggi  non  so  leggere. 
+—  Bravo  bue!  Allora  te  lo  leggerò  io.  Sappi 
+dunque  che  in  quel  cartello  a  lettere  rosse  come 
+il  fuoco,  c'è  scritto:  Gran  Teatro  dei  Burat- 
+tini.... 
+—  È  molto  che  è  incominciata  la  commediai 
+—  Comincia  ora. 
+—  E  quanto  si  spende  per  entrare? 
+—  Quattro  soldi.  — 
+Pinocchio  che  aveva  addosso  la  febbre  della 
+curiosità,  perse  ogni  ritegno  e  disse,  senza  ver- 
+gognarsi, al  ragazzetto  col  quale  parlava: 
+—  Mi  daresti  quattro  soldi  fino  a  domani? 
+—  Te  li  darei  volentieri,  —  gli  rispose  l'altro 
+canzonandolo  —  ma  oggi  per  l'appunto  non  te 
+li  posso  dare. 
+—  Per  quattro  soldi  ti  vendo  la  mia  giacchetta 
+—  gli  disse  allora  il  burattino. 
+—  Ohe  vuoi  che  mi  faccia  di  una  giacchetta 
+di  carta  fiorita  ?  Se  ci  piove  su,  non  e'  è  più  verso 
+di  cavarsela  da  dosso. 
+—  Vuoi  comprare  le  mie  scarpe? 
+—  Sono  buone  per  accendere  il  fuoco. 
+
+
+—  Quanto  mi  dai  del  berretto? 
+—  Bell'acquisto  davvero!  Un  berretto  di  mi- 
+glia di  pane!  C'è  il  caso  che  i  topi  me  lo  ven- 
+gano a  mangiare  in  capo!  — 
+Pinocchio  era  sulle  spine.  Stava  lì  lì  per  fare 
+
+'^^^INI 
+
+—  Vuoi  darmi  quattro  soldi  di  quest'Abbecedario  nuovo? 
+
+Pailtima  offerta:  ma  non  aveva  coraggio:  esitava, 
+tentennava,  pativa.  Alla  fine  disse: 
+—  Vuoi  darmi  quattro  soldi  di  quest'Abbece- 
+dario nuovo? 
+—  Io  sono  un  ragazzo  e  non  compro  nulla  dai 
+ragazzi  —  gli  rispose  il  suo  piccolo  interlocutore, 
+che  aveva  più  giudizio  di  lui. 
+—  Per  quattro  soldi  l'Abbecedario  lo  prendo 
+
+
+io  —  gridò  un  rivenditore  di  panni  usati,  che 
+s'era  trovato  presente  alla  conversazione. 
+E  il  libro  fu  venduto  lì  su  due  piedi.  E  pen- 
+sare che  quel  pover'uomo  di  Geppetto  era  ri- 
+masto a  casa,  a  tremare  dal  freddo  in  maniche  di 
+camicia,  per  comprare  l'Abbecedario  al  figliuolo  !","IX.
+Pinocchio vende l’Abbecedario per andare a vedere il teatro dei burattini.
+Smesso che fu di neviar, Pinocchio col suo bravo Abbecedrio nuovo sotto il braccio prese la strada che menava alla scuola: e strada facendo, fantastica nel suo cervellinomille ragionamenti e mille castelli in aria, uno più bello del più altro.
+E discorrendo da se solo, diceva:
+— Oggi, alla scuola, voglio subito imparare a leggere: domani poi imparerai a scrivere, e domani l’altro imparerai a fare i numeri.
+Poi, colla
+abilità, guadagnò molti quattrini e coi primi quattrini che mi verranno in tasca; voglio subito fare al mio babbo una bella casacca di panno.
+Ma che dico di anno?
+Gliela voglio fare tutta d’argento e d’oro, e coi bottoni di brillanti.
+E quel pover’uomo se la merita davvero: perchè innombra, per comprarmi i libri e per farmi istruzione, è rimasto in maniche di camicia.... a questi freddi!.
+Non ci sono che i babbi che sieno capaci di certi sacrifizi!
+—
+
+Nel frattempo, il burattinaio, che si trovava davanti a Pinocchio, lo avvicinò e gli disse:
+— Che cosa vuoi che io faccia?
+Si fermò e stette in ascolto....
+Quei suoni venivano di fondo a una lunga strada trasversa, che conduceva a un piccolo paesetto fabbricatissimo sul mare.
+— Ohe cosa sia questa musica!
+Peccato che io debba andare a scuola!
+— E io non voglio fare nulla!
+— Oggi anderò a sentire i pifferi e domani a scuola.
+Per andare a scuola e’ è sempre tempo — disse finalmente quel monello, facendo una spallucciata.
+Detto fatto, infilò giù per la strada traversa e cominciò a correre a gambe.
+Più correva e pinasciava e sentiva distinto il suono dei pifferi e dei tonfi della grandecassa: pìpìpì, pimpìpimpì, zum, zum, zupmzupm, zum.
+Quand’ecco che si trovò in mezzo a una piazza tutta piena di gente, la quale si affollava intorno a un gran baracconè di legno e di tela di jilnta di mille colori.
+— Che cos’è quel baracconе?
+— domandò Pinocchio, voltandosi a un ragazetto che era lì del paese.
+— Leggi il cartello, che c’è scritto, e lo saprai.
+— Lo leggerei volentieri; ma per V appunto oggi non so leggere!
+— Che cosa vuoi che mi faccia?
+Allora te lo leggerò io.
+Sappi dunque che in quel cartello a lettere rosse come il fuoco, c’è scritto: Gran Teatro dei Burattini.
+— E quanto si spende per entrare?
+— Quattro soldi.
+— Che cosa vuoi che mi faccia?
+— Te li darei volentieri; — gli rispose l’altro canzonandolo — ma oggi per l’appunto non te li posso dare.
+— Per quattro soldi ti vendo la mia giacchella.
+— Ohe vuoi che mi faccia di una giacchella di carta fiorita?
+Se ci piove su, non e’ è più verso cavarsela da dosso.
+— Vuoi comprare le mie scarpe?
+— Sono buone per accendere il fuoco.
+— Quanto mi dai del berretto?
+— Bell’acquisto davvero?
+Un berretto di mi-glia di pane!
+C’è il caso che i topi me lo vengano a mangiare in capo!
+— Che cosa vuoi che io faccia?
+Stava lì lì per fare
+
+— Vuoi darmi quattro soldi di quest’Abbacedario nuovo?
+Pailtimà offerta: ma non aveva coraggio: esitava tentennava, pativa.
+Alla fine disse:
+— Vuoi darmi quattro soldi di quest’Abbecedario nuovo?
+— Io sono un ragazzo e non compro nulla dai ragazzi.
+— Per quattro soldi l’abbecedario lo prendo
+— gridò un rivenditore di panni usati, che s’era trovato presente alla conversazione.
+E il libro fu venduto lì su due piedi.
+E pensare che quel pover’uomo di Geppetto era rimasto a casa, a tremare dal freddo in maniche di camicia, per comprare il Abbecedario alla figliuola!","IX.
+
+Pinocchio vende l’Abbecedario per andare a vedere
+il teatrino dei burattini.
+
+Smesso che fu di nevicare, Pinocchio col suo bravo Abbecedario nuovo sotto il braccio, prese la strada che menava alla scuola: e strada facendo, fantasticava nel suo cervellino mille ragionamenti e mille castelli in aria, uno più bello dell’altro.
+E discorrendo da sè solo, diceva:
+— Oggi, alla scuola, voglio subito imparare a leggere: domani poi imparerò a scrivere, e domani l’altro imparerò a fare i numeri. Poi, colla mia abilità, guadagnerò molti quattrini e coi primi quattrini che mi verranno in tasca, voglio subito fare al mio babbo una bella casacca di panno.
+Ma che dico di panno? Gliela voglio fare tutta d’argento e d’oro, e coi bottoni di brillanti. E quel pover’uomo se la merita davvero: perchè, insomma, per comprarmi i libri e per farmi istruire, è rimasto in maniche di camicia.... a questi freddi! Non ci sono che i babbi che sieno capaci di certi sacrifizi!... —
+Mentre tutto commosso diceva così, gli parve di sentire in lontananza una musica di pifferi e di colpi di grancassa: pì-pì-pì, pì-pì-pì, zum, zum, zum, zum.
+Si fermò e stette in ascolto. Quei suoni venivano di fondo a una lunghissima strada traversa, che conduceva a un piccolo paesetto fabbricato sulla spiaggia del mare.
+— Che cosa sia questa musica? Peccato che io debba andare a scuola, se no.... —
+E rimase lì perplesso. A ogni modo, bisognava prendere una risoluzione; o a scuola, o a sentire i pifferi.
+— Oggi anderò a sentire i pifferi, e domani a scuola. Per andare a scuola c’è sempre tempo — disse finalmente quel monello, facendo una spallucciata.
+Detto fatto, infilò giù per la strada traversa e cominciò a correre a gambe. Più correva e più sentiva distinto il suono dei pifferi e dei tonfi della grancassa: pì-pì-pì, pì-pì-pì, pì-pì-pì, zum, zum, zum, zum.
+Quand’ecco che si trovò in mezzo a una piazza tutta piena di gente, la quale si affollava intorno a un gran baraccone di legno e di tela dipinta di mille colori.
+— Che cos’è quel baraccone? — domandò
+Pinocchio, voltandosi a un ragazzetto che era lì del paese.
+— Leggi il cartello, che c’è scritto, e lo saprai.
+— Lo leggerei volentieri, ma per l’appunto oggi non so leggere.
+— Bravo bue! Allora te lo leggerò io. Sappi dunque che in quel cartello a lettere rosse come il fuoco, c’è scritto: Gran Teatro dei Burattini....
+— È molto che è incominciata la commedia?
+— Comincia ora.
+— E quanto si spende per entrare?
+— Quattro soldi. —
+Pinocchio, che aveva addosso la febbre della curiosità, perse ogni ritegno e disse, senza vergognarsi, al ragazzetto col quale parlava:
+— Mi daresti quattro soldi fino a domani?
+— Te li darei volentieri, — gli rispose l’altro canzonandolo — ma oggi per l’appunto non te li posso dare.
+— Per quattro soldi, ti vendo la mia giacchetta — gli disse allora il burattino.
+— Che vuoi che mi faccia di una giacchetta di carta fiorita? Se ci piove su, non c’è più verso di cavarsela da dosso.
+— Vuoi comprare le mie scarpe?
+— Sono buone per accendere il fuoco.
+— Quanto mi dài del berretto?
+— Bell’acquisto davvero! Un berretto di midolla di pane! C’è il caso che i topi me lo vengano a mangiare in capo!―
+Pinocchio era sulle spine. Stava lì lì per fare
+— Vuoi darmi quattro soldi di quest’Abbecedario nuovo?
+
+un’ultima offerta: ma non aveva coraggio; esitava, tentennava, pativa. Alla fine disse:
+— Vuoi darmi quattro soldi di quest’Abbecedario nuovo?
+— Io sono un ragazzo, e non compro nulla dai ragazzi, — gli rispose il suo piccolo interlocutore, che aveva molto più giudizio di lui.
+— Per quattro soldi l’Abbecedario lo prendo
+io, — gridò un rivenditore di panni usati, che s’era trovato presente alla conversazione.
+E il libro fu venduto lì sui due piedi. E pensare che quel pover’uomo di Geppetto era rimasto a casa, a tremare dal freddo in maniche di camicia, per comprare l’Abbecedario al figliuolo!",0.4626988480526604,0.20413835701050032,6
