@@ -142,6 +142,7 @@ def handle_train_model():
         train_model(config, PATHS, train_ds, eval_sentence_ds)
 
 def handle_evaluate_model():
+    """Handler for evaluating models."""
     global GEMINI_MODEL
     dataset_key = select_dataset()
     selected_configs = select_model_configs_from_menu()
@@ -158,10 +159,14 @@ def handle_evaluate_model():
         return
 
     use_gemini = ask_yes_no("⭐ Use Gemini for scoring? (Requires API key)")
+    
+    # --- MODIFIED: This logic is now simpler ---
+    # It just checks if the initial connection test at startup was successful.
     if use_gemini and not GEMINI_MODEL:
-        GEMINI_MODEL = configure_gemini(PATHS)
-        if not GEMINI_MODEL:
-            use_gemini = False
+        print("\n❌ Cannot use Gemini scoring because the initial API connection failed.")
+        print("   Please check your API key in 'general_utils/google_api.txt' and restart.")
+        use_gemini = False
+    # --- END MODIFICATION ---
 
     for config in selected_configs:
         if not config: continue
@@ -217,13 +222,20 @@ def handle_install_requirements():
 
 def main_menu():
     """Displays the main menu and handles user input."""
+    # --- MODIFIED: Test Gemini connection on startup ---
+    global GEMINI_MODEL 
     if not PATHS: 
         print("Error: Path configuration failed.")
         return
     
     set_all_seeds(42)
-
     login_to_huggingface(PATHS)
+    
+    print("\nAttempting to connect to Gemini API...")
+    GEMINI_MODEL = configure_gemini(PATHS)
+    if not GEMINI_MODEL:
+        print("⚠️ Gemini connection failed. Gemini-dependent features will be unavailable.")
+    # --- END MODIFICATION ---
     
     while True:
         print("\n==============================")
@@ -245,7 +257,7 @@ def main_menu():
             print("Exiting the program. Goodbye!")
             break
         else:
-            print("Invalid choice. Please enter a number between 1 and 5.")
+            print("Invalid choice.")
 
 if __name__ == "__main__":
     main_menu()

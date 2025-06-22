@@ -8,7 +8,12 @@ from tqdm import tqdm
 from difflib import SequenceMatcher
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sklearn.metrics import cohen_kappa_score
-import nltk # <-- Add this import
+import nltk
+try:
+    nltk.data.find('tokenizers/punkt')
+except nltk.downloader.DownloadError:
+    nltk.download('punkt', quiet=True)
+
 
 from src.utils import build_prompt, calculate_cer
 
@@ -73,46 +78,75 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
         print(f"Error during Gemini scoring: {e}")
         return -1
 
+# In src/eval.py
+
 def correct_document(doc_text, model, tokenizer, config, dataset_config):
-    """Splits a document into sentences, corrects each, and reassembles them."""
+    """
+    Segments long documents, corrects each chunk with a two-pass system,
+    and now includes detailed print statements for progress tracking.
+    """
     is_ita = dataset_config.get("ita_language", False)
     prompt_style = config["prompt_style"]
     device = model.device
 
-    # Split the document into individual sentences
+    # --- 1. Robust Chunking Logic ---
+    correction_prompt_template = build_prompt("{text_placeholder}", prompt_style, ita=is_ita, pass_type="correction")
+    prompt_token_count = len(tokenizer.encode(correction_prompt_template.replace("{text_placeholder}", "")))
+    CONTENT_TOKEN_LIMIT = 2048 - prompt_token_count - 50
+
     sentences = nltk.sent_tokenize(doc_text, language='italian' if is_ita else 'english')
-    corrected_sentences = []
-
-    # Process each sentence one-by-one to ensure nothing is missed
+    final_chunks = []
     for sent in sentences:
-        if not sent.strip():
-            continue
-            
-        prompt = build_prompt(sent, prompt_style, is_ita)
-        inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
-        
-        with torch.no_grad():
-            output_ids = model.generate(
-                input_ids=inputs["input_ids"],
-                attention_mask=inputs["attention_mask"],
-                max_new_tokens=1024,
-                repetition_penalty=1.3,
-                no_repeat_ngram_size=4,
-                num_beams=3,
-                pad_token_id=tokenizer.eos_token_id,
-                eos_token_id=tokenizer.eos_token_id,
-            )
-        
-        new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
-        prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
-        
-        # Post-processing to remove leaked special tokens
-        prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
+        if len(tokenizer.encode(sent)) > CONTENT_TOKEN_LIMIT:
+            words = sent.split()
+            current_sub_chunk = ""
+            for word in words:
+                if len(tokenizer.encode(current_sub_chunk + " " + word)) > CONTENT_TOKEN_LIMIT:
+                    final_chunks.append(current_sub_chunk.strip())
+                    current_sub_chunk = word
+                else:
+                    current_sub_chunk += " " + word
+            if current_sub_chunk:
+                final_chunks.append(current_sub_chunk.strip())
+        else:
+            final_chunks.append(sent)
 
-        corrected_sentences.append(prediction)
-    
-    # Join the corrected sentences with a newline to preserve paragraph structure
-    return "\n".join(corrected_sentences)
+    # --- NEW: Announce the number of chunks ---
+    print(f"\n  - Document split into {len(final_chunks)} chunks. Starting two-pass correction...")
+
+    # --- 2. Two-Pass Correction with Inner Printing ---
+    final_corrected_chunks = []
+    for i, chunk in enumerate(final_chunks):
+        # --- NEW: Print progress for each chunk ---
+        print(f"    - Processing chunk {i + 1}/{len(final_chunks)}...")
+        if not chunk.strip():
+            continue
+        
+        # Pass 1
+        print(f"      - Pass 1 (Correction)...", end="", flush=True)
+        correction_prompt = build_prompt(chunk, prompt_style, ita=is_ita, pass_type="correction")
+        inputs = tokenizer(correction_prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
+        with torch.no_grad():
+            output_ids = model.generate(input_ids=inputs.input_ids, max_new_tokens=2048, num_beams=3, repetition_penalty=1.2)
+        corrected_text_pass1 = tokenizer.decode(output_ids[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
+        print(" Done.")
+
+        # Pass 2
+        print(f"      - Pass 2 (Polishing)...", end="", flush=True)
+        polishing_prompt = build_prompt(corrected_text_pass1, prompt_style, ita=is_ita, pass_type="polishing")
+        inputs = tokenizer(polishing_prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
+        with torch.no_grad():
+            output_ids = model.generate(input_ids=inputs.input_ids, max_new_tokens=2048, num_beams=3, repetition_penalty=1.1)
+        final_text = tokenizer.decode(output_ids[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
+        final_text = final_text.replace("<|system|>", "").replace("<|user|>", "").strip()
+        print(" Done.")
+        
+        final_corrected_chunks.append(final_text)
+
+    # --- 3. Reassembly ---
+    print("  - Document correction complete.")
+    return "\n".join(final_corrected_chunks)
+
 
 def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_gemini_scoring):
     """Evaluates a single fine-tuned model by processing full documents chunk by chunk."""
