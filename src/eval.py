@@ -107,7 +107,7 @@ def correct_document(doc_text, model, tokenizer, config, dataset_config):
         if not chunk.strip():
             continue
             
-        prompt = build_prompt(chunk, prompt_style, ita=is_ita, pass_type="correction")
+        prompt = build_prompt(chunk, prompt_style, ita=is_ita)
         
         # Truncation is a safeguard, but our chunking should make it unnecessary.
         inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
