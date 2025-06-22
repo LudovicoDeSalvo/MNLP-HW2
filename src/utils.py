@@ -22,47 +22,22 @@ def load_config(config_path):
         print(f"❌ Error: Could not decode JSON from {config_path}")
         return None
 
-# MODIFIED: Now handles two different passes for correction and polishing
-def build_prompt(text_input, prompt_style, ita=False, pass_type="correction"):
-    """
-    Builds a model-specific prompt based on the pass type (correction or polishing).
-    """
-    if pass_type == "correction":
-        # --- PASS 1: Aggressive OCR Correction ---
-        if ita:
-            return f"""Sei un assistente esperto nella correzione di testi OCR. Il tuo compito è correggere il testo OCR fornito, sistemando ogni errore, refuso o problema di formattazione. Restituisci solo il testo corretto, senza commenti o spiegazioni aggiuntive.
+def build_prompt(text_input, prompt_style, ita=False): 
+    """Builds a model-specific prompt for OCR correction."""
+    if ita:
+        return f"""Sei un assistente esperto nella correzione di testi OCR. Il tuo compito è correggere il testo OCR fornito, sistemando ogni errore, refuso o problema di formattazione. Restituisci solo il testo corretto, senza commenti o spiegazioni aggiuntive.
 
                 ### TESTO OCR:
                 {text_input}
 
                 ### TESTO CORRETTO:"""
-        else: # English
-            return f"""You are an expert OCR correction assistant. Your task is to correct the given OCR text, fixing any errors, misspellings, or formatting issues. Return only the perfectly corrected text, without any additional comments or explanations.
+    else: # English
+        return f"""You are an expert OCR correction assistant. Your task is to correct the given OCR text, fixing any errors, misspellings, or formatting issues. Return only the perfectly corrected text, without any additional comments or explanations.
 
                 ### OCR TEXT:
                 {text_input}
 
                 ### CORRECTED TEXT:"""
-
-    elif pass_type == "polishing":
-        # --- PASS 2: Gentle Polishing ---
-        if ita:
-            return f"""Sei un redattore meticoloso. Il tuo compito è revisionare il seguente testo, correggendo eventuali errori di punteggiatura, grammatica o refusi minori rimasti. NON alterare la struttura delle frasi o la scelta delle parole se sono già corrette. Restituisci solo il testo finale e pulito.
-
-                ### TESTO DA REVISIONARE:
-                {text_input}
-
-                ### TESTO REVISIONATO:"""
-        else: # English
-            return f"""You are a meticulous editor. Your job is to proofread the following text, correcting any remaining minor punctuation, grammar, or spelling mistakes. Do not alter sentence structure or word choice if it is already correct. Return only the final, clean text.
-
-                ### TEXT TO PROOFREAD:
-                {text_input}
-
-                ### PROOFREAD TEXT:"""
-    
-    # Fallback for old model configs or other styles
-    return f"Correct the following text:\n\n{text_input}\n\nCorrected text:"
 
 def set_all_seeds(seed=42):
     """Sets seeds for all relevant libraries to ensure reproducibility."""

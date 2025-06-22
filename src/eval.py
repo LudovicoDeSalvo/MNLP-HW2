@@ -78,64 +78,55 @@ from tqdm import tqdm # Make sure tqdm is imported at the top of the file
 
 def correct_document(doc_text, model, tokenizer, config, dataset_config):
     """
-    Splits a document into sentences and performs a two-pass correction on each sentence.
+    Performs a single-pass correction on the document by splitting it into
+    fixed-size chunks of 1000 tokens.
     """
     is_ita = dataset_config.get("ita_language", False)
     prompt_style = config["prompt_style"]
     device = model.device
 
-    # Split the document into individual sentences
-    sentences = nltk.sent_tokenize(doc_text, language='italian' if is_ita else 'english')
-    corrected_sentences = []
-
-    print(f"\n  - Correcting {len(sentences)} sentences with two passes...")
-
-    # Process each sentence one-by-one with a progress bar
-    for sent in tqdm(sentences, desc="  - Sentences", leave=False, bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt}'):
-        if not sent.strip():
+    # --- 1. New Chunking Logic: Fixed Token Size ---
+    # First, tokenize the entire document to get a list of token IDs
+    all_token_ids = tokenizer.encode(doc_text)
+    
+    CHUNK_SIZE = 1000  # As requested
+    
+    # Create chunks of token IDs
+    id_chunks = [all_token_ids[i:i + CHUNK_SIZE] for i in range(0, len(all_token_ids), CHUNK_SIZE)]
+    
+    # Decode each token chunk back into a text chunk
+    text_chunks = [tokenizer.decode(chunk, skip_special_tokens=True) for chunk in id_chunks]
+    
+    # --- Inner progress printing ---
+    print(f"\n  - Document split into {len(text_chunks)} chunks of max {CHUNK_SIZE} tokens.")
+    
+    # --- 2. Single-Pass Correction ---
+    corrected_chunks = []
+    for i, chunk in enumerate(text_chunks):
+        print(f"    - Correcting chunk {i + 1}/{len(text_chunks)}...")
+        if not chunk.strip():
             continue
             
-        # --- PASS 1: Aggressive Correction ---
-        correction_prompt = build_prompt(sent, prompt_style, ita=is_ita, pass_type="correction")
-        inputs_pass1 = tokenizer(correction_prompt, return_tensors="pt", padding=True, truncation=True, max_length=1024).to(device)
+        prompt = build_prompt(chunk, prompt_style, ita=is_ita, pass_type="correction")
+        
+        # Truncation is a safeguard, but our chunking should make it unnecessary.
+        inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
         
         with torch.no_grad():
-            output_ids_pass1 = model.generate(
-                input_ids=inputs_pass1["input_ids"],
-                attention_mask=inputs_pass1["attention_mask"],
-                max_new_tokens=1024,
-                repetition_penalty=1.3, # Higher penalty for initial correction
-                no_repeat_ngram_size=4,
+            output_ids = model.generate(
+                input_ids=inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                max_new_tokens=2048, # Allow for a long output
+                repetition_penalty=1.2,
                 num_beams=3,
-                pad_token_id=tokenizer.eos_token_id,
-                eos_token_id=tokenizer.eos_token_id,
             )
         
-        corrected_text_pass1 = tokenizer.decode(output_ids_pass1[0, inputs_pass1['input_ids'].shape[1]:], skip_special_tokens=True).strip()
-
-        # --- PASS 2: Gentle Polishing ---
-        polishing_prompt = build_prompt(corrected_text_pass1, prompt_style, ita=is_ita, pass_type="polishing")
-        inputs_pass2 = tokenizer(polishing_prompt, return_tensors="pt", padding=True, truncation=True, max_length=1024).to(device)
-        
-        with torch.no_grad():
-            output_ids_pass2 = model.generate(
-                input_ids=inputs_pass2["input_ids"],
-                attention_mask=inputs_pass2["attention_mask"],
-                max_new_tokens=1024,
-                repetition_penalty=1.2, # Lower penalty for polishing
-                no_repeat_ngram_size=4,
-                num_beams=3,
-                pad_token_id=tokenizer.eos_token_id,
-                eos_token_id=tokenizer.eos_token_id,
-            )
-
-        final_text = tokenizer.decode(output_ids_pass2[0, inputs_pass2['input_ids'].shape[1]:], skip_special_tokens=True).strip()
-        
-        prediction = final_text.replace("<|system|>", "").replace("<|user|>", "").strip()
-        corrected_sentences.append(prediction)
+        prediction = tokenizer.decode(output_ids[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
+        prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
+        corrected_chunks.append(prediction)
     
-    # Join the corrected sentences with a newline to preserve paragraph structure
-    return "\n".join(corrected_sentences)
+    # Join the corrected chunks. A simple space is safest since we cut arbitrarily.
+    return " ".join(corrected_chunks)
 
 def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_gemini_scoring):
     """Evaluates a single fine-tuned model by processing full documents chunk by chunk."""
