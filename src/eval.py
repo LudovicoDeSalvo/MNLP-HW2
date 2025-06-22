@@ -40,14 +40,13 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     """
 
     prompt_ita =  f"""
-    S    Sei un giudice esperto della qualità del testo. Verrà fornito un test OCR CORRETTO, da confrontare col il testo di rifermento (100% Corretto).
+    Sei un giudice esperto della qualità del testo. Verrà fornito un test OCR CORRETTO, da confrontare col il testo di rifermento (100% Corretto).
     Devi essere sensibile a errori di ortografia, grammatica, punteggiatura o formattazione.
     Controlla la logica semantica, la coerenza contestuale e possibili allucinazioni.
-    Devi dare i seguenti punteggi ad ogni categoria:
+    Devi assegnare un voto da 0 a 10, dando i seguenti punteggi ad ogni categoria:
     Punteggio da 0 a 10 per Leggibilità generale: quanto è facile e scorrevole leggere il testo.
-    Punteggio da 0 a 7 per Correttezza: errori ortografici, punteggiatura, typos.
-    Punteggio da 0 a 2 per Formattazione: corretta spaziatura e interruzioni di riga.
-    Punteggio da 0 a 10 per Coerenza semantica: le frasi hanno senso.
+    Punteggio da 0 a 10 per Correttezza e formattazione: errori ortografici, punteggiatura, typos. Spaziatura e interruzione di riga.
+    Punteggio da 0 a 10 per Coerenza semantica: le frasi hanno senso, non ci sono ripetizioni
 
     Ecco il testo:
 
@@ -60,7 +59,7 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
 
     FINE TESTO DI RIFERMENTO
 
-    La tua intera risposta deve essere un singolo numero ovvero la somma dei punteggi delle singole categorie.
+    Comapara i due testi e fornisci un giudizio. La tua intera risposta deve essere un singolo numero da 0 a 10 ovvero la somma dei punteggi delle singole categorie.
     """
 
     prompt = prompt_ita if ita else prompt_eng
@@ -73,60 +72,46 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
         print(f"Error during Gemini scoring: {e}")
         return -1
 
-# In src/eval.py
-from tqdm import tqdm # Make sure tqdm is imported at the top of the file
-
 def correct_document(doc_text, model, tokenizer, config, dataset_config):
-    """
-    Performs a single-pass correction on the document by splitting it into
-    fixed-size chunks of 1000 tokens.
-    """
+    """Splits a document into sentences, corrects each, and reassembles them."""
     is_ita = dataset_config.get("ita_language", False)
     prompt_style = config["prompt_style"]
     device = model.device
 
-    # --- 1. New Chunking Logic: Fixed Token Size ---
-    # First, tokenize the entire document to get a list of token IDs
-    all_token_ids = tokenizer.encode(doc_text)
-    
-    CHUNK_SIZE = 1000  # As requested
-    
-    # Create chunks of token IDs
-    id_chunks = [all_token_ids[i:i + CHUNK_SIZE] for i in range(0, len(all_token_ids), CHUNK_SIZE)]
-    
-    # Decode each token chunk back into a text chunk
-    text_chunks = [tokenizer.decode(chunk, skip_special_tokens=True) for chunk in id_chunks]
-    
-    # --- Inner progress printing ---
-    print(f"\n  - Document split into {len(text_chunks)} chunks of max {CHUNK_SIZE} tokens.")
-    
-    # --- 2. Single-Pass Correction ---
-    corrected_chunks = []
-    for i, chunk in enumerate(text_chunks):
-        print(f"    - Correcting chunk {i + 1}/{len(text_chunks)}...")
-        if not chunk.strip():
+    # Split the document into individual sentences
+    sentences = nltk.sent_tokenize(doc_text, language='italian' if is_ita else 'english')
+    corrected_sentences = []
+
+    # Process each sentence one-by-one to ensure nothing is missed
+    for sent in sentences:
+        if not sent.strip():
             continue
             
-        prompt = build_prompt(chunk, prompt_style, ita=is_ita)
-        
-        # Truncation is a safeguard, but our chunking should make it unnecessary.
-        inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
+        prompt = build_prompt(sent, prompt_style, is_ita)
+        inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
         
         with torch.no_grad():
             output_ids = model.generate(
                 input_ids=inputs["input_ids"],
                 attention_mask=inputs["attention_mask"],
-                max_new_tokens=2048, # Allow for a long output
-                repetition_penalty=1.2,
+                max_new_tokens=1024,
+                repetition_penalty=1.3,
+                no_repeat_ngram_size=4,
                 num_beams=3,
+                pad_token_id=tokenizer.eos_token_id,
+                eos_token_id=tokenizer.eos_token_id,
             )
         
-        prediction = tokenizer.decode(output_ids[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
+        new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
+        prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+        
+        # Post-processing to remove leaked special tokens
         prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
-        corrected_chunks.append(prediction)
+
+        corrected_sentences.append(prediction)
     
-    # Join the corrected chunks. A simple space is safest since we cut arbitrarily.
-    return " ".join(corrected_chunks)
+    # Join the corrected sentences with a newline to preserve paragraph structure
+    return "\n".join(corrected_sentences)
 
 def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_gemini_scoring):
     """Evaluates a single fine-tuned model by processing full documents chunk by chunk."""

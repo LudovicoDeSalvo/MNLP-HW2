@@ -22,22 +22,44 @@ def load_config(config_path):
         print(f"❌ Error: Could not decode JSON from {config_path}")
         return None
 
-def build_prompt(text_input, prompt_style, ita=False): 
-    """Builds a model-specific prompt for OCR correction."""
+def build_prompt(noisy_text, prompt_style, ita=False):
+    """Builds a model-specific prompt based on the style from the config."""
     if ita:
-        return f"""Sei un assistente esperto nella correzione di testi OCR. Il tuo compito è correggere il testo OCR fornito, sistemando ogni errore, refuso o problema di formattazione. Restituisci solo il testo corretto, senza commenti o spiegazioni aggiuntive.
+        # For Italian, we'll use a specific, structured prompt for TinyLlama
+        if prompt_style == "tinyllama":
+            return f"""Sei un assistente esperto nella correzione di testi OCR. Il tuo compito è correggere il testo OCR fornito, sistemando ogni errore, refuso o problema di formattazione. Restituisci solo il testo corretto, senza commenti o spiegazioni aggiuntive.
 
-                ### TESTO OCR:
-                {text_input}
+                    ### TESTO OCR:
+                    {noisy_text}
 
-                ### TESTO CORRETTO:"""
-    else: # English
+                    ### TESTO CORRETTO:"""
+        # The Minerva prompt for Italian can remain the same if it works well
+        elif prompt_style == "minerva":
+            return f"Correggi il seguente testo OCR:\n\n{noisy_text}\n\nTesto corretto:"
+
+    # --- English Prompts ---
+    if prompt_style == "tinyllama":
+        # A more structured prompt for English as well
         return f"""You are an expert OCR correction assistant. Your task is to correct the given OCR text, fixing any errors, misspellings, or formatting issues. Return only the perfectly corrected text, without any additional comments or explanations.
 
                 ### OCR TEXT:
-                {text_input}
+                {noisy_text}
 
                 ### CORRECTED TEXT:"""
+    elif prompt_style == "minerva":
+        return f"""### SYSTEM
+                You are a careful OCR fixer. Given a noisy paragraph, return only the corrected version.
+
+                ### USER
+                <<<
+                {noisy_text}
+                >>>
+
+                ### RESPONSE
+                """
+    else:
+        # A default fallback prompt
+        return f"Correct the following OCR text:\n\n{noisy_text}\n\nCorrected text:"
 
 def set_all_seeds(seed=42):
     """Sets seeds for all relevant libraries to ensure reproducibility."""
