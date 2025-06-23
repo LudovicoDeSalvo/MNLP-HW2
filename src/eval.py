@@ -43,7 +43,7 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     Sei un giudice esperto della qualità del testo. Verrà fornito un test OCR CORRETTO, da confrontare col il testo di rifermento (100% Corretto).
     Devi essere sensibile a errori di ortografia, grammatica, punteggiatura o formattazione.
     Controlla la logica semantica, la coerenza contestuale e possibili allucinazioni.
-    Devi assegnare un voto da 0 a 10, dando i seguenti punteggi ad ogni categoria:
+    Devi assegnare un voto da 0 a 30, dando i seguenti punteggi ad ogni categoria:
     Punteggio da 0 a 10 per Leggibilità generale: quanto è facile e scorrevole leggere il testo.
     Punteggio da 0 a 10 per Correttezza e formattazione: errori ortografici, punteggiatura, typos. Spaziatura e interruzione di riga.
     Punteggio da 0 a 10 per Coerenza semantica: le frasi hanno senso, non ci sono ripetizioni
@@ -59,7 +59,7 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
 
     FINE TESTO DI RIFERMENTO
 
-    Comapara i due testi e fornisci un giudizio. La tua intera risposta deve essere un singolo numero da 0 a 10 ovvero la somma dei punteggi delle singole categorie.
+    Comapara i due testi e fornisci un giudizio. La tua intera risposta deve essere un singolo numero da 0 a 30 ovvero la somma dei punteggi delle singole categorie.
     """
 
     prompt = prompt_ita if ita else prompt_eng
@@ -168,6 +168,29 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     
     return results_df
 
+def get_single_correction(text_to_correct, model, tokenizer, config, dataset_config):
+    """
+    Performs a single-pass correction on a short text snippet.
+    This function is designed for the interactive correlation task.
+    """
+    is_ita = dataset_config.get("ita_language", False)
+    prompt_style = config["prompt_style"]
+    device = model.device
+
+    prompt = build_prompt(text_to_correct, prompt_style, ita=is_ita, pass_type="correction")
+    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
+
+    with torch.no_grad():
+        output_ids = model.generate(
+            input_ids=inputs.input_ids,
+            max_new_tokens=1024,
+            num_beams=3,
+            repetition_penalty=1.2
+        )
+    
+    prediction = tokenizer.decode(output_ids[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
+    prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
+    return prediction
 
 def run_human_vs_gemini_correlation(model_eval_path, human_annotations_path):
     # ... (This function is identical to the previous version, it's now just called with the correct path from main)

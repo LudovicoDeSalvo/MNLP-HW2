@@ -3,6 +3,10 @@ import sys
 import subprocess
 import pandas as pd
 from datasets import Dataset
+import random
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from sklearn.metrics import cohen_kappa_score, mean_absolute_error
 
 # --- DYNAMIC PATH DETECTION (NO CONFIG FILE NEEDED) ---
 try:
@@ -29,8 +33,7 @@ sys.path.insert(0, os.path.join(PATHS["root"], "src"))
 from utils import set_all_seeds, login_to_huggingface, configure_gemini, load_config
 from data_prep import prepare_dataset
 from train import train_model
-from eval import evaluate_model, run_human_vs_gemini_correlation
-
+from eval import evaluate_model, get_single_correction, gemini_judge_score
 
 def get_model_configs():
     """Dynamically finds all model config files from the specified directory."""
@@ -184,25 +187,126 @@ def handle_evaluate_model():
                     print(f"✨ Average Gemini Score: {avg_gemini:.4f}")
             print("-"*(49))
 
-def handle_correlation_analysis():
-    # FIXED: select_evaluation_file no longer needs an argument
-    eval_file_path, dataset_key = select_evaluation_file() 
-    if not eval_file_path: return
+def handle_human_correlation():
+    """Interactive workflow to compare user scores with Gemini scores."""
+    global GEMINI_MODEL
+    print("\n--- Interactive Human vs. Gemini Correlation ---")
 
-    # We need a config to find the human annotations file path. Dynamically load the first available one.
-    if not MODEL_CONFIGS:
-        print("❌ No model configs found, cannot determine human annotations path.")
+    # 1. SETUP
+    if not GEMINI_MODEL:
+        print("❌ Gemini API connection is not available. This feature cannot be used.")
         return
-        
-    master_config_path = list(MODEL_CONFIGS.values())[0]['path']
-    master_config = load_config(master_config_path)
-    if not master_config: return
+
+    dataset_key = select_dataset()
     
-    human_annotations_path = os.path.join(
-        PATHS['general_utils_dir'],
-        master_config["datasets"][dataset_key]["human_annotations_filename"]
-    )
-    run_human_vs_gemini_correlation(eval_file_path, human_annotations_path)
+    print("\nSelect the model to evaluate:")
+    # We only evaluate one model at a time in this mode
+    model_configs_list = [v for k, v in MODEL_CONFIGS.items()]
+    for i, model_info in enumerate(model_configs_list):
+        print(f"{i+1}. {model_info['name']}")
+    
+    model_choice = -1
+    while model_choice < 0 or model_choice >= len(model_configs_list):
+        try:
+            choice = int(input(f"Enter choice (1-{len(model_configs_list)}): ")) - 1
+            if 0 <= choice < len(model_configs_list):
+                model_choice = choice
+            else:
+                print("Invalid number.")
+        except ValueError:
+            print("Please enter a number.")
+
+    config = load_config(model_configs_list[model_choice]["path"])
+    if not config: return
+    
+    num_samples = 0
+    while num_samples <= 0:
+        try:
+            num_samples = int(input("How many random samples to evaluate? (e.g., 5): "))
+            if num_samples <= 0: print("Please enter a positive number.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+    # 2. DATA PREPARATION
+    print("\nLoading and preparing random samples...")
+    train_ds, eval_sentence_ds, _ = prepare_dataset(config, dataset_key, PATHS)
+    full_ds = pd.concat([train_ds.to_pandas(), eval_sentence_ds.to_pandas()])
+    
+    if len(full_ds) < num_samples:
+        print(f"Warning: Requested {num_samples} samples, but only {len(full_ds)} are available.")
+        num_samples = len(full_ds)
+        
+    random_samples = full_ds.sample(n=num_samples).to_dict('records')
+
+    # 3. LOAD MODEL
+    print(f"Loading model '{config['model_name']}'...")
+    try:
+        model_path = os.path.join(PATHS['trained_models_dir'], config['output_dir_name'])
+        model = AutoModelForCausalLM.from_pretrained(model_path).to("cuda" if torch.cuda.is_available() else "cpu")
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
+    except OSError:
+        print(f"❌ Could not load model from {model_path}. Please train it first.")
+        return
+    
+    # 4. INTERACTIVE LOOP
+    user_scores = []
+    gemini_scores = []
+    dataset_config = config["datasets"][dataset_key]
+    is_ita = dataset_config.get("ita_language", False)
+
+    for i, sample in enumerate(random_samples):
+        print("\n" + "="*50)
+        print(f"--- Sample {i + 1}/{num_samples} ---")
+        
+        ocr_text = sample['noisy']
+        target_text = sample['target']
+        
+        print("\n1. Getting model correction...")
+        predicted_text = get_single_correction(ocr_text, model, tokenizer, config, dataset_config)
+        
+        print("2. Getting Gemini score...")
+        gemini_score = gemini_judge_score(ocr_text, predicted_text, target_text, GEMINI_MODEL, ita=is_ita)
+
+        print("\n--- PLEASE EVALUATE THE CORRECTION ---")
+        print(f"\n[ORIGINAL OCR]:\n{ocr_text}")
+        print(f"\n[MODEL CORRECTION]:\n{predicted_text}")
+        print(f"\n[GROUND TRUTH]:\n{target_text}")
+        print("-" * 20)
+        print(f"Gemini's Score: {gemini_score}")
+        print("-" * 20)
+        
+        # Get user score with input validation
+        user_score = -1
+        while user_score < 0 or user_score > 5:
+            try:
+                score_input = input("Enter your score (0-5): ")
+                user_score = int(score_input)
+                if not (0 <= user_score <= 5):
+                    print("Invalid score. Please enter a number between 0 and 5.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+        
+        user_scores.append(user_score)
+        gemini_scores.append(gemini_score)
+
+    # 5. FINAL ANALYSIS
+    print("\n" + "="*50)
+    print("--- Correlation Analysis Complete ---")
+    if len(user_scores) > 1:
+        pearson_corr = pd.Series(user_scores).corr(pd.Series(gemini_scores))
+        mae = mean_absolute_error(user_scores, gemini_scores)
+        kappa = cohen_kappa_score(user_scores, gemini_scores, labels=[0,1,2,3,4,5])
+
+        print(f"Number of samples evaluated: {len(user_scores)}")
+        print(f"\n📊 Pearson Correlation: {pearson_corr:.4f}")
+        print(f"   (Measures linear relationship. +1 is perfect positive correlation.)")
+        print(f"\n📊 Mean Absolute Error (MAE): {mae:.4f}")
+        print(f"   (Average difference between your scores and Gemini's. Lower is better.)")
+        print(f"\n📊 Cohen's Kappa: {kappa:.4f}")
+        print(f"   (Measures agreement vs. chance. >0.6 is substantial, >0.8 is almost perfect.)")
+    else:
+        print("Not enough samples to calculate correlation. Please evaluate at least 2 samples.")
+    print("="*50)
 
 def handle_install_requirements():
     """Installs packages from requirements.txt."""
@@ -239,7 +343,7 @@ def main_menu():
 
         if choice == "1": handle_train_model()
         elif choice == "2": handle_evaluate_model()
-        elif choice == "3": handle_correlation_analysis()
+        elif choice == "3": handle_human_correlation()
         elif choice == "4": handle_install_requirements()
         elif choice == "5":
             print("Exiting the program. Goodbye!")
