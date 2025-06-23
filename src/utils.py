@@ -22,6 +22,7 @@ def load_config(config_path):
         print(f"❌ Error: Could not decode JSON from {config_path}")
         return None
 
+
 def build_prompt(noisy_text, prompt_style, ita=False):
     """Builds a model-specific prompt based on the style from the config."""
     if ita:

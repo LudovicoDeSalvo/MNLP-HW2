@@ -1,3 +1,5 @@
+# src/data_prep.py
+
 import os
 import json
 import random
@@ -16,6 +18,118 @@ try:
 except nltk.downloader.DownloadError:
     print("Downloading NLTK sentence tokenizer model 'punkt'...")
     nltk.download('punkt', quiet=True)
+
+
+def load_full_documents_for_eval(config, dataset_key, paths):
+    """
+    FIXED: This function was added to resolve a crash in the evaluation and correlation menus.
+    It loads only the evaluation portion (last 20%) of the documents.
+    """
+    dataset_config = config["datasets"][dataset_key]
+    dataset_dir = paths['dataset_dir']
+
+    original_path = os.path.join(dataset_dir, dataset_key, dataset_config['original_filename'])
+    cleaned_path = os.path.join(dataset_dir, dataset_key, dataset_config['cleaned_filename'])
+    
+    try:
+        with open(original_path, "r", encoding="utf-8") as f:
+            original_docs = json.load(f)
+        with open(cleaned_path, "r", encoding="utf-8") as f:
+            cleaned_docs = json.load(f)
+    except FileNotFoundError as e:
+        print(f"❌ Dataset file not found: {e}. Please check paths in your config.")
+        return None
+
+    eval_doc_examples = []
+    
+    doc_ids = sorted(set(original_docs) & set(cleaned_docs))
+    # Determine the split point for training and evaluation
+    eval_start_index = int(len(doc_ids) * 0.8)
+    eval_ids = set(doc_ids[eval_start_index:])
+
+    print(f"Loading {len(eval_ids)} full documents for evaluation...")
+    for doc_id in doc_ids:
+        if doc_id in eval_ids:
+            eval_doc_examples.append({
+                "id": doc_id,
+                "noisy_doc": original_docs[doc_id].strip(),
+                "target_doc": cleaned_docs[doc_id].strip()
+            })
+            
+    return pd.DataFrame(eval_doc_examples)
+
+
+def prepare_dataset(config, dataset_key, paths):
+    """
+    NOTE: This function is unchanged. Per your request, it will always process
+    the dataset using sentence-splitting and will NOT use the Gemini-chunked file.
+    """
+    dataset_config = config["datasets"][dataset_key]
+    dataset_dir = paths['dataset_dir']
+
+    original_path = os.path.join(dataset_dir, dataset_key, dataset_config['original_filename'])
+    cleaned_path = os.path.join(dataset_dir, dataset_key, dataset_config['cleaned_filename'])
+    
+    try:
+        with open(original_path, "r", encoding="utf-8") as f:
+            original_docs = json.load(f)
+        with open(cleaned_path, "r", encoding="utf-8") as f:
+            cleaned_docs = json.load(f)
+    except FileNotFoundError as e:
+        print(f"❌ Dataset file not found: {e}. Please check paths in your config.")
+        return None, None, None
+
+    train_examples = []
+    eval_sentence_examples = []
+    eval_doc_examples = []
+    
+    doc_ids = sorted(set(original_docs) & set(cleaned_docs))
+    train_ids = set(doc_ids[:int(len(doc_ids) * 0.8)])
+
+    print("Processing documents into training and evaluation sets...")
+    for doc_id in doc_ids:
+        is_training_doc = doc_id in train_ids
+        
+        noisy_doc = original_docs[doc_id].strip()
+        clean_doc = cleaned_docs[doc_id].strip()
+        
+        # Add to the full document evaluation set if it's an eval doc
+        if not is_training_doc:
+            eval_doc_examples.append({
+                "id": doc_id,
+                "noisy_doc": noisy_doc,
+                "target_doc": clean_doc
+            })
+
+        # Process into sentence examples for training and trainer-evaluation
+        noisy_sentences = nltk.sent_tokenize(noisy_doc, language='italian' if dataset_config.get("ita_language") else 'english')
+        clean_sentences = nltk.sent_tokenize(clean_doc, language='italian' if dataset_config.get("ita_language") else 'english')
+        num_sentences = min(len(noisy_sentences), len(clean_sentences))
+
+        for i in range(num_sentences):
+            noisy_sent = noisy_sentences[i].strip()
+            clean_sent = clean_sentences[i].strip()
+            
+            if not noisy_sent or not clean_sent:
+                continue
+
+            example = {
+                "id": f"{doc_id}_{i}",
+                "noisy": noisy_sent,
+                "prompt": build_prompt(noisy_sent, config["prompt_style"], dataset_config.get("ita_language", False)),
+                "target": clean_sent,
+            }
+            if is_training_doc:
+                train_examples.append(example)
+            else:
+                eval_sentence_examples.append(example)
+    
+    train_dataset = Dataset.from_pandas(pd.DataFrame(train_examples))
+    eval_sentence_dataset = Dataset.from_pandas(pd.DataFrame(eval_sentence_examples))
+    eval_docs_df = pd.DataFrame(eval_doc_examples)
+
+    print(f"📚 Dataset prepared: {len(train_dataset)} training sentences, {len(eval_sentence_dataset)} eval sentences, {len(eval_docs_df)} eval docs.")
+    return train_dataset, eval_sentence_dataset, eval_docs_df
 
 
 def parse_gemini_split(response_text):
@@ -38,7 +152,6 @@ def parse_gemini_split(response_text):
 
 def split_text_with_gemini(noisy_doc, clean_doc, num_chunks, gemini_model):
     """Uses Gemini with a specific prompt to split both texts into aligned chunks."""
-    # This function is unchanged but necessary
     if num_chunks <= 1:
         return [noisy_doc], [clean_doc]
     prompt = f"""
@@ -77,6 +190,7 @@ def create_chunked_dataset(config, dataset_key, paths, gemini_model):
     """
     Reads the raw dataset, uses Gemini to create intelligent chunks,
     and saves the result to a new file.
+    NOTE: This function is unchanged.
     """
     print(f"\nStarting Gemini-powered chunking for the '{dataset_key}' dataset...")
     dataset_config = config["datasets"][dataset_key]
@@ -117,8 +231,6 @@ def create_chunked_dataset(config, dataset_key, paths, gemini_model):
         
         if noisy_chunks:
             for i in range(len(noisy_chunks)):
-                # --- THIS IS THE FIX ---
-                # Only save the raw text, NOT the prompt.
                 all_examples.append({
                     "id": f"{doc_id}_{i+1}",
                     "noisy": noisy_chunks[i],
@@ -134,65 +246,3 @@ def create_chunked_dataset(config, dataset_key, paths, gemini_model):
         json.dump(all_examples, f, ensure_ascii=False, indent=2)
     
     print("✅ Pre-processing complete!")
-
-
-def load_chunked_dataset_for_training(config, dataset_key, paths):
-    """
-    Loads the pre-processed chunked data, adds the prompt, and splits it for training.
-    """
-    dataset_dir = paths['dataset_dir']
-    processed_path = os.path.join(dataset_dir, dataset_key, "preprocessed_chunks.json")
-    
-    try:
-        df = pd.read_json(processed_path)
-        print(f"✅ Successfully loaded {len(df)} pre-processed chunks.")
-    except Exception as e:
-        print(f"Error loading pre-processed file: {e}")
-        return None, None
-
-    # --- THIS IS THE FIX ---
-    # The prompt is now added here, right before training, not saved in the file.
-    dataset_config = config["datasets"][dataset_key]
-    is_ita = dataset_config.get("ita_language", False)
-    df["prompt"] = df["noisy"].apply(lambda x: build_prompt(x, config["prompt_style"], is_ita))
-    
-    # Shuffle and split all created chunks into train/eval sets
-    df = df.sample(frac=1, random_state=42).reset_index(drop=True)
-    split_index = int(len(df) * 0.8)
-    train_df = df.iloc[:split_index]
-    eval_df = df.iloc[split_index:]
-
-    train_dataset = Dataset.from_pandas(train_df)
-    eval_dataset = Dataset.from_pandas(eval_df)
-    
-    return train_dataset, eval_dataset
-
-def load_full_documents_for_eval(config, dataset_key, paths):
-    """Loads the original full documents for end-to-end evaluation."""
-    # This function is now corrected to get filenames from the config
-    dataset_config = config["datasets"][dataset_key]
-    dataset_dir = paths['dataset_dir']
-    original_path = os.path.join(dataset_dir, dataset_key, dataset_config['original_filename'])
-    cleaned_path = os.path.join(dataset_dir, dataset_key, dataset_config['cleaned_filename'])
-    
-    try:
-        with open(original_path, "r", encoding="utf-8") as f:
-            original_docs = json.load(f)
-        with open(cleaned_path, "r", encoding="utf-8") as f:
-            cleaned_docs = json.load(f)
-    except FileNotFoundError:
-        print(f"❌ Original dataset files not found in {os.path.join(dataset_dir, dataset_key)}")
-        return None
-
-    eval_doc_examples = []
-    doc_ids = sorted(list(set(original_docs.keys()) & set(cleaned_docs)))
-    eval_ids = doc_ids[int(len(doc_ids) * 0.8):] # Use last 20% for evaluation
-    
-    for doc_id in eval_ids:
-        eval_doc_examples.append({
-            "id": doc_id,
-            "noisy_doc": original_docs[doc_id].strip(),
-            "target_doc": cleaned_docs[doc_id].strip(),
-        })
-
-    return pd.DataFrame(eval_doc_examples) if eval_doc_examples else None

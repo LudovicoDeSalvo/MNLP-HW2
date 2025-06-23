@@ -6,14 +6,12 @@
     "eng": {
       "ita_language": false,
       "original_filename": "the_vampyre_ocr.json",
-      "cleaned_filename": "the_vampyre_clean.json",
-      "human_annotations_filename": "human_annotations_eng.json"
+      "cleaned_filename": "the_vampyre_clean.json"
     },
     "ita": {
       "ita_language": true,
       "original_filename": "original_ocr.json",
-      "cleaned_filename": "cleaned.json",
-      "human_annotations_filename": "human_annotations.json"
+      "cleaned_filename": "cleaned.json"
     }
   }
 }

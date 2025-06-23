@@ -7,14 +7,15 @@ import pandas as pd
 from tqdm import tqdm
 from difflib import SequenceMatcher
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from sklearn.metrics import cohen_kappa_score
-import nltk # <-- Add this import
+from sklearn.metrics import cohen_kappa_score, mean_absolute_error
+import nltk
 
 from src.utils import build_prompt, calculate_cer
 
-EVAL_RESULTS_DIR = "evaluation_results"
+# This is the full eval script as you provided
+# Note: The run_human_vs_gemini_correlation function is from an older workflow
+# and will not be used by the interactive menu in main.py, but is kept here as requested.
 
-# This function is now passed the 'ita' flag from the dataset config
 def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
     if not gemini_model:
         return -1
@@ -72,6 +73,41 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
         print(f"Error during Gemini scoring: {e}")
         return -1
 
+def correct_document(doc_text, model, tokenizer, config, dataset_config):
+    """Splits a document into sentences, corrects each, and reassembles them."""
+    is_ita = dataset_config.get("ita_language", False)
+    prompt_style = config["prompt_style"]
+    device = model.device
+
+    sentences = nltk.sent_tokenize(doc_text, language='italian' if is_ita else 'english')
+    corrected_sentences = []
+
+    for sent in sentences:
+        if not sent.strip():
+            continue
+            
+        prompt = build_prompt(sent, prompt_style, is_ita)
+        inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
+        
+        with torch.no_grad():
+            output_ids = model.generate(
+                input_ids=inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                max_new_tokens=1024,
+                repetition_penalty=1.3,
+                no_repeat_ngram_size=4,
+                num_beams=3,
+                pad_token_id=tokenizer.eos_token_id,
+                eos_token_id=tokenizer.eos_token_id,
+            )
+        
+        new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
+        prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+        prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
+        corrected_sentences.append(prediction)
+    
+    return "\n".join(corrected_sentences)
+
 def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_gemini_scoring):
     """Evaluates a single fine-tuned model by processing full documents chunk by chunk."""
     results = []
@@ -81,6 +117,8 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     dataset_config = config["datasets"][dataset_key]
     is_ita = dataset_config.get("ita_language", False)
 
+    print(f"\n[DEBUG] Dataset: '{dataset_key}'. Found 'ita_language' key: {dataset_config.get('ita_language')}. 'is_ita' flag set to: {is_ita}\n")
+
     model_path = os.path.join(paths['trained_models_dir'], config['output_dir_name'])
     
     print(f"\n====== Evaluating {model_name} from {model_path} on '{dataset_key}' dataset ======")
@@ -88,17 +126,14 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     try:
         model = AutoModelForCausalLM.from_pretrained(model_path).to(device)
         tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
+        if tokenizer.pad_token is None: tokenizer.pad_token = tokenizer.eos_token
     except OSError:
         print(f"❌ Model not found at {model_path}. Please train it first.")
         return None
         
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-
     for _, row in tqdm(eval_docs_df.iterrows(), total=len(eval_docs_df), desc=f"Evaluating docs for {model_name.split('/')[-1]}"):
         noisy_doc = row["noisy_doc"]
         target_doc = row["target_doc"]
-
         predicted_doc = correct_document(noisy_doc, model, tokenizer, config, dataset_config)
         
         gem_score = -1
@@ -106,17 +141,12 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
             gem_score = gemini_judge_score(noisy_doc, predicted_doc, target_doc, gemini_model, ita=is_ita)
 
         results.append({
-            "model": model_name,
-            "input_text": noisy_doc,
-            "predicted_text": predicted_doc,
-            "target_text": target_doc,
-            "levenshtein": SequenceMatcher(None, predicted_doc, target_doc).ratio(),
-            "char_error_rate": calculate_cer(predicted_doc, target_doc),
-            "gemini_score": gem_score,
+            "model": model_name, "input_text": noisy_doc, "predicted_text": predicted_doc,
+            "target_text": target_doc, "levenshtein": SequenceMatcher(None, predicted_doc, target_doc).ratio(),
+            "char_error_rate": calculate_cer(predicted_doc, target_doc), "gemini_score": gem_score,
         })
 
     torch.cuda.empty_cache()
-    
     results_df = pd.DataFrame(results)
     
     eval_dir = paths['evaluation_results_dir']
@@ -127,35 +157,7 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     
     return results_df
 
-def correct_document(doc_text, model, tokenizer, config, dataset_config):
-    """
-    Performs a single-pass correction on a given text chunk.
-    Assumes the model is trained on paragraph-like chunks.
-    """
-    is_ita = dataset_config.get("ita_language", False)
-    prompt_style = config["prompt_style"]
-    device = model.device
-
-    prompt = build_prompt(doc_text, prompt_style, ita=is_ita)
-    
-    # Truncation is a safeguard for any single chunk that might be too long
-    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
-    
-    with torch.no_grad():
-        output_ids = model.generate(
-            input_ids=inputs["input_ids"],
-            attention_mask=inputs["attention_mask"],
-            max_new_tokens=2048,
-            repetition_penalty=1.2,
-            num_beams=3,
-        )
-    
-    prediction = tokenizer.decode(output_ids[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
-    prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
-    return prediction
-
 def run_human_vs_gemini_correlation(model_eval_path, human_annotations_path):
-    # ... (This function is identical to the previous version, it's now just called with the correct path from main)
     print("\n📊 Checking correlation between Gemini and Human scores...")
     try:
         with open(human_annotations_path, "r", encoding="utf-8") as f:
@@ -167,11 +169,10 @@ def run_human_vs_gemini_correlation(model_eval_path, human_annotations_path):
 
     eval_df = eval_df[eval_df["gemini_score"] != -1]
     if eval_df.empty:
-        print("⚠️ No Gemini-scored samples found in the evaluation file. Cannot perform correlation.")
+        print("⚠️ No Gemini-scored samples found in the evaluation file.")
         return
 
     human_lookup = { item["ocr"].strip(): item["human_score"] for item in human_data if "human_score" in item }
-
     human_scores, gemini_scores = [], []
     for _, row in eval_df.iterrows():
         key = row["input_text"].strip()
@@ -190,4 +191,4 @@ def run_human_vs_gemini_correlation(model_eval_path, human_annotations_path):
         print(f"✅ Pearson Correlation: {correlation:.3f}")
         print(f"(Based on {len(human_scores_int)} overlapping samples)")
     else:
-        print(f"⚠️ Only {len(human_scores)} overlapping samples found. Need at least 2 to calculate correlation.")
+        print(f"⚠️ Only {len(human_scores)} overlapping samples found.")
