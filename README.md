@@ -6,6 +6,10 @@ This project provides a comprehensive, portable pipeline for fine-tuning, evalua
 
 The entire pipeline is managed through an interactive command-line interface and is designed for easy setup and portability between different environments.
 
+## Google Drive Team Forder (Report and colab)
+
+https://drive.google.com/drive/u/1/folders/1vyRWuaqrh67u6NSqPLv9U8GFDiflwPkH
+
 ## Features
 
 This project includes a wide range of features designed for robust model development and analysis:

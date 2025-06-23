@@ -127,7 +127,7 @@ def handle_evaluate_model():
         print("❌ Could not load documents for evaluation.")
         return
 
-    use_gemini = ask_yes_no("⭐ Use Gemini for scoring?")
+    use_gemini = ask_yes_no("Use Gemini for scoring?")
     if use_gemini and not GEMINI_MODEL:
         print("\n❌ Cannot use Gemini scoring. The initial API connection failed.")
         use_gemini = False

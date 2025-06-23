@@ -117,8 +117,6 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     dataset_config = config["datasets"][dataset_key]
     is_ita = dataset_config.get("ita_language", False)
 
-    print(f"\n[DEBUG] Dataset: '{dataset_key}'. Found 'ita_language' key: {dataset_config.get('ita_language')}. 'is_ita' flag set to: {is_ita}\n")
-
     model_path = os.path.join(paths['trained_models_dir'], config['output_dir_name'])
     
     print(f"\n====== Evaluating {model_name} from {model_path} on '{dataset_key}' dataset ======")
