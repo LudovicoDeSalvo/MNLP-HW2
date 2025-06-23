@@ -92,7 +92,7 @@ def configure_gemini(paths):
             api_key = f.read().strip()
             genai.configure(api_key=api_key)
             print("✅ Successfully configured Gemini API.")
-            return genai.GenerativeModel("gemini-1.5-flash-latest")
+            return genai.GenerativeModel("gemini-2.5-flash")
     except Exception as e:
         print(f"⚠️ Failed to configure Gemini API: {e}. Evaluation with Gemini will fail.")
         return None

@@ -3,37 +3,33 @@ import sys
 import subprocess
 import pandas as pd
 from datasets import Dataset
-import random
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import random
+import nltk
 from sklearn.metrics import cohen_kappa_score, mean_absolute_error
 
-# --- DYNAMIC PATH DETECTION (NO CONFIG FILE NEEDED) ---
+# --- DYNAMIC PATH DETECTION ---
 try:
-    # The absolute path to the directory containing main.py
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 except NameError:
-    # Fallback for interactive environments like Jupyter/Colab notebooks
     PROJECT_ROOT = os.path.abspath(".")
-
 PATHS = {
-    "root": PROJECT_ROOT,
-    "dataset_dir": os.path.join(PROJECT_ROOT, "dataset"),
+    "root": PROJECT_ROOT, "dataset_dir": os.path.join(PROJECT_ROOT, "dataset"),
     "general_utils_dir": os.path.join(PROJECT_ROOT, "general_utils"),
-    "model_configs_dir": PROJECT_ROOT,  # Assumes config files are in the root
-    "evaluation_results_dir": os.path.join(PROJECT_ROOT, "evaluation_results"),
+    "model_configs_dir": PROJECT_ROOT, "evaluation_results_dir": os.path.join(PROJECT_ROOT, "evaluation_results"),
     "trained_models_dir": os.path.join(PROJECT_ROOT, "trained_models")
 }
-# This allows scripts in /src to be imported correctly
-sys.path.insert(0, os.path.join(PATHS["root"], "src"))
+sys.path.insert(0, PATHS["root"])
 # --- END DYNAMIC PATH DETECTION ---
 
+from src.utils import set_all_seeds, login_to_huggingface, configure_gemini, load_config
+from src.train import train_model
+from src.eval import evaluate_model, correct_document, gemini_judge_score
+from src.data_prep import create_chunked_dataset, load_chunked_dataset_for_training, load_full_documents_for_eval
 
-# Now that the path is set, we can import our modules
-from utils import set_all_seeds, login_to_huggingface, configure_gemini, load_config
-from data_prep import prepare_dataset
-from train import train_model
-from eval import evaluate_model, get_single_correction, gemini_judge_score
+MODEL_CONFIGS = {}
+GEMINI_MODEL = None
 
 def get_model_configs():
     """Dynamically finds all model config files from the specified directory."""
@@ -49,7 +45,7 @@ def get_model_configs():
     return configs
 
 MODEL_CONFIGS = get_model_configs()
-GEMINI_MODEL = None
+
 
 # --- HELPER FUNCTIONS FOR MENU ---
 def ask_yes_no(question):
@@ -71,7 +67,7 @@ def select_dataset():
         if choice == "2": return "ita"
         print("Invalid choice. Please enter 1 or 2.")
 
-def select_model_configs_from_menu():
+def select_model_configs_from_menu(all_option=True):
     """Lets the user select one or more model configurations from a generated menu."""
     if not MODEL_CONFIGS:
         print("❌ No model configuration files found in the root directory (e.g., config_tinyllama.json).")
@@ -125,46 +121,62 @@ def select_evaluation_file():
             print("Please enter a valid number.")
 
 # --- MENU HANDLERS ---
-def handle_train_model():
+
+def handle_preprocess_dataset():
+    """Handler for the one-time Gemini-powered data chunking."""
+    global GEMINI_MODEL
+    print("\n--- Pre-process Dataset with Gemini ---")
+    if not GEMINI_MODEL:
+        print("Error: This feature requires a Gemini API connection.")
+        return
+        
     dataset_key = select_dataset()
+    # We need a model config just to get the tokenizer name
+    config = load_config(list(MODEL_CONFIGS.values())[0]['path'])
+    if not config: return
+
+    print("\nThis process will make API calls to Gemini to split your dataset.")
+    print("It only needs to be done once per dataset. This may take some time.")
+    if ask_yes_no("Do you want to continue?"):
+        create_chunked_dataset(config, dataset_key, PATHS, GEMINI_MODEL)
+
+def handle_train_model():
+    """Handler for training models on the pre-processed chunked dataset."""
+    dataset_key = select_dataset()
+    print(f"\n--- Loading pre-processed data for '{dataset_key}' dataset ---")
+    
     selected_configs = select_model_configs_from_menu()
     if not selected_configs: return
 
-    print(f"\n--- Preparing data on '{dataset_key}' dataset ---")
+    # We can use the first selected config to pass to the data loader.
+    # The config is needed to build the prompt, which is consistent across models.
     master_config = selected_configs[0]
-    if not master_config: return
     
-    train_ds, eval_sentence_ds, _ = prepare_dataset(master_config, dataset_key, PATHS)
+    # --- FIXED: Pass the required 'master_config' argument ---
+    train_ds, eval_ds = load_chunked_dataset_for_training(master_config, dataset_key, PATHS)
     
-    if train_ds is None or eval_sentence_ds is None:
-        print("Could not prepare datasets. Aborting training.")
+    if train_ds is None or eval_ds is None:
+        print("\n❌ Pre-processed data not found. Please run 'Pre-process Dataset with Gemini' from the menu first.")
         return
-
+        
     for config in selected_configs:
         if not config: continue
-        train_model(config, PATHS, train_ds, eval_sentence_ds)
+        train_model(config, PATHS, train_ds, eval_ds)
 
 def handle_evaluate_model():
-    global GEMINI_MODEL
+    """Handler for evaluating models on full documents."""
     dataset_key = select_dataset()
     selected_configs = select_model_configs_from_menu()
     if not selected_configs: return
 
-    print(f"\n--- Preparing data for evaluation on '{dataset_key}' dataset ---")
-    master_config = selected_configs[0]
-    if not master_config: return
+    print(f"\n--- Loading full documents for evaluation on '{dataset_key}' dataset ---")
+    eval_docs_df = load_full_documents_for_eval(dataset_key, PATHS)
+    if eval_docs_df is None or eval_docs_df.empty: return
 
-    _, _, eval_docs_df = prepare_dataset(master_config, dataset_key, PATHS)
-    
-    if eval_docs_df is None or eval_docs_df.empty:
-        print("Could not prepare evaluation documents. Aborting.")
-        return
-
-    use_gemini = ask_yes_no("⭐ Use Gemini for scoring? (Requires API key)")
+    use_gemini = ask_yes_no("⭐ Use Gemini for scoring?")
     if use_gemini and not GEMINI_MODEL:
-        GEMINI_MODEL = configure_gemini(PATHS)
-        if not GEMINI_MODEL:
-            use_gemini = False
+        print("\n❌ Cannot use Gemini scoring. The initial API connection failed.")
+        use_gemini = False
 
     for config in selected_configs:
         if not config: continue
@@ -188,23 +200,29 @@ def handle_evaluate_model():
             print("-"*(49))
 
 def handle_human_correlation():
-    """Interactive workflow to compare user scores with Gemini scores."""
+    """
+    Interactive workflow to compare user scores with Gemini scores,
+    using the first N sentences of random paragraphs as samples.
+    """
     global GEMINI_MODEL
     print("\n--- Interactive Human vs. Gemini Correlation ---")
 
+    NUM_SENTENCES_PER_SAMPLE = 3
+    print(f"(Each sample will consist of the first {NUM_SENTENCES_PER_SAMPLE} sentences of a random paragraph)")
+
     # 1. SETUP
     if not GEMINI_MODEL:
-        print("❌ Gemini API connection is not available. This feature cannot be used.")
-        return
+        GEMINI_MODEL = configure_gemini(PATHS)
+        if not GEMINI_MODEL:
+            print("❌ Gemini API connection is not available. This feature cannot be used.")
+            return
 
     dataset_key = select_dataset()
     
     print("\nSelect the model to evaluate:")
-    # We only evaluate one model at a time in this mode
     model_configs_list = [v for k, v in MODEL_CONFIGS.items()]
     for i, model_info in enumerate(model_configs_list):
         print(f"{i+1}. {model_info['name']}")
-    
     model_choice = -1
     while model_choice < 0 or model_choice >= len(model_configs_list):
         try:
@@ -215,28 +233,45 @@ def handle_human_correlation():
                 print("Invalid number.")
         except ValueError:
             print("Please enter a number.")
-
     config = load_config(model_configs_list[model_choice]["path"])
     if not config: return
     
     num_samples = 0
     while num_samples <= 0:
         try:
-            num_samples = int(input("How many random samples to evaluate? (e.g., 5): "))
+            num_samples = int(input("How many random paragraphs to sample? (e.g., 5): "))
             if num_samples <= 0: print("Please enter a positive number.")
         except ValueError:
             print("Please enter a valid number.")
 
     # 2. DATA PREPARATION
-    print("\nLoading and preparing random samples...")
-    train_ds, eval_sentence_ds, _ = prepare_dataset(config, dataset_key, PATHS)
-    full_ds = pd.concat([train_ds.to_pandas(), eval_sentence_ds.to_pandas()])
+    print("\nLoading and preparing random paragraph samples...")
+    eval_docs_df = load_full_documents_for_eval(dataset_key, PATHS)
     
-    if len(full_ds) < num_samples:
-        print(f"Warning: Requested {num_samples} samples, but only {len(full_ds)} are available.")
-        num_samples = len(full_ds)
+    if eval_docs_df is None or eval_docs_df.empty:
+        print("❌ Could not find any evaluation documents to sample from.")
+        return
+
+    if len(eval_docs_df) < num_samples:
+        print(f"Warning: Requested {num_samples} samples, but only {len(eval_docs_df)} evaluation paragraphs are available.")
+        num_samples = len(eval_docs_df)
+    
+    random_docs = eval_docs_df.sample(n=num_samples)
+    
+    random_samples = []
+    is_ita_lang = config["datasets"][dataset_key].get("ita_language", False)
+    
+    for _, doc_row in random_docs.iterrows():
+        noisy_sentences = nltk.sent_tokenize(doc_row['noisy_doc'], language='italian' if is_ita_lang else 'english')
+        target_sentences = nltk.sent_tokenize(doc_row['target_doc'], language='italian' if is_ita_lang else 'english')
         
-    random_samples = full_ds.sample(n=num_samples).to_dict('records')
+        noisy_snippet = " ".join(noisy_sentences[:NUM_SENTENCES_PER_SAMPLE])
+        target_snippet = " ".join(target_sentences[:NUM_SENTENCES_PER_SAMPLE])
+        
+        random_samples.append({
+            "noisy": noisy_snippet,
+            "target": target_snippet
+        })
 
     # 3. LOAD MODEL
     print(f"Loading model '{config['model_name']}'...")
@@ -247,6 +282,12 @@ def handle_human_correlation():
     except OSError:
         print(f"❌ Could not load model from {model_path}. Please train it first.")
         return
+    
+    print("\n\nAssegnare un voto da 0 a 30, in base alle seguenti categorie: \
+    \n0 a 10 per Leggibilità generale: quanto è facile e scorrevole leggere il testo. \
+    \n0 a 10 per Correttezza e formattazione: errori ortografici, punteggiatura, typos. Spaziatura e interruzione di riga. \
+    \n0 a 10 per Coerenza semantica: le frasi hanno senso, non ci sono ripetizioni")
+    stopper = input("Press enter to continue: ")
     
     # 4. INTERACTIVE LOOP
     user_scores = []
@@ -262,7 +303,9 @@ def handle_human_correlation():
         target_text = sample['target']
         
         print("\n1. Getting model correction...")
-        predicted_text = get_single_correction(ocr_text, model, tokenizer, config, dataset_config)
+        # --- THIS IS THE FIX ---
+        # Call the correct function name: correct_document
+        predicted_text = correct_document(ocr_text, model, tokenizer, config, dataset_config)
         
         print("2. Getting Gemini score...")
         gemini_score = gemini_judge_score(ocr_text, predicted_text, target_text, GEMINI_MODEL, ita=is_ita)
@@ -275,27 +318,26 @@ def handle_human_correlation():
         print(f"Gemini's Score: {gemini_score}")
         print("-" * 20)
         
-        # Get user score with input validation
         user_score = -1
-        while user_score < 0 or user_score > 5:
+        while user_score < 0 or user_score > 30:
             try:
-                score_input = input("Enter your score (0-5): ")
+                score_input = input("Enter your score (0-30): ")
                 user_score = int(score_input)
-                if not (0 <= user_score <= 5):
-                    print("Invalid score. Please enter a number between 0 and 5.")
+                if not (0 <= user_score <= 30):
+                    print("Invalid score. Please enter a number between 0 and 30.")
             except ValueError:
                 print("Invalid input. Please enter a number.")
         
         user_scores.append(user_score)
         gemini_scores.append(gemini_score)
 
-    # 5. FINAL ANALYSIS
     print("\n" + "="*50)
     print("--- Correlation Analysis Complete ---")
     if len(user_scores) > 1:
+        kappa_labels = list(range(0,30))
         pearson_corr = pd.Series(user_scores).corr(pd.Series(gemini_scores))
         mae = mean_absolute_error(user_scores, gemini_scores)
-        kappa = cohen_kappa_score(user_scores, gemini_scores, labels=[0,1,2,3,4,5])
+        kappa = cohen_kappa_score(user_scores, gemini_scores, labels=kappa_labels)
 
         print(f"Number of samples evaluated: {len(user_scores)}")
         print(f"\n📊 Pearson Correlation: {pearson_corr:.4f}")
@@ -320,36 +362,42 @@ def handle_install_requirements():
         print("❌ 'requirements.txt' not found. Please create it first.")
 
 def main_menu():
-    """Displays the main menu and handles user input."""
-    if not PATHS: 
-        print("Error: Path configuration failed.")
-        return
+    global GEMINI_MODEL, MODEL_CONFIGS
+    if not PATHS: return
+    
+    MODEL_CONFIGS = get_model_configs()
+    
+    print("\nAttempting to connect to Gemini API...")
+    GEMINI_MODEL = configure_gemini(PATHS)
+    if not GEMINI_MODEL:
+        print("⚠️ Gemini connection failed. Gemini-dependent features will be unavailable.")
     
     set_all_seeds(42)
-
     login_to_huggingface(PATHS)
     
     while True:
         print("\n==============================")
         print("   OCR Post-Correction Menu")
         print("==============================")
-        print("1. Train Model(s)")
-        print("2. Evaluate Model(s)")
-        print("3. Human vs. Gemini Correlation")
-        print("4. Install/Update Requirements")
-        print("5. Exit")
+        print("1. Pre-process Dataset with Gemini (Run this first!)")
+        print("2. Train Model(s)")
+        print("3. Evaluate Model(s)")
+        print("4. Human vs. Gemini Correlation")
+        print("5. Install/Update Requirements")
+        print("6. Exit")
         
-        choice = input("\nEnter your choice (1-5): ")
+        choice = input("\nEnter your choice (1-6): ")
 
-        if choice == "1": handle_train_model()
-        elif choice == "2": handle_evaluate_model()
-        elif choice == "3": handle_human_correlation()
-        elif choice == "4": handle_install_requirements()
-        elif choice == "5":
+        if choice == "1": handle_preprocess_dataset()
+        elif choice == "2": handle_train_model()
+        elif choice == "3": handle_evaluate_model()
+        elif choice == "4": handle_human_correlation()
+        elif choice == "5": handle_install_requirements()
+        elif choice == "6":
             print("Exiting the program. Goodbye!")
             break
         else:
-            print("Invalid choice. Please enter a number between 1 and 5.")
+            print("Invalid choice.")
 
 if __name__ == "__main__":
     main_menu()

@@ -72,47 +72,6 @@ def gemini_judge_score(noisy, predicted, gold, gemini_model, ita=False):
         print(f"Error during Gemini scoring: {e}")
         return -1
 
-def correct_document(doc_text, model, tokenizer, config, dataset_config):
-    """Splits a document into sentences, corrects each, and reassembles them."""
-    is_ita = dataset_config.get("ita_language", False)
-    prompt_style = config["prompt_style"]
-    device = model.device
-
-    # Split the document into individual sentences
-    sentences = nltk.sent_tokenize(doc_text, language='italian' if is_ita else 'english')
-    corrected_sentences = []
-
-    # Process each sentence one-by-one to ensure nothing is missed
-    for sent in sentences:
-        if not sent.strip():
-            continue
-            
-        prompt = build_prompt(sent, prompt_style, is_ita)
-        inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True, max_length=512).to(device)
-        
-        with torch.no_grad():
-            output_ids = model.generate(
-                input_ids=inputs["input_ids"],
-                attention_mask=inputs["attention_mask"],
-                max_new_tokens=1024,
-                repetition_penalty=1.3,
-                no_repeat_ngram_size=4,
-                num_beams=3,
-                pad_token_id=tokenizer.eos_token_id,
-                eos_token_id=tokenizer.eos_token_id,
-            )
-        
-        new_tokens = output_ids[0][inputs['input_ids'].shape[1]:]
-        prediction = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
-        
-        # Post-processing to remove leaked special tokens
-        prediction = prediction.replace("<|system|>", "").replace("<|user|>", "").strip()
-
-        corrected_sentences.append(prediction)
-    
-    # Join the corrected sentences with a newline to preserve paragraph structure
-    return "\n".join(corrected_sentences)
-
 def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_gemini_scoring):
     """Evaluates a single fine-tuned model by processing full documents chunk by chunk."""
     results = []
@@ -168,24 +127,27 @@ def evaluate_model(config, dataset_key, eval_docs_df, paths, gemini_model, use_g
     
     return results_df
 
-def get_single_correction(text_to_correct, model, tokenizer, config, dataset_config):
+def correct_document(doc_text, model, tokenizer, config, dataset_config):
     """
-    Performs a single-pass correction on a short text snippet.
-    This function is designed for the interactive correlation task.
+    Performs a single-pass correction on a given text chunk.
+    Assumes the model is trained on paragraph-like chunks.
     """
     is_ita = dataset_config.get("ita_language", False)
     prompt_style = config["prompt_style"]
     device = model.device
 
-    prompt = build_prompt(text_to_correct, prompt_style, ita=is_ita, pass_type="correction")
+    prompt = build_prompt(doc_text, prompt_style, ita=is_ita)
+    
+    # Truncation is a safeguard for any single chunk that might be too long
     inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(device)
-
+    
     with torch.no_grad():
         output_ids = model.generate(
-            input_ids=inputs.input_ids,
-            max_new_tokens=1024,
+            input_ids=inputs["input_ids"],
+            attention_mask=inputs["attention_mask"],
+            max_new_tokens=2048,
+            repetition_penalty=1.2,
             num_beams=3,
-            repetition_penalty=1.2
         )
     
     prediction = tokenizer.decode(output_ids[0, inputs.input_ids.shape[1]:], skip_special_tokens=True).strip()
